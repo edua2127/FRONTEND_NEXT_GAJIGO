@@ -21,6 +21,7 @@ const Login: NextPage = () => {
 
     const handleSubmit = (event: React.MouseEvent<HTMLAnchorElement> | React.MouseEvent<HTMLButtonElement>) => {
         event.preventDefault()
+        console.log(login)
         if (login.password && login.username) {
             UserService.login(login)
                 .then(() => {
