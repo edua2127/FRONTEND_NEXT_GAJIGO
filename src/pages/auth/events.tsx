@@ -1,12 +1,18 @@
 import type { NextPage } from 'next'
 import NavBar from '@/layout/NavBar'
-import Box from '@mui/material/Box';
+import Button from '@mui/material/Button';
 import {Grid} from "@mui/material";
+import Router from 'next/router'
+
 const Event: NextPage = () => {
 
     return (
         <NavBar>
-           <h3>teste</h3>
+            <Grid xs={12} sx={{backgroundColor: "#F8F8FF"}}>
+                <Grid xs={2} sx={{backgroundColor: "#F8F8FF"}}>
+                    <Button variant="outlined" onClick={()=> Router.push("/auth/cadastroEvents")}>Cadastrar Evento</Button>
+                </Grid>
+            </Grid>
         </NavBar>
     )
 }
