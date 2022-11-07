@@ -20,6 +20,7 @@ const NavBar = ({children}: Props) => {
                          alignSelf: "flex-start",
                          backgroundColor: "#7B677C",
                          height: "100%",
+                         width: "4%",
                          margin: 0,
                          flexDirection: 'column',
 
@@ -38,7 +39,21 @@ const NavBar = ({children}: Props) => {
                 </Grid>
 
             </Box>
-            {children}
+            <Box mx={9}
+                 sx={
+                     {
+                         display: "flex",
+                         alignSelf: "flex-start",
+                         backgroundColor: "#F8F8FF",
+                         margin: "0px",
+                         padding: "1.0319917440660475vh",
+                         flexDirection: 'column',
+                         width: "96%",
+                         height: "100%"
+                     }}
+            >
+                {children}
+            </Box>
         </Grid>)
 }
 

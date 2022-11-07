@@ -16,9 +16,9 @@ a {
 }
 
 .icon_page_home {
-    height: 38px;
-    width: 38px;
-    margin: 20px 10px 10px;
+    height: 3.9215686274509802vh;
+    width:  1.9791666666666667vw;
+    margin: 1.5479876160990713vh 1.238390092879257vh 1.5479876160990713vh 1.5479876160990713vh;
 }
 @media (prefers-color-scheme: dark) {
     html {
