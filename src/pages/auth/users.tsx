@@ -1,12 +1,12 @@
 import type { NextPage } from 'next'
-import {Grid} from "@mui/material";
+import NavBar from '@/layout/NavBar'
 
 const UsersPage: NextPage = () => {
 
     return (
-        <Grid xs={12} height={'100vh'} direction={'column'} justifyContent={'center'} container>
-            <h1>Pagina de Usuarios</h1>
-        </Grid>
+        <NavBar>
+            <h3>Pagina de Inscritos</h3>
+        </NavBar>
     )
 }
 
