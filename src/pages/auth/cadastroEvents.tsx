@@ -6,8 +6,8 @@ const CadastroEvents: NextPage = () => {
     const dateType = new Date(Date.now())
     const [name, setName] = React.useState('')
     const [description, setDescription] = React.useState('')
-    const [dateDeInicio, setDateDeInicio] = React.useState(dateType)
-    const [dateDeFim, setDateDeFim] = React.useState(dateType)
+    const [dateDeInicio, setDateDeInicio] = React.useState('')
+    const [dateDeFim, setDateDeFim] = React.useState('')
     const [modoDeAtendimento, setModoDeAtendimento] = React.useState('')
     const [statusDoEvento, setStatusDoEvento] = React.useState('')
 
@@ -45,11 +45,11 @@ const CadastroEvents: NextPage = () => {
                         <article className={style.cadastro_events_article}>
                             <label className={style.cadastro_events_label}>
                                 <span>Data de Início</span>
-                                <input value={dateDeInicio.toString()} onChange={(e) => setDateDeInicio(new Date(e.target.value))} type="date" className={style.cadastro_events_input}/>
+                                <input value={dateDeInicio.toString()} onChange={(e) => setDateDeInicio(e.target.value)} type="date" className={style.cadastro_events_input}/>
                             </label>
                             <label className={style.cadastro_events_label}>
                                 <span>Data de Fim</span>
-                                <input value={dateDeFim.toString()} onChange={(e) => setDateDeFim(new Date(e.target.value))} type="date" className={style.cadastro_events_input}/>
+                                <input value={dateDeFim.toString()} onChange={(e) => setDateDeFim(e.target.value)} type="date" className={style.cadastro_events_input}/>
                             </label>
                         </article>
                         <article className={style.cadastro_events_article}>

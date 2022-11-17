@@ -15,6 +15,15 @@
     height: 100%;
     margin: 15px 0;
 }
+
+.cadastro_palestra_input_modo_atendimento {
+    width: 39.5%;
+    height: 40px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 0 10px;
+    margin-bottom: 10px;
+}
 .cadastro_palestra_label {
     display: flex;
     flex-direction: column;
@@ -33,7 +42,7 @@
 }
 
 .cadastro_palestra_button {
-    width: 30%;
+    width: 39.5%;
     height: 40px;
     border: 0;
     border-radius: 5px;

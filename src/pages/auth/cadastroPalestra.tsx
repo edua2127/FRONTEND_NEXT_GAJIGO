@@ -8,8 +8,8 @@ const CadastroPalestra: NextPage = () => {
 
     const [name, setName] = React.useState('')
     const [description, setDescription] = React.useState('')
-    const [dateDeInicio, setDateDeInicio] = React.useState(dateType)
-    const [dateDeFim, setDateDeFim] = React.useState(dateType)
+    const [dateDeInicio, setDateDeInicio] = React.useState('')
+    const [dateDeFim, setDateDeFim] = React.useState('')
     const [modoDeAtendimento, setModoDeAtendimento] = React.useState('')
     const [sala, setSala] = React.useState('')
     const [tag, setTag] = React.useState('')
@@ -27,6 +27,9 @@ const CadastroPalestra: NextPage = () => {
         console.log(data)
     }
 
+    function handleChangeDataInicio(dataInicio: string) {
+        const data = new Date(dataInicio)
+    }
     return (
         <NavBar>
             <>
@@ -41,7 +44,7 @@ const CadastroPalestra: NextPage = () => {
                                 <input type="text" className={style.cadastro_palestra_input} value={name}
                                 onChange={(e) => setName(e.target.value)}/>
                             </label>
-                            <label>
+                            <label className={style.cadastro_palestra_label}>
                                 <span>Descrição</span>
                                 <textarea className={style.cadastro_palestra_input}
                                 value={description} onChange={(e) => setDescription(e.target.value)}/>
@@ -52,12 +55,13 @@ const CadastroPalestra: NextPage = () => {
                                 <span>Sala</span>
                                 <select className={style.cadastro_palestra_input}
                                 value={sala} onChange={(e) => setSala(e.target.value)}>
+                                    <option value={""}>Selecione</option>
                                     <option value="1">Sala 1</option>
                                     <option value="2">Sala 2</option>
                                     <option value="3">Sala 3</option>
                                 </select>
                             </label>
-                            <label>
+                            <label className={style.cadastro_palestra_label}>
                                 <span>Tag</span>
                                 <textarea className={style.cadastro_palestra_input}
                                 value={tag} onChange={(e) => setTag(e.target.value)}/>
@@ -67,18 +71,18 @@ const CadastroPalestra: NextPage = () => {
                             <label className={style.cadastro_palestra_label}>
                                 <span>Data de Início</span>
                                 <input type="date" className={style.cadastro_palestra_input}
-                                value={dateDeInicio.toString()} onChange={(e) => setDateDeInicio(new Date(e.target.value))}/>
+                                value={dateDeInicio.toString()} onChange={(e) => setDateDeInicio(e.target.value)}/>
                             </label>
-                            <label>
+                            <label className={style.cadastro_palestra_label}>
                                 <span>Data de Fim</span>
                                 <input type="date" className={style.cadastro_palestra_input}
-                                value={dateDeFim.toString()} onChange={(e) => setDateDeFim(new Date(e.target.value))}/>
+                                value={dateDeFim.toString()} onChange={(e) => setDateDeFim(e.target.value)}/>
                             </label>
                         </article>
                         <article className={style.cadastro_palestra_article}>
                             <label className={style.cadastro_palestra_label}>
                                 <span>Modo de Atendimento</span>
-                                <select className={style.cadastro_palestra_input}
+                                <select className={style.cadastro_palestra_input_modo_atendimento}
                                 value={modoDeAtendimento} onChange={(e) => setModoDeAtendimento(e.target.value)}>
                                     <option value="">Selecione</option>
                                     <option value="Offline">Presencial</option>
@@ -88,7 +92,7 @@ const CadastroPalestra: NextPage = () => {
                             </label>
                         </article>
                         <article className={style.cadastro_palestra_article_button}>
-                            <button className={style.cadastro_palestra_button}>Cadastrar</button>
+                            <button className={style.cadastro_palestra_button} onClick={cadastroPalestra}>Cadastrar</button>
                         </article>
                     </section>
                 </main>
