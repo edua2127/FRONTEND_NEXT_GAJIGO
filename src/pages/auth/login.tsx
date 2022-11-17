@@ -21,7 +21,7 @@ const Login: NextPage = () => {
         if (login.password && login.username) {
             UserService.login(login)
                 .then(() => {
-                    const returnUrl = router.query.returnUrl || '/'
+                    const returnUrl = router.query.returnUrl || '/auth/events'
                     router.push(returnUrl.toString())
                 })
                 .catch((error) => {
