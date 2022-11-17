@@ -3,9 +3,14 @@ import NavBar from '@/layout/NavBar'
 
 const Lectures: NextPage = () => {
     
+    
+
     return (
         <NavBar>
-            <h3>Pagina de Palestras</h3>
+            <div className="container">
+                <h3>Minhas Palestras</h3>
+
+            </div>
         </NavBar>
     )
 }

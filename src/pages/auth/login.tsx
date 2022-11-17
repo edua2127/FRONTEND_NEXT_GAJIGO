@@ -1,13 +1,11 @@
 import type { NextPage } from 'next'
 import * as React from 'react'
 import TextField from '@mui/material/TextField'
-import Button from '@mui/material/Button';
-import Box from '@mui/material/Box';
-import {Grid} from "@mui/material";
 import { FormLogin } from '@/types/auth.types'
 import {useRouter} from "next/router";
 import UserService from '@/services/user.service'
-
+import style from '@/styles/Login.module.css'
+import Button from '@mui/material/Button';
 const Login: NextPage = () => {
 
     const router = useRouter()
@@ -36,50 +34,18 @@ const Login: NextPage = () => {
     }
 
     return (
-       <Grid xs={12} height={'100vh'} direction={'column'} justifyContent={'center'} container>
-           <Box mx={3} sx={
-               {
-                   display: 'flex',
-                   flexDirection: 'column',
-                   alignItems: 'center',
-                   alignSelf: 'center',
-                   justifyContent: 'center',
-                   gap: '10px'
-               }}>
-               <Grid item>
-                   <TextField
-                       id="outlined-basic"
-                       label="Username"
-                       variant="outlined"
-                       required
-                       value={login.username}
-                       onChange={(e) =>
-                           setLogin({...login, username: e.target.value})}
-                       autoFocus/>
-               </Grid>
-
-               <Grid item>
-                   <TextField
-                       id="outlined-basic"
-                       label="Password"
-                       variant="outlined"
-                       type="text"
-                       required
-                       value={login.password}
-                       onChange={(e) =>
-                           setLogin({...login, password: e.target.value})}
-                       autoFocus/>
-               </Grid>
-               <Grid item xs={12} sx={{
-                    display: 'flex',
-                    width: '100%',
-                    justifyContent: 'flex-end',
-               }}>
-                   <Button variant="outlined" onClick={handleSubmit}>Login</Button>
-               </Grid>
-
-           </Box>
-       </Grid>
+       <div className={style.login_body}>
+           <header className={style.login_header}>
+                    <h1>Login</h1>
+           </header>
+           <main>
+               <form className={style.login_form}>
+                   <TextField className={style.login_input} id={'username'} label={'Username'} value={login.username} onChange={(e) => setLogin({...login, username: e.target.value})}/>
+                   <TextField className={style.login_input} id={'password'} label={'Password'} value={login.password} onChange={(e) => setLogin({...login, password: e.target.value})}/>
+                   <Button onClick={handleSubmit} variant="outlined">Login</Button>
+               </form>
+           </main>
+       </div>
 
     )
 }

@@ -1,9 +1,7 @@
 import type { NextPage } from 'next'
 import NavBar from '@/layout/NavBar'
 import React from 'react'
-import TextField from '@mui/material/TextField';
-import Select, { SelectChangeEvent } from '@mui/material/Select';
-import Button from '@mui/material/Button';
+import style from '@/styles/CadastroEvents.module.css'
 const CadastroEvents: NextPage = () => {
     const dateType = new Date(Date.now())
     const [name, setName] = React.useState('')
@@ -11,17 +9,16 @@ const CadastroEvents: NextPage = () => {
     const [dateDeInicio, setDateDeInicio] = React.useState(dateType)
     const [dateDeFim, setDateDeFim] = React.useState(dateType)
     const [modoDeAtendimento, setModoDeAtendimento] = React.useState('')
-    const [local, setLocal] = React.useState('')
     const [statusDoEvento, setStatusDoEvento] = React.useState('')
 
     function cadastroEvento() {
+
         const data = {
             name,
             description,
             dateDeInicio,
             dateDeFim,
             modoDeAtendimento,
-            local,
             statusDoEvento
         }
         console.log(data)
@@ -29,78 +26,59 @@ const CadastroEvents: NextPage = () => {
 
     return (
         <NavBar>
-            <div className="container">
-                <h3>Cadastro de Eventos</h3>
-                <div>
-                    <TextField 
-                    id="name" 
-                    name='name' 
-                    label="Nome do Evento" 
-                    variant="outlined" 
-                    value={name} 
-                    onChange={(e) => setName(e.target.value)} />
-                    
-                    <TextField 
-                    id="description" 
-                    name='description' 
-                    label="Descrição do Evento" 
-                    variant="outlined" 
-                    value={description} 
-                    onChange={(e) => setDescription(e.target.value)} />
-
-                    <TextField 
-                    id="dateDeInicio" 
-                    name='dateDeInicio' 
-                    label="Data de Inicio" 
-                    type="date" 
-                    variant="outlined" 
-                    value={dateDeInicio} onChange={(e) => setDateDeInicio(new Date(e.target.value))} />
-
-                    <TextField 
-                    id="dateDeFim" 
-                    name='dateDeFim' 
-                    label="Data de Fim" 
-                    type="date" 
-                    variant="outlined" 
-                    value={dateDeFim} 
-                    onChange={(e) => setDateDeFim(new Date(e.target.value))} />
-
-                    <TextField 
-                    id="local" 
-                    name='local' 
-                    label="Local" 
-                    variant="outlined" 
-                    value={local} 
-                    onChange={(e) => setLocal(e.target.value)} />
-
-                    <Select 
-                    id="modoDeAtendimento" 
-                    name='modoDeAtendimento' 
-                    label="Modo de Atendimento" 
-                    variant="outlined" 
-                    value={modoDeAtendimento} 
-                    onChange={(e: SelectChangeEvent) => setModoDeAtendimento(e.target.value)}>
-                        <option value="Offline">Presencial</option>
-                        <option value="Online">Online</option>
-                        <option value="Mixed">Hibrido</option>
-                    </Select>
-
-                    <Select
-                    id="statusDoEvento"
-                    name='statusDoEvento'
-                    label="Status do Evento"
-                    variant="outlined"
-                    value={statusDoEvento}
-                    onChange={(e: SelectChangeEvent) => setStatusDoEvento(e.target.value)}>
-                        <option value="EventCanceled">Cancelado</option>
-                        <option value="EventMovedOnline">Mudou para Online</option>
-                        <option value="EventPostponed">Adiado</option>
-                        <option value="EventRescheduled">Remarcado</option>
-                        <option value="EventScheduled">Agendado</option>
-                    </Select>
-                    <Button variant="outlined" onClick={cadastroEvento}>Cadastrar</Button>
-                </div>
-            </div>
+            <>
+                <header>
+                    <h1>Cadastro de Eventos</h1>
+                </header>
+                <main>
+                    <section className={style.cadastro_events_section}>
+                        <article className={style.cadastro_events_article}>
+                            <label className={style.cadastro_events_label}>
+                                <span>Nome do Evento</span>
+                                <input value={name} onChange={(e) => setName(e.target.value)} type="text" className={style.cadastro_events_input}/>
+                            </label>
+                            <label className={style.cadastro_events_label}>
+                                <span>Descrição</span>
+                                <textarea value={description} onChange={(e) => setDescription(e.target.value)}  className={style.cadastro_events_input} />
+                            </label>
+                        </article>
+                        <article className={style.cadastro_events_article}>
+                            <label className={style.cadastro_events_label}>
+                                <span>Data de Início</span>
+                                <input value={dateDeInicio.toString()} onChange={(e) => setDateDeInicio(new Date(e.target.value))} type="date" className={style.cadastro_events_input}/>
+                            </label>
+                            <label className={style.cadastro_events_label}>
+                                <span>Data de Fim</span>
+                                <input value={dateDeFim.toString()} onChange={(e) => setDateDeFim(new Date(e.target.value))} type="date" className={style.cadastro_events_input}/>
+                            </label>
+                        </article>
+                        <article className={style.cadastro_events_article}>
+                            <label className={style.cadastro_events_label}>
+                                <span>Modo de Atendimento</span>
+                                <select value={modoDeAtendimento} onChange={(e) => setModoDeAtendimento(e.target.value)} className={style.cadastro_events_input}>
+                                    <option value="">Selecione</option>
+                                    <option value="Offline">Presencial</option>
+                                    <option value="Online">Remoto</option>
+                                    <option value={"Mixed"}>Remoto e Presencial</option>
+                                </select>
+                            </label>
+                            <label className={style.cadastro_events_label}>
+                                <span>Status do Evento</span>
+                                <select value={statusDoEvento} onChange={(e) => setStatusDoEvento(e.target.value)} className={style.cadastro_events_input}>
+                                    <option value="">Selecione</option>
+                                    <option value="EventCancelled">Cancelado</option>
+                                    <option value="EventPostponed">Adiado</option>
+                                    <option value={"EventScheduled"}>Agendado</option>
+                                    <option value={"EventRescheduled"} >Reagendado</option>
+                                </select>
+                            </label>
+                        </article>
+                        <article className={style.cadastro_events_article_button}>
+                            <button onClick={cadastroEvento} className={style.cadastro_events_button}>Cadastrar</button>
+                        </article>
+                    </section>
+                </main>
+            </>
         </NavBar>
     )
 }
