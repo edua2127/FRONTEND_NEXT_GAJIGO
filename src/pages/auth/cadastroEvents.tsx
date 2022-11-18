@@ -2,8 +2,8 @@ import type { NextPage } from 'next'
 import NavBar from '@/layout/NavBar'
 import React from 'react'
 import style from '@/styles/CadastroEvents.module.css'
+import UserService from "@/services/user.service";
 const CadastroEvents: NextPage = () => {
-    const dateType = new Date(Date.now())
     const [name, setName] = React.useState('')
     const [description, setDescription] = React.useState('')
     const [dateDeInicio, setDateDeInicio] = React.useState('')
@@ -14,20 +14,24 @@ const CadastroEvents: NextPage = () => {
     function cadastroEvento() {
 
         const data = {
-            name,
-            description,
-            dateDeInicio,
-            dateDeFim,
-            modoDeAtendimento,
-            statusDoEvento
+            name: name,
+            attendanceMode: modoDeAtendimento,
+            interval: {
+                startDate: dateDeInicio,
+                endDate: dateDeFim,
+            },
+            active: true,
+            owner: 'temp',
+
         }
-        console.log(data)
-    }
+
+            console.log(data)
+        }
 
     return (
         <NavBar>
             <>
-                <header>
+                <header className={style.cadastro_events_header}>
                     <h1>Cadastro de Eventos</h1>
                 </header>
                 <main>

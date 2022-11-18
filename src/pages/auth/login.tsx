@@ -4,6 +4,8 @@ import { FormLogin } from '@/types/auth.types'
 import {useRouter} from "next/router";
 import UserService from '@/services/user.service'
 import style from '@/styles/Login.module.css'
+import {TextField} from "@mui/material";
+import Button from '@mui/material/Button';
 const Login: NextPage = () => {
 
     const router = useRouter()
@@ -40,16 +42,14 @@ const Login: NextPage = () => {
                    <section className={style.login_section}>
                        <article className={style.login_article}>
                            <label className={style.login_label}>
-                                <span>Username</span>
-                                <input className={style.login_input} type="text" name="username" value={login.username} onChange={(e) => setLogin({...login, username: e.target.value})}/>
+                                <TextField className={style.login_input}  id={'username'} label="Username" variant="outlined" type={'text'} value={login.username} onChange={(event) => setLogin({...login, username: event.target.value})}/>
                            </label>
                             <label className={style.login_label}>
-                                <span>Password</span>
-                                <input className={style.login_input} type="password" name="password" value={login.password} onChange={(e) => setLogin({...login, password: e.target.value})}/>
+                                <TextField className={style.login_input} id={'password'} label="Password" variant="outlined" type={'password'} value={login.password} onChange={(event) => setLogin({...login, password: event.target.value})}/>
                             </label>
                        </article>
                        <article className={style.login_article_button}>
-                              <button className={style.login_button} onClick={handleSubmit}>Login</button>
+                           <Button className={style.login_button} variant="contained" onClick={handleSubmit}>Login</Button>
                        </article>
                    </section>
                </main>
