@@ -5,6 +5,7 @@ import {CollectionResource} from "@/types/collection-resource.types";
 import {AbstractEntity} from "@/types/abstract-entity.types";
 
 export interface IEvent {
+    id: number,
     name: string,
     attendanceMode: string,
     interval: interval,
@@ -17,13 +18,14 @@ export interface interval {
 }
 
 export class Event implements AbstractEntity {
+    id!: number;
     name: string;
     attendanceMode: string;
     interval: interval;
     owner: string;
     _links!: EventLinks;
     active: boolean;
-
+    description!: string;
     constructor() {
         this.name = '';
         this.attendanceMode = '';
@@ -33,6 +35,7 @@ export class Event implements AbstractEntity {
         }
         this.owner = '';
         this.active = true;
+        this.description = '';
     }
 }
 

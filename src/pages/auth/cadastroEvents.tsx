@@ -13,20 +13,21 @@ const CadastroEvents: NextPage = () => {
 
     function cadastroEvento() {
 
-        const data = {
-            name: name,
-            attendanceMode: modoDeAtendimento,
-            interval: {
-                startDate: dateDeInicio,
-                endDate: dateDeFim,
-            },
-            active: true,
-            owner: 'temp',
-
-        }
+            const data = {
+                name: name,
+                attendanceMode: modoDeAtendimento,
+                interval: {
+                    startDate: dateDeInicio,
+                    endDate: dateDeFim,
+                },
+                active: true,
+                owner: 'temp',
+                description: description,
+            }
 
             console.log(data)
-        }
+
+    }
 
     return (
         <NavBar>
@@ -78,7 +79,7 @@ const CadastroEvents: NextPage = () => {
                             </label>
                         </article>
                         <article className={style.cadastro_events_article_button}>
-                            <button onClick={cadastroEvento} className={style.cadastro_events_button}>Cadastrar</button>
+                            <button onClick={cadastroEvento} className={style.cadastro_events_button_green}>Cadastrar</button>
                         </article>
                     </section>
                 </main>

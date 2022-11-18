@@ -16,3 +16,14 @@
     border: 1px solid #000;
     color: #fff;
 }
+
+.events_section {
+    display: flex;
+    flex-direction: column;
+
+}
+.events_article {
+    margin: 10px auto;
+    width: 100%;
+    max-width: 1000px;
+}
