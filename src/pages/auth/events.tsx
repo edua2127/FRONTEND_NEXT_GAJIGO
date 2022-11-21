@@ -27,7 +27,7 @@ const Event: NextPage = () => {
                 <main>
                     <section className={style.events_section}>
                         <article className={style.events_article}>
-                            <button className={style.events_button_cadastrar} onClick={() => Router.push('/auth/cadastroEvents')}>Cadastrar</button>
+                            <button className={style.btn_grad} onClick={() => Router.push('/auth/cadastroEvents')}>Cadastrar</button>
                         </article>
                         <article className={style.events_article}>
                             <TableContainer component={Paper}>
@@ -54,8 +54,8 @@ const Event: NextPage = () => {
                                                 <TableCell align="right">{event.interval.startDate}</TableCell>
                                                 <TableCell align="right">{event.interval.endDate}</TableCell>
                                                 <TableCell align="right">
-                                                    <button> Editar </button>
-                                                    <button> Excluir </button>
+                                                    <button className={style.events_button_editar} onClick={() => Router.push(`/auth/editarEvents/${event.id}`)}>Editar</button>
+                                                    <button className={style.events_button_excluir} onClick={() => Router.push(`/auth/excluirEvents/${event.id}`)}>Excluir</button>
                                                 </TableCell>
                                             </TableRow>
                                         ))}

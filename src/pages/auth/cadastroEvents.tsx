@@ -12,7 +12,6 @@ const CadastroEvents: NextPage = () => {
     const [statusDoEvento, setStatusDoEvento] = React.useState('')
 
     function cadastroEvento() {
-
             const data = {
                 name: name,
                 attendanceMode: modoDeAtendimento,
@@ -24,9 +23,7 @@ const CadastroEvents: NextPage = () => {
                 owner: 'temp',
                 description: description,
             }
-
             console.log(data)
-
     }
 
     return (
@@ -79,7 +76,7 @@ const CadastroEvents: NextPage = () => {
                             </label>
                         </article>
                         <article className={style.cadastro_events_article_button}>
-                            <button onClick={cadastroEvento} className={style.cadastro_events_button_green}>Cadastrar</button>
+                            <button onClick={cadastroEvento} className={style.btn_grad}>Cadastrar</button>
                         </article>
                     </section>
                 </main>

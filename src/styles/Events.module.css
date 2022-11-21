@@ -1,4 +1,28 @@
-.events_button_cadastrar {
+
+
+.btn_grad {
+    background-image: linear-gradient(to right, #56ab2f 0%, #a8e063  51%, #56ab2f  100%);
+    text-align: center;
+    text-transform: uppercase;
+    transition: 0.5s;
+    background-size: 200% auto;
+    color: white;
+    box-shadow: 0 0 20px #eee;
+    border-radius: 10px;
+    display: block;
+    width: 20%;
+    height: 40px;
+    border: 0;
+}
+
+.btn_grad:hover {
+    background-position: right center; /* change the direction of the change here */
+    color: #fff;
+    text-decoration: none;
+}
+
+
+.events_button_editar {
     border-radius: 4px;
     color: #000;
     cursor: pointer;
@@ -11,7 +35,28 @@
     background-color: #6cff6e;
     border: 1px solid #6cff6e;
 }
-.events_button_cadastrar:hover {
+
+.events_button_editar:hover {
+    background-color: #000;
+    border: 1px solid #000;
+    color: #fff;
+}
+
+.events_button_excluir {
+    border-radius: 4px;
+    color: #000;
+    cursor: pointer;
+    font-size: 1.2rem;
+    font-weight: 600;
+    padding: 0.5rem 1rem;
+    text-align: center;
+    text-decoration: none;
+    transition: all 0.2s ease-in-out;
+    background-color: #6cff6e;
+    border: 1px solid #6cff6e;
+}
+
+.events_button_excluir:hover {
     background-color: #000;
     border: 1px solid #000;
     color: #fff;
