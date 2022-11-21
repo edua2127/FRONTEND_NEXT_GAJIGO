@@ -42,19 +42,26 @@
 }
 
 .cadastro_palestra_button {
-    width: 39.5%;
+    background-image: linear-gradient(to right, #02AAB0 0%, #00CDAC  51%, #02AAB0  100%);
+    margin-left: 40px;
+    text-align: center;
+    text-transform: uppercase;
+    transition: 0.5s;
+    background-size: 200% auto;
+    color: white;
+    box-shadow: 0 0 20px #eee;
+    border-radius: 5px;
+    display: block;
+    width: 20%;
     height: 40px;
     border: 0;
-    border-radius: 5px;
-    background: #f1356d;
-    color: #fff;
-    font-weight: bold;
     cursor: pointer;
-    margin-left: 40px;
 }
 
 .cadastro_palestra_button:hover {
-    background: #e02055;
+    background-position: right center; /* change the direction of the change here */
+    color: #fff;
+    text-decoration: none;
 }
 
 .cadastro_palestra_article_button {
