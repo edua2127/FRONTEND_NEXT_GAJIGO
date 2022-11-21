@@ -3,6 +3,8 @@ import NavBar from '@/layout/NavBar'
 import React from 'react'
 import style from '@/styles/CadastroEvents.module.css'
 import UserService from "@/services/user.service";
+import EventService from '@/services/event.service';
+import { Event } from '@/types/event.types';
 const CadastroEvents: NextPage = () => {
     const [name, setName] = React.useState('')
     const [description, setDescription] = React.useState('')
@@ -12,18 +14,19 @@ const CadastroEvents: NextPage = () => {
     const [statusDoEvento, setStatusDoEvento] = React.useState('')
 
     function cadastroEvento() {
-            const data = {
-                name: name,
-                attendanceMode: modoDeAtendimento,
-                interval: {
-                    startDate: dateDeInicio,
-                    endDate: dateDeFim,
-                },
-                active: true,
-                owner: 'temp',
-                description: description,
+            
+            let event = new Event();
+            event.name = name;
+            event.description = description;
+            event.interval = {
+                startDate: dateDeInicio,
+                endDate: dateDeFim,
             }
-            console.log(data)
+            event.attendanceMode = modoDeAtendimento;
+            event.active = true
+            event.owner = ''
+
+            console.log(event)
     }
 
     return (
