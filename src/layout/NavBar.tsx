@@ -5,7 +5,6 @@ import IconEvent from '../assets/IconEvent.png'
 import IconPalestra from "../assets/IconPalestra.png"
 import IconUser from "../assets/IconUsers.png"
 import Router from 'next/router'
-
 type Props = {
     children: JSX.Element,
 };

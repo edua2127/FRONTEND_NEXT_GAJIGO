@@ -24,6 +24,7 @@ a {
     height: 3.9215686274509802vh;
     width:  1.9791666666666667vw;
     margin: 1.5479876160990713vh 1.238390092879257vh 1.5479876160990713vh 1.5479876160990713vh;
+    cursor: pointer;
 }
 @media (prefers-color-scheme: dark) {
     html {
