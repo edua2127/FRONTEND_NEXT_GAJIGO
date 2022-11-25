@@ -4,6 +4,7 @@ import { CollectionResource } from '@/types/collection-resource.types'
 import { AbstractEntity } from '@/types/abstract-entity.types'
 
 export class User implements AbstractEntity {
+    id!: number
     name: string
     email: string
     username: string

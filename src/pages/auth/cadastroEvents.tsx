@@ -15,7 +15,7 @@ const CadastroEvents: NextPage = () => {
 
     function cadastroEvento() {
             
-            let event = new Event();
+            const event = new Event();
             event.name = name;
             event.description = description;
             event.interval = {
@@ -24,8 +24,9 @@ const CadastroEvents: NextPage = () => {
             }
             event.attendanceMode = modoDeAtendimento;
             event.active = true
-            event.owner = ''
+            event.owner = '';
 
+            UserService.getCorrentUser();
             console.log(event)
     }
 
@@ -50,11 +51,11 @@ const CadastroEvents: NextPage = () => {
                         <article className={style.cadastro_events_article}>
                             <label className={style.cadastro_events_label}>
                                 <span>Data de Início</span>
-                                <input value={dateDeInicio.toString()} onChange={(e) => setDateDeInicio(e.target.value)} type="date" className={style.cadastro_events_input}/>
+                                <input value={dateDeInicio.toString()} onChange={(e) => setDateDeInicio(e.target.value)} type="datetime-local" className={style.cadastro_events_input}/>
                             </label>
                             <label className={style.cadastro_events_label}>
                                 <span>Data de Fim</span>
-                                <input value={dateDeFim.toString()} onChange={(e) => setDateDeFim(e.target.value)} type="date" className={style.cadastro_events_input}/>
+                                <input value={dateDeFim.toString()} onChange={(e) => setDateDeFim(e.target.value)} type="datetime-local" className={style.cadastro_events_input}/>
                             </label>
                         </article>
                         <article className={style.cadastro_events_article}>

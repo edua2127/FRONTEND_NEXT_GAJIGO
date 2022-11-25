@@ -4,8 +4,14 @@ import { FormLogin, FormRegister, TokenResponse } from '@/types/auth.types'
 import { AbstractService } from '@/services/abstract.service'
 import { User, UserCollection } from '@/types/user.types'
 import { UserClient } from '@/client/user.client'
+import type {RootState} from '../store/store'
+
+import {useDispatch, useSelector} from 'react-redux';
+import {editaUsername, editaPassword } from '../slice/geralSlice'
 
 class UserService extends AbstractService<User, UserCollection> {
+    
+    
     constructor() {
         super(new UserClient())
     }
@@ -19,12 +25,17 @@ class UserService extends AbstractService<User, UserCollection> {
         return new UserClient()
             .login(login.username, login.password)
             .then((user: TokenResponse) => {
-                // publish user to subscribers and store in local storage to stay logged in between page refreshes
                 const cookies = new Cookie()
                 cookies.set('token', user.access_token)
-
                 return user
             })
+    }
+  
+    public getCorrentUser() {
+        return new UserClient().getCorrentUser().then((user: User) => {
+            console.log(user)
+            return user
+        })
     }
 
     public register(user: FormRegister) {

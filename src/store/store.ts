@@ -1,5 +1,5 @@
 import { configureStore } from '@reduxjs/toolkit'
-import geralSlice from './slice/geralSlice'
+import geralSlice from '../slice/geralSlice'
 
 
 export const store = configureStore({

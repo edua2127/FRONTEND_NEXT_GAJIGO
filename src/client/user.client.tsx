@@ -14,4 +14,8 @@ export class UserClient extends AbstractClient<User, UserCollection> {
     public register(user: FormRegister): Promise<any> {
         return this.fetchEndpoint('/register', user, {}, 'POST')
     }
+
+    public getCorrentUser(): Promise<any> {
+        return this.fetchFromURL(`${process.env.NEXT_PUBLIC_API_URL}/users/me`, {}, {}, 'GET')
+    }
 }

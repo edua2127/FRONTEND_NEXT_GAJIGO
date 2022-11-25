@@ -6,6 +6,9 @@ import createEmotionCache from '@/utils/createEmotionCache'
 import lightThemeOptions from '@/styles/theme/lightTheme'
 import '@/styles/globals.css'
 
+import {store} from '../store/store'
+import { Provider } from 'react-redux' 
+
 // Client-side cache, shared for the whole session of the user in the browser.
 const clientSideEmotionCache = createEmotionCache()
 
@@ -18,10 +21,12 @@ interface MyAppProps extends AppProps {
 export default function MyApp(props: MyAppProps) {
     const { Component, emotionCache = clientSideEmotionCache, pageProps } = props
     return (
-        <CacheProvider value={emotionCache}>
-            <ThemeProvider theme={defaultTheme}>
-                <Component {...pageProps} />
-            </ThemeProvider>
-        </CacheProvider>
+        <Provider store={store}>
+            <CacheProvider value={emotionCache} >
+                <ThemeProvider theme={defaultTheme}>
+                    <Component {...pageProps} />
+                </ThemeProvider>
+            </CacheProvider>
+        </Provider>
     )
 }
