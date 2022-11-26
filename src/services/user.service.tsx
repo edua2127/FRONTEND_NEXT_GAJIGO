@@ -33,7 +33,6 @@ class UserService extends AbstractService<User, UserCollection> {
   
     public getCorrentUser() {
         return new UserClient().getCorrentUser().then((user: User) => {
-            console.log(user)
             return user
         })
     }

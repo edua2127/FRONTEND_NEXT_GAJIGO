@@ -73,3 +73,36 @@
     width: 100%;
     max-width: 1000px;
 }
+
+.events_article_cadastro_and_listar {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    margin: 10px auto;
+    width: 100%;
+    max-width: 1000px;
+}
+
+         
+.events_button_listar {
+    background-image: linear-gradient(to right, #e52d27 0%, #b31217  51%, #e52d27  100%);
+    text-transform: uppercase;
+    transition: 0.5s;
+    background-size: 200% auto;
+    color: white;            
+    box-shadow: 0 0 20px #eee;
+    border-radius: 10px;
+    display: block;
+    width: 20%;
+    height: 40px;
+    border: 0;
+    cursor: pointer;
+    margin-left: 5%;
+  }
+
+  .events_button_listar:hover {
+    background-position: right center; /* change the direction of the change here */
+    color: #fff;
+    text-decoration: none;
+  }
+ 

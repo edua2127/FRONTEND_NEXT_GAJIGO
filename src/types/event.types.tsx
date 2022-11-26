@@ -24,7 +24,7 @@ export class Event implements AbstractEntity {
     interval: interval;
     owner: string;
     _links!: EventLinks;
-    active: boolean;
+    active!: boolean;
     description!: string;
     constructor() {
         this.name = '';
