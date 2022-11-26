@@ -13,6 +13,7 @@ import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import {useEffect, useState} from "react";
 import UserService from "@/services/user.service";
+import EventService from '@/services/event.service';
 import {IEvent} from "@/types/event.types";
 import { ApiLink, ApiLinkClass } from '@/types/api-link.types';
 const Event: NextPage = () => {
@@ -22,9 +23,15 @@ const Event: NextPage = () => {
 
     async function getEvents() {
         const url: ApiLink = new ApiLinkClass()
-        url.href = "/api/users/" + idCorrentUser + "/events"
-        const events = await UserService.get(url)
-        console.log(events)
+
+        url.href = `${process.env.NEXT_PUBLIC_API_URL}/users/${idCorrentUser}/events`
+
+        EventService.getAll(url).then((response) => {
+            console.log(response._embedded.events)
+            setEvents(response._embedded.events)
+        })
+        
+
     }
 
     async function getCorrentUser() {
@@ -33,10 +40,16 @@ const Event: NextPage = () => {
         console.log(user)
     }
 
+
     useEffect(() => {
         getCorrentUser()
     }, [])
 
+    useEffect(() => {
+        if  (idCorrentUser !== 0) {
+            getEvents()
+        }
+    },[idCorrentUser])
 
 
     return (
@@ -80,12 +93,14 @@ const Event: NextPage = () => {
                                                 <TableCell align="right">{event.interval.startDate}</TableCell>
                                                 <TableCell align="right">{event.interval.endDate}</TableCell>
                                                 <TableCell align="right">
-                                                    <button className={style.events_button_editar}
-                                                            onClick={() => Router.push(`/auth/editarEvents/${event.id}`)}>Editar
-                                                    </button>
-                                                    <button className={style.events_button_excluir}
-                                                            onClick={() => Router.push(`/auth/excluirEvents/${event.id}`)}>Excluir
-                                                    </button>
+                                                    <article className={style.events_article_btn}>
+                                                        <button className={style.events_button_editar}
+                                                                onClick={() => Router.push(`/auth/editarEvents/${event.id}`)}>Editar
+                                                        </button>
+                                                        <button className={style.events_button_excluir}
+                                                                onClick={() => Router.push(`/auth/excluirEvents/${event.id}`)}>Excluir
+                                                        </button>
+                                                    </article>
                                                 </TableCell>
                                             </TableRow>
                                         ))}

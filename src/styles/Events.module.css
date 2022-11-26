@@ -21,7 +21,10 @@
     color: #fff;
     text-decoration: none;
 }
-
+.events_article_btn {
+    display: flex;
+    justify-content: space-between;
+}
 
 .events_button_editar {
     border-radius: 4px;
@@ -35,6 +38,7 @@
     transition: all 0.2s ease-in-out;
     background-color: #6cff6e;
     border: 1px solid #6cff6e;
+    margin-left: 10px;
 }
 
 .events_button_editar:hover {
