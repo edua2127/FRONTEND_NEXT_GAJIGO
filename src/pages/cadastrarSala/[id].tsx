@@ -6,7 +6,6 @@ import {useEffect, useState} from "react";
 import style from '@/styles/CadastroSala.module.css'
 import RoomService from "@/services/room.service";
 
-import {ApiLink, ApiLinkClass} from '@/types/api-link.types';
 
 const CadastrarSala: NextPage = () => {
     const router = useRouter();
