@@ -5,6 +5,7 @@ import {useEffect, useState} from "react";
 import {Room} from "@/types/room.types";
 import style from '@/styles/Room.module.css'
 import EventService from "@/services/event.service";
+import RoomService from "@/services/room.service";
 import {ApiLink, ApiLinkClass} from "@/types/api-link.types";
 
 const Salas: NextPage = () => {
@@ -29,6 +30,17 @@ const Salas: NextPage = () => {
     useEffect(() => {
         getSalas()
     }, [idEvento])
+
+
+    function excluirSala(id) {
+        const url: ApiLink = new ApiLinkClass()
+        url.href = `${process.env.NEXT_PUBLIC_API_URL}/rooms/${id}`
+        RoomService.delete(url).then((response) => {
+            getSalas()
+        }).catch((error) => {
+            console.log(error)
+        })
+    }
 
     return (
         <NavBar>
@@ -65,7 +77,7 @@ const Salas: NextPage = () => {
                                             <td className={style.room_table_td_actions}>
                                                 <button className={style.room_button_selecionar}>Selecionar</button>
                                                 <button className={style.room_button_editar}>Editar</button>
-                                                <button className={style.room_button_excluir}>Excluir</button>
+                                                <button className={style.room_button_excluir} onClick={()=> excluirSala(idRoom)}>Excluir</button>
                                             </td>
                                         </tr>
                                     )
