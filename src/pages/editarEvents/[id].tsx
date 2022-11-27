@@ -25,6 +25,7 @@ const EditarEvento:NextPage = () => {
         console.log(url.href)
         EventService.update(url, event).then((response) => {
             console.log("cadastrado com sucesso")
+            Router.back()
         }).catch((error) => {
             console.log(error)
         })

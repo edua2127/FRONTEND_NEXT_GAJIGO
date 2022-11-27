@@ -76,7 +76,7 @@ const Salas: NextPage = () => {
                                             <td className={style.room_table_td}>{sala.description}</td>
                                             <td className={style.room_table_td_actions}>
                                                 <button className={style.room_button_selecionar}>Selecionar</button>
-                                                <button className={style.room_button_editar}>Editar</button>
+                                                <button className={style.room_button_editar} onClick={()=> Router.push(`/editarSala/${idRoom}`)}>Editar</button>
                                                 <button className={style.room_button_excluir} onClick={()=> excluirSala(idRoom)}>Excluir</button>
                                             </td>
                                         </tr>
