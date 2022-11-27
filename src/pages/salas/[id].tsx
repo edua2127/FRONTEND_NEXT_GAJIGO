@@ -28,16 +28,18 @@ const Salas: NextPage = () => {
                 <main>
                     <section className={style.room_section}>
                         <article className={style.room_article_cadastro_and_listar}>
-                            <button className={style.room_button_cadastrar}>Cadastrar Sala</button>
-                            <button className={style.room_button_voltar} onClick={()=> Router.back()}>Voltar</button>
+                            <button className={style.room_button_cadastrar}
+                                    onClick={() => Router.push(`/cadastrarSala/${idEvento}`)}>Cadastrar Sala
+                            </button>
+                            <button className={style.room_button_voltar} onClick={() => Router.back()}>Voltar</button>
                         </article>
-                        <article  className={style.room_article_table}>
-                            <table  className={style.room_table}>
-                                <thead  className={style.room_table_thead}>
-                                    <tr  className={style.room_table_tr}>
-                                        <th  className={style.room_table_th}>Nome</th>
-                                        <th  className={style.room_table_th}>Descrição</th>
-                                    </tr>
+                        <article className={style.room_article_table}>
+                            <table className={style.room_table}>
+                                <thead className={style.room_table_thead}>
+                                <tr className={style.room_table_tr}>
+                                    <th className={style.room_table_th}>Nome</th>
+                                    <th className={style.room_table_th}>Descrição</th>
+                                </tr>
                                 </thead>
                                 <tbody>
 

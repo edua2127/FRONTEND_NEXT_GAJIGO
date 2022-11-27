@@ -7,6 +7,7 @@ interface IRoom {
     id: number,
     name: string,
     description: string,
+    lectures: [],
 }
 
 export class Room implements AbstractEntity {
@@ -16,10 +17,12 @@ export class Room implements AbstractEntity {
     event: string;
     active!: boolean;
     _links!: RoomLinks;
+    lectures!: [];
     constructor() {
         this.name = '';
         this.description = '';
         this.event = '';
+        this.lectures = [];
     }
 }
 
