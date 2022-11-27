@@ -102,4 +102,74 @@
     padding: 8px;
     flex-direction: row;
     width: 100%;
+    justify-content: center;
+}
+
+
+.room_button_editar {
+    background-image: linear-gradient(to right, #2753e5 0%, #5542cb 51%, #357a94 100%);
+    text-transform: uppercase;
+    transition: 0.5s;
+    background-size: 200% auto;
+    color: white;
+    box-shadow: 0 0 20px #eee;
+    border-radius: 10px;
+    display: block;
+    border: 0;
+    cursor: pointer;
+    margin: 0 0.5rem;
+    width: 15%;
+    height: 40px;
+}
+
+.room_button_editar:hover {
+    background-position: right center; /* change the direction of the change here */
+    color: #fff;
+    text-decoration: none;
+}
+
+.room_button_selecionar {
+    background-image: linear-gradient(to right, #27e59c 0%, #2e7893 51%, #1c546b 100%);
+    text-transform: uppercase;
+    transition: 0.5s;
+    background-size: 200% auto;
+    color: white;
+    box-shadow: 0 0 20px #eee;
+    border-radius: 10px;
+    display: block;
+    border: 0;
+    cursor: pointer;
+    margin: 0 0.5rem;
+    width: 20%;
+    height: 40px;
+}
+
+.room_button_selecionar:hover {
+    background-position: right center; /* change the direction of the change here */
+    color: #fff;
+    text-decoration: none;
+}
+
+
+
+.room_button_excluir {
+    background-image: linear-gradient(to right, #e52d27 0%, #b31217  51%, #e52d27  100%);
+    text-transform: uppercase;
+    transition: 0.5s;
+    background-size: 200% auto;
+    color: white;
+    box-shadow: 0 0 20px #eee;
+    border-radius: 10px;
+    display: block;
+    border: 0;
+    cursor: pointer;
+    margin: 0 0.5rem;
+    width: 15%;
+    height: 40px;
+}
+
+.room_button_excluir:hover {
+    background-position: right center; /* change the direction of the change here */
+    color: #fff;
+    text-decoration: none;
 }

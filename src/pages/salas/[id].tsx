@@ -4,6 +4,8 @@ import Router, {useRouter} from "next/router";
 import {useEffect, useState} from "react";
 import {Room} from "@/types/room.types";
 import style from '@/styles/Room.module.css'
+import EventService from "@/services/event.service";
+import {ApiLink, ApiLinkClass} from "@/types/api-link.types";
 
 const Salas: NextPage = () => {
 
@@ -12,7 +14,16 @@ const Salas: NextPage = () => {
     const [salas, setSalas] = useState<Room[]>([])
 
     function getSalas() {
-        console.log("em desenolvimento")
+        console.clear()
+        const url: ApiLink = new ApiLinkClass()
+        url.href = `${process.env.NEXT_PUBLIC_API_URL}/events/${idEvento}/rooms`
+        EventService.get(url).then((response) => {
+            // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+            // @ts-ignore
+            setSalas(response._embedded.rooms)
+        }).catch((error) => {
+            console.log(error)
+        })
     }
 
     useEffect(() => {
@@ -39,10 +50,26 @@ const Salas: NextPage = () => {
                                 <tr className={style.room_table_tr}>
                                     <th className={style.room_table_th}>Nome</th>
                                     <th className={style.room_table_th}>Descrição</th>
+                                    <th className={style.room_table_th}>Ações</th>
                                 </tr>
                                 </thead>
                                 <tbody>
-
+                                {salas.length > 0 && salas.map((sala, index) => {
+                                    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+                                    // @ts-ignore
+                                    const idRoom = sala._links.self.href.split('/').pop()
+                                    return (
+                                        <tr className={style.room_table_tr} key={idRoom}>
+                                            <td className={style.room_table_td}>{sala.name}</td>
+                                            <td className={style.room_table_td}>{sala.description}</td>
+                                            <td className={style.room_table_td_actions}>
+                                                <button className={style.room_button_selecionar}>Selecionar</button>
+                                                <button className={style.room_button_editar}>Editar</button>
+                                                <button className={style.room_button_excluir}>Excluir</button>
+                                            </td>
+                                        </tr>
+                                    )
+                                })}
                                 </tbody>
                             </table>
                         </article>
