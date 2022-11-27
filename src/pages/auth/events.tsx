@@ -1,9 +1,7 @@
 import type {NextPage} from 'next'
 import NavBar from '@/layout/NavBar'
 import Router from 'next/router'
-
 import style from '@/styles/Events.module.css'
-
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
 import TableCell from '@mui/material/TableCell';
@@ -15,7 +13,8 @@ import {useEffect, useState} from "react";
 import UserService from "@/services/user.service";
 import EventService from '@/services/event.service';
 import {IEvent} from "@/types/event.types";
-import { ApiLink, ApiLinkClass } from '@/types/api-link.types';
+import {ApiLink, ApiLinkClass} from '@/types/api-link.types';
+
 const Event: NextPage = () => {
 
     const [events, setEvents] = useState<IEvent[]>([])
@@ -30,7 +29,7 @@ const Event: NextPage = () => {
             console.log(response._embedded.events)
             setEvents(response._embedded.events)
         })
-        
+
 
     }
 
@@ -46,10 +45,10 @@ const Event: NextPage = () => {
     }, [])
 
     useEffect(() => {
-        if  (idCorrentUser !== 0) {
+        if (idCorrentUser !== 0) {
             getEvents()
         }
-    },[idCorrentUser])
+    }, [idCorrentUser])
 
 
     return (
@@ -74,6 +73,8 @@ const Event: NextPage = () => {
                                     <TableHead>
                                         <TableRow>
                                             <TableCell>Nome</TableCell>
+                                            <TableCell align="right">Descrição</TableCell>
+                                            <TableCell align="right">Status do Evento</TableCell>
                                             <TableCell align="right">Modo de Atendimento</TableCell>
                                             <TableCell align="right">Data de Inicio</TableCell>
                                             <TableCell align="right">Date de Fim</TableCell>
@@ -81,29 +82,46 @@ const Event: NextPage = () => {
                                         </TableRow>
                                     </TableHead>
                                     <TableBody>
-                                        {events.length > 0 && events.map((event) => (
-                                            <TableRow
-                                                key={event.id}
-                                                sx={{'&:last-child td, &:last-child th': {border: 0}}}
-                                            >
-                                                <TableCell component="th" scope="row">
-                                                    {event.name}
-                                                </TableCell>
-                                                <TableCell align="right">{event.attendanceMode}</TableCell>
-                                                <TableCell align="right">{event.interval.startDate}</TableCell>
-                                                <TableCell align="right">{event.interval.endDate}</TableCell>
-                                                <TableCell align="right">
-                                                    <article className={style.events_article_btn}>
-                                                        <button className={style.events_button_editar}
-                                                                onClick={() => Router.push(`/auth/editarEvents/${event.id}`)}>Editar
-                                                        </button>
-                                                        <button className={style.events_button_excluir}
-                                                                onClick={() => Router.push(`/auth/excluirEvents/${event.id}`)}>Excluir
-                                                        </button>
-                                                    </article>
-                                                </TableCell>
-                                            </TableRow>
-                                        ))}
+                                        {events.length > 0 && events.map((event) => {
+
+                                            // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+                                            // @ts-ignore
+                                            const id = event._links.self.href.split('/').pop()
+                                            const statusEventLocal = {
+                                                EventCancelled: 'Cancelado',
+                                                EventPostponed: 'Adiado',
+                                                EventScheduled: 'Agendado',
+                                                EventRescheduled: 'Reagendado',
+                                            }
+                                            // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+                                            // @ts-ignore
+                                            const statusEvent = statusEventLocal[event.status]
+                                            return (
+                                                <TableRow
+                                                    key={id}
+                                                    sx={{'&:last-child td, &:last-child th': {border: 0}}}
+                                                >
+                                                    <TableCell component="th" scope="row">
+                                                        {event.name}
+                                                    </TableCell>
+                                                    <TableCell align="right">{event.description}</TableCell>
+                                                    <TableCell align="right">{statusEvent}</TableCell>
+                                                    <TableCell align="right">{event.attendanceMode}</TableCell>
+                                                    <TableCell align="right">{event.interval.startDate}</TableCell>
+                                                    <TableCell align="right">{event.interval.endDate}</TableCell>
+                                                    <TableCell align="right">
+                                                        <article className={style.events_article_btn}>
+                                                            <button className={style.events_button_editar}
+                                                                    onClick={() => Router.push(`/editarEvents/${id}`)}>Editar
+                                                            </button>
+                                                            <button className={style.events_button_excluir}
+                                                                    onClick={() => Router.push(`/excluirEvents/${id}`)}>Excluir
+                                                            </button>
+                                                        </article>
+                                                    </TableCell>
+                                                </TableRow>
+                                            )
+                                        })}
                                     </TableBody>
                                 </Table>
 

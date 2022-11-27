@@ -26,6 +26,7 @@ export class Event implements AbstractEntity {
     _links!: EventLinks;
     active!: boolean;
     description!: string;
+    status: string;
     constructor() {
         this.name = '';
         this.attendanceMode = '';
@@ -36,6 +37,7 @@ export class Event implements AbstractEntity {
         this.owner = '';
         this.active = true;
         this.description = '';
+        this.status = '';
     }
 }
 

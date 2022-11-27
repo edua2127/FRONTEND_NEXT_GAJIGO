@@ -39,6 +39,7 @@ const CadastroEvents: NextPage = () => {
         evento.description = description
         evento.owner = owner
         evento.attendanceMode = modoDeAtendimento
+        evento.status = statusDoEvento
         return evento
     }
 
