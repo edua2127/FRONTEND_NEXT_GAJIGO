@@ -1,0 +1,105 @@
+
+.room_section {
+    display: flex;
+    flex-direction: column;
+}
+
+.room_article {
+    margin: 10px auto;
+    width: 100%;
+    max-width: 1000px;
+}
+
+.room_article_table {
+    margin: 10px auto;
+    width: 100%;
+    max-width: 1100px;
+}
+
+
+.room_button_cadastrar {
+    background-image: linear-gradient(to right, #66de27 0%, #a8e063  51%, #56ab2f  100%);
+    text-align: center;
+    text-transform: uppercase;
+    transition: 0.5s;
+    background-size: 200% auto;
+    color: white;
+    box-shadow: 0 0 20px #eee;
+    border-radius: 10px;
+    display: block;
+    width: 20%;
+    height: 40px;
+    border: 0;
+    cursor: pointer;
+    margin-right: 15px;
+}
+
+
+.room_button_cadastrar:hover {
+    background-position: right center;
+    color: #fff;
+    text-decoration: none;
+}
+
+.room_button_voltar {
+    background-image: linear-gradient(to right, #e31010 0%, #c71c92 51%, #800f9d 100%);
+    text-align: center;
+    text-transform: uppercase;
+    transition: 0.5s;
+    background-size: 200% auto;
+    color: white;
+    box-shadow: 0 0 20px #eee;
+    border-radius: 10px;
+    display: block;
+    width: 20%;
+    height: 40px;
+    border: 0;
+    cursor: pointer;
+}
+
+.room_button_voltar:hover {
+    background-position: right center;
+    color: #fff;
+    text-decoration: none;
+}
+
+.room_article_cadastro_and_listar {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    margin: 10px 10px 10px 3%;
+    width: 100%;
+    max-width: 1000px;
+
+}
+
+.room_table {
+    width: 100%;
+    border-collapse: collapse;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+}
+
+.room_table_thead {
+    background-color: #f2f2f2;
+}
+
+.room_table_tr {
+    border-bottom: 1px solid #ddd;
+}
+
+.room_table_th {
+    padding: 8px;
+    text-align: center;
+}
+
+.room_table_td {
+    padding: 8px;
+    text-align: center;
+}
+
+.room_table_td_actions {
+    display: flex;
+    padding: 8px;
+    flex-direction: row;
+    width: 100%;
+}

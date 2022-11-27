@@ -9,7 +9,7 @@ import style from '@/styles/EditarEvents.module.css'
 const EditarEvento:NextPage = () => {
     const router = useRouter();
     const {id} = router.query;
-    const [event, setEvent] = useState<IEvent>(new Event())
+    const [event, setEvent] = useState<Event>(new Event())
 
     function resgataOsDadosDoEvento() {
         const url: ApiLink = new ApiLinkClass()
@@ -24,7 +24,7 @@ const EditarEvento:NextPage = () => {
         url.href = `${process.env.NEXT_PUBLIC_API_URL}/events/${id}`
         console.log(url.href)
         EventService.update(url, event).then((response) => {
-            Router.push('/auth/events')
+            console.log("cadastrado com sucesso")
         }).catch((error) => {
             console.log(error)
         })
@@ -91,7 +91,7 @@ const EditarEvento:NextPage = () => {
                             </label>
                         </article>
                         <article className={style.editar_events_article_button}>
-                            <button  className={style.botao_excluir} onClick={() => Router.back()}>Cancelar</button>
+                            <button  className={style.botao_excluir} onClick={() => Router.back()}>Voltar</button>
                             <button className={style.botao_editar} onClick={updateEvent}>Salvar</button>
                         </article>
                     </section>

@@ -69,9 +69,6 @@ const Event: NextPage = () => {
                             <button className={style.btn_grad}
                                     onClick={() => Router.push('/auth/cadastroEvents')}>Cadastrar
                             </button>
-                            <button className={style.events_button_listar}
-                                    onClick={getEvents}>listar
-                            </button>
                         </article>
                         <article className={style.events_article_table}>
                             <table className={style.events_table}>
@@ -102,15 +99,22 @@ const Event: NextPage = () => {
                                         // @ts-ignore
                                         const statusEvent = statusEventLocal[event.status]
 
+                                        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+                                        // @ts-ignore
+                                        const description = event.description
+
                                         return (
                                             <tr key={id} className={style.events_table_tr}>
                                                 <td className={style.events_table_td}>{event.name}</td>
-                                                <td className={style.events_table_td}>{event.description}</td>
+                                                <td className={style.events_table_td}>{description}</td>
                                                 <td className={style.events_table_td}>{event.interval.startDate}</td>
                                                 <td className={style.events_table_td}>{event.interval.endDate}</td>
                                                 <td className={style.events_table_td}>{statusEvent}</td>
                                                 <td className={style.events_table_td}>{event.attendanceMode}</td>
                                                 <td className={style.events_table_td_actions}>
+                                                    <button className={style.events_button_selecionar}
+                                                            onClick={() => Router.push(`/salas/${id}`)}>selecionar
+                                                    </button>
                                                     <button className={style.events_button_editar}
                                                             onClick={() => Router.push(`/editarEvents/${id}`)}>Editar
                                                     </button>
