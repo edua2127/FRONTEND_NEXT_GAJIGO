@@ -2,13 +2,6 @@ import type {NextPage} from 'next'
 import NavBar from '@/layout/NavBar'
 import Router from 'next/router'
 import style from '@/styles/Events.module.css'
-import Table from '@mui/material/Table';
-import TableBody from '@mui/material/TableBody';
-import TableCell from '@mui/material/TableCell';
-import TableContainer from '@mui/material/TableContainer';
-import TableHead from '@mui/material/TableHead';
-import TableRow from '@mui/material/TableRow';
-import Paper from '@mui/material/Paper';
 import {useEffect, useState} from "react";
 import UserService from "@/services/user.service";
 import EventService from '@/services/event.service';
@@ -31,6 +24,19 @@ const Event: NextPage = () => {
         })
 
 
+    }
+
+    async function deleteEvents(id: number) {
+        const url: ApiLink = new ApiLinkClass()
+
+        url.href = `${process.env.NEXT_PUBLIC_API_URL}/events/${id}`
+
+        EventService.delete(url).then((response) => {
+            console.log(response)
+            getEvents()
+        }).catch((error) => {
+            console.log(error)
+        })
     }
 
     async function getCorrentUser() {
@@ -67,65 +73,56 @@ const Event: NextPage = () => {
                                     onClick={getEvents}>listar
                             </button>
                         </article>
-                        <article className={style.events_article}>
-                            <TableContainer component={Paper}>
-                                <Table sx={{minWidth: 650}} aria-label="simple table">
-                                    <TableHead>
-                                        <TableRow>
-                                            <TableCell>Nome</TableCell>
-                                            <TableCell align="right">Descrição</TableCell>
-                                            <TableCell align="right">Status do Evento</TableCell>
-                                            <TableCell align="right">Modo de Atendimento</TableCell>
-                                            <TableCell align="right">Data de Inicio</TableCell>
-                                            <TableCell align="right">Date de Fim</TableCell>
-                                            <TableCell align="right">Ações</TableCell>
-                                        </TableRow>
-                                    </TableHead>
-                                    <TableBody>
-                                        {events.length > 0 && events.map((event) => {
+                        <article className={style.events_article_table}>
+                            <table className={style.events_table}>
+                                <thead className={style.events_table_thead}>
+                                    <tr className={style.events_table_tr}>
+                                        <th className={style.events_table_th}>Nome do Evento</th>
+                                        <th className={style.events_table_th}>Descrição</th>
+                                        <th className={style.events_table_th}>Data de Inicio</th>
+                                        <th className={style.events_table_th}>Data de Terminio</th>
+                                        <th className={style.events_table_th}>Status do Evento</th>
+                                        <th className={style.events_table_th}>Modo de Atendimento</th>
+                                        <th className={style.events_table_th}>Ações</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    { events.length > 0 && events.map((event) => {
 
-                                            // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-                                            // @ts-ignore
-                                            const id = event._links.self.href.split('/').pop()
-                                            const statusEventLocal = {
-                                                EventCancelled: 'Cancelado',
-                                                EventPostponed: 'Adiado',
-                                                EventScheduled: 'Agendado',
-                                                EventRescheduled: 'Reagendado',
-                                            }
-                                            // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-                                            // @ts-ignore
-                                            const statusEvent = statusEventLocal[event.status]
-                                            return (
-                                                <TableRow
-                                                    key={id}
-                                                    sx={{'&:last-child td, &:last-child th': {border: 0}}}
-                                                >
-                                                    <TableCell component="th" scope="row">
-                                                        {event.name}
-                                                    </TableCell>
-                                                    <TableCell align="right">{event.description}</TableCell>
-                                                    <TableCell align="right">{statusEvent}</TableCell>
-                                                    <TableCell align="right">{event.attendanceMode}</TableCell>
-                                                    <TableCell align="right">{event.interval.startDate}</TableCell>
-                                                    <TableCell align="right">{event.interval.endDate}</TableCell>
-                                                    <TableCell align="right">
-                                                        <article className={style.events_article_btn}>
-                                                            <button className={style.events_button_editar}
-                                                                    onClick={() => Router.push(`/editarEvents/${id}`)}>Editar
-                                                            </button>
-                                                            <button className={style.events_button_excluir}
-                                                                    onClick={() => Router.push(`/excluirEvents/${id}`)}>Excluir
-                                                            </button>
-                                                        </article>
-                                                    </TableCell>
-                                                </TableRow>
-                                            )
-                                        })}
-                                    </TableBody>
-                                </Table>
+                                        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+                                        // @ts-ignore
+                                        const id = event._links.self.href.split('/').pop()
+                                        const statusEventLocal = {
+                                            EventCancelled: 'Cancelado',
+                                            EventPostponed: 'Adiado',
+                                            EventScheduled: 'Agendado',
+                                            EventRescheduled: 'Reagendado',
+                                        }
+                                        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+                                        // @ts-ignore
+                                        const statusEvent = statusEventLocal[event.status]
 
-                            </TableContainer>
+                                        return (
+                                            <tr key={id} className={style.events_table_tr}>
+                                                <td className={style.events_table_td}>{event.name}</td>
+                                                <td className={style.events_table_td}>{event.description}</td>
+                                                <td className={style.events_table_td}>{event.interval.startDate}</td>
+                                                <td className={style.events_table_td}>{event.interval.endDate}</td>
+                                                <td className={style.events_table_td}>{statusEvent}</td>
+                                                <td className={style.events_table_td}>{event.attendanceMode}</td>
+                                                <td className={style.events_table_td_actions}>
+                                                    <button className={style.events_button_editar}
+                                                            onClick={() => Router.push(`/editarEvents/${id}`)}>Editar
+                                                    </button>
+                                                    <button className={style.events_button_excluir}
+                                                            onClick={()=> deleteEvents(id)}>Excluir
+                                                    </button>
+                                                </td>
+                                            </tr>
+                                        )
+                                    })}
+                                </tbody>
+                            </table>
                         </article>
                     </section>
                 </main>
