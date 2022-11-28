@@ -32,7 +32,7 @@ const NavBar = ({children}: Props) => {
                 </Grid>
                 <Grid item>
                     <img src={IconUser.src} alt="icone de evento" className={"icon_page_home"}
-                         onClick={()=> Router.push("/auth/user")}/>
+                         onClick={()=> Router.push("/auth/palestrantes")}/>
                 </Grid>
             </Box>
             <Box mx={9}

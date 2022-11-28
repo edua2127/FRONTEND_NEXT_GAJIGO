@@ -14,7 +14,7 @@ const CadastroPalestrante: NextPage = () => {
     function cadastrar() {
         UserService.create(user).then((response) => {
             console.log(response)
-            Router.push('/auth/events')
+            Router.push(`/auth/palestrantes`)
         }).catch((error) => {
             console.log(error)
         })
@@ -75,7 +75,7 @@ const CadastroPalestrante: NextPage = () => {
                             </label>
                         </article>
                         <article className={style.cadastro_palestra_article_button}>
-                            <button className={style.cadastro_palestra_button_cancelar} onClick={()=> Router.push('/auth/events')}>Voltar</button>
+                            <button className={style.cadastro_palestra_button_cancelar} onClick={()=> Router.back()}>Voltar</button>
                             <button className={style.cadastro_palestra_button} onClick={cadastrar}>Cadastrar</button>
                         </article>
                     </section>
