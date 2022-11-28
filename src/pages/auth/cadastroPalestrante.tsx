@@ -45,7 +45,7 @@ const CadastroPalestrante: NextPage = () => {
                         </article>
                         <article className={style.cadastro_palestra_article}>
                             <label className={style.cadastro_palestra_label}>
-                                <span>Nome do Palestrante</span>
+                                <span>Nome de Usuario do Palestrante</span>
                                 <input type="text" placeholder="Nome de Usuário"
                                        className={style.cadastro_palestra_input}
                                        value={user.username}
