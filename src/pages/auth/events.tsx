@@ -36,6 +36,7 @@ const Event: NextPage = () => {
             getEvents()
         }).catch((error) => {
             console.log(error)
+            alert('existe alguma dependecia com esse evento')
         })
     }
 

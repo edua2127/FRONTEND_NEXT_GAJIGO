@@ -22,6 +22,7 @@ const CadastroPalestra: NextPage = () => {
     const [lecture, setLecture] = useState<Lecture>(new Lecture())
     const [languages, setLanguages] = useState<Language[]>([])
     const [palestrantes, setPalestrantes] = useState<User[]>([])
+    const [participantes, setParticipantes] = useState<User[]>([])
     const [tag, setTag] = useState<Tag[]>([])
 
     function getEvent() {
@@ -59,10 +60,13 @@ const CadastroPalestra: NextPage = () => {
         url.href = `${process.env.NEXT_PUBLIC_API_URL}/users`
         UserService.get(url).then((response) => {
             setPalestrantes(response._embedded.users.filter(user => !user.admin))
+            setParticipantes(response._embedded.users.filter(user => !user.admin))
         }).catch((error) => {
             console.log(error)
         })
     }
+
+
 
     function cadastrar() {
 
@@ -79,8 +83,11 @@ const CadastroPalestra: NextPage = () => {
             speakers: lecture.speakers,
             participants: lecture.participants,
             id: lecture.id,
+            created: lecture.created,
+            updated: lecture.updated,
+            removed: lecture.removed,
         }
-
+        console.log(data)
         LectureService.create(data).then(() => {
             console.log("cadastrado com sucesso")
             Router.back()
@@ -105,13 +112,7 @@ const CadastroPalestra: NextPage = () => {
         setLecture({...lecture, interval: {...lecture.interval, endDate: event.target.value}})
     }
 
-    const handleChangeLinguagem = (event: ChangeEvent<HTMLInputElement>) => {
 
-        const linguagem: string[] = []
-        linguagem.push(event.target.value)
-        console.log(typeof linguagem)
-        setLecture({...lecture, language: linguagem})
-    }
     return (
         <NavBar>
             <>
@@ -154,8 +155,8 @@ const CadastroPalestra: NextPage = () => {
                                 <span>
                                     Idioma da Palestra
                                 </span>
-                                <select className={style.cadastro_palestra_input} value={lecture.language[0]}
-                                        onChange={(e) => handleChangeLinguagem(e)}>
+                                <select className={style.cadastro_palestra_input} value={lecture.language}
+                                        onChange={(e) => setLecture({...lecture, language: e.target.value})}>
                                     <option value="">Selecione</option>
                                     {languages.length > 0 && languages.map((language, index) => {
                                         return (
@@ -218,6 +219,23 @@ const CadastroPalestra: NextPage = () => {
                                        onChange={(e) => handleChangeDatadeFim(e)}/>
                             </label>
                         </article>
+                        <article className={style.cadastro_palestra_article}>
+                            <label className={style.cadastro_palestra_label}>
+                                <span>
+                                    Participante inicial
+                                </span>
+                                <select className={style.cadastro_palestra_input_grande} value={lecture.participants[0]}
+                                        onChange={(e) => setLecture({...lecture, participants: [e.target.value]})}>
+                                    <option value="">Selecione</option>
+                                    {participantes.length > 0 && participantes.map((participante, index) => {
+                                        return (
+                                            <option key={index}
+                                                    value={participante._links.self.href}>{participante.name}</option>
+                                        )
+                                    })}
+                                </select>
+                            </label>
+                        </article>
                         <article className={style.cadastro_palestra_article_button}>
                             <button onClick={() => Router.back()}
                                     className={style.cadastro_palestra_button_cancelar}>Cancelar
@@ -228,7 +246,7 @@ const CadastroPalestra: NextPage = () => {
                 </main>
             </>
         </NavBar>
-)
+    )
 }
 
 export default CadastroPalestra

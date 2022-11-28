@@ -46,6 +46,7 @@ const Palestrantes: NextPage = () => {
             getUsers()
         }).catch((error) => {
             console.log(error)
+            alert('existe alguma dependecia com esse palestrante')
         })
     }
 

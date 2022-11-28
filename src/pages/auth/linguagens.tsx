@@ -35,6 +35,7 @@ const Linguagens: NextPage = () => {
             getLanguages()
         }).catch((error) => {
             console.log(error)
+            alert('existe alguma dependecia com essa linguagem')
         })
     }
 

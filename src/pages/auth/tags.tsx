@@ -35,6 +35,7 @@ const Tags: NextPage = () => {
             getTags()
         }).catch((error) => {
             console.log(error)
+            alert('existe alguma dependecia com essa tag')
         })
     }
 

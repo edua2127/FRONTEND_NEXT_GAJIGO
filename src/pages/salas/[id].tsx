@@ -39,6 +39,7 @@ const Salas: NextPage = () => {
             getSalas()
         }).catch((error) => {
             console.log(error)
+            alert('existe alguma dependecia com essa sala')
         })
     }
 
