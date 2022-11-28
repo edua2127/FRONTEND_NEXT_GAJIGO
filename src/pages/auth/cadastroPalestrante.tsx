@@ -1,7 +1,6 @@
 import NavBar from '@/layout/NavBar'
 import type {NextPage} from 'next'
 import Router, {useRouter} from "next/router";
-import {ApiLink, ApiLinkClass} from '@/types/api-link.types';
 import React, {useEffect, useState} from "react";
 import {User} from "@/types/user.types";
 import style from '@/styles/cadastroPalestrante.module.css'

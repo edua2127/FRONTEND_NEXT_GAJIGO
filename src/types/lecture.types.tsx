@@ -4,11 +4,6 @@ import {ApiLink} from "@/types/api-link.types"
 import {CollectionResource} from "@/types/collection-resource.types";
 import {AbstractEntity} from "@/types/abstract-entity.types";
 
-interface ILecture {
-    id: number,
-    name: string,
-    description: string,
-}
 
 export class Lecture implements AbstractEntity {
     id!: number;

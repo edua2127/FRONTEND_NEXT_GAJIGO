@@ -52,7 +52,7 @@ const Palestrantes: NextPage = () => {
     return (
         <NavBar>
             <>
-                <header>
+                <header className={style.user_page_header}>
                     <h1>Palestrantes</h1>
                 </header>
                 <main>

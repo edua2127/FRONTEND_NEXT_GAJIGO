@@ -16,7 +16,9 @@
     max-width: 1100px;
 }
 
-
+.user_page_header {
+    margin-left: 3%;
+}
 .room_button_cadastrar {
     background-image: linear-gradient(to right, #66de27 0%, #a8e063  51%, #56ab2f  100%);
     text-align: center;
