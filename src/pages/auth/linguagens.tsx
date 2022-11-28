@@ -71,7 +71,7 @@ const Linguagens: NextPage = () => {
                                             <td className={style.room_table_td}>{linguagem.name}</td>
                                             <td className={style.room_table_td}>{linguagem.created.toString()}</td>
                                             <td className={style.room_table_td_actions}>
-                                                <button className={style.room_button_editar}>Editar</button>
+                                                <button className={style.room_button_editar} onClick={()=> Router.push(`/editarLinguagens/${idLocal}`)}>Editar</button>
                                                 <button className={style.room_button_excluir} onClick={()=> excluirLinguagem(idLocal)}>Excluir</button>
                                             </td>
                                         </tr>
