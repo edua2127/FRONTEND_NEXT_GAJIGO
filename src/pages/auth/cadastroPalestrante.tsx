@@ -75,7 +75,7 @@ const CadastroPalestrante: NextPage = () => {
                             </label>
                         </article>
                         <article className={style.cadastro_palestra_article_button}>
-                            <button className={style.cadastro_palestra_button_cancelar}>Voltar</button>
+                            <button className={style.cadastro_palestra_button_cancelar} onClick={()=> Router.push('/auth/events')}>Voltar</button>
                             <button className={style.cadastro_palestra_button} onClick={cadastrar}>Cadastrar</button>
                         </article>
                     </section>
