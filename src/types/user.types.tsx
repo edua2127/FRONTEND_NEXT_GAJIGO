@@ -5,6 +5,9 @@ import { AbstractEntity } from '@/types/abstract-entity.types'
 
 export class User implements AbstractEntity {
     id!: number;
+    created!: Date;
+    updated!: Date;
+    removed!: Date;
     name: string;
     email: string;
     username: string;
@@ -20,7 +23,11 @@ export class User implements AbstractEntity {
     participatesIn!: [];
     speaksIn!: [];
     authorities!: autorities[];
+    location!: string;
     constructor() {
+        this.created = new Date();
+        this.updated = new Date();
+        this.removed = new Date();
         this.name = '';
         this.email = '';
         this.username = '';
@@ -34,6 +41,7 @@ export class User implements AbstractEntity {
         this.participatesIn = [];
         this.speaksIn = [];
         this.authorities = [];
+        this.location = '';
     }
 
     get passwords() {

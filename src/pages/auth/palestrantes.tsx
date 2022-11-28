@@ -77,7 +77,7 @@ const Palestrantes: NextPage = () => {
                                 {palestrantes.length > 0 && palestrantes.map((palestrante) => {
                                     // eslint-disable-next-line @typescript-eslint/ban-ts-comment
                                     // @ts-ignore
-                                    const idLocal:string = palestrante._links.self.href.split('/').pop()
+                                    const idLocal: string = palestrante._links.self.href.split('/').pop()
 
                                     return (
                                         <tr key={idLocal} className={style.room_table_tr}>
@@ -86,8 +86,12 @@ const Palestrantes: NextPage = () => {
                                             <td className={style.room_table_td}>{palestrante.email}</td>
                                             <td className={style.room_table_td}>{palestrante.telephone}</td>
                                             <td className={style.room_table_td_actions}>
-                                                <button className={style.room_button_editar}>Editar</button>
-                                                <button className={style.room_button_excluir} onClick={()=> excluirPalestrante(idLocal)}>Excluir</button>
+                                                <button className={style.room_button_editar}
+                                                        onClick={() => Router.push(`/editarPalestrantes/${idLocal}`)}>Editar
+                                                </button>
+                                                <button className={style.room_button_excluir}
+                                                        onClick={() => excluirPalestrante(idLocal)}>Excluir
+                                                </button>
                                             </td>
                                         </tr>
                                     )
