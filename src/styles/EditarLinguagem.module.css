@@ -7,6 +7,10 @@
     height: 100%;
 }
 
+.linguagem_page_header {
+    margin-left: 3%;
+}
+
 .cadastro_palestra_article {
     display: flex;
     flex-direction: row;

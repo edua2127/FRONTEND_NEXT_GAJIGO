@@ -19,9 +19,8 @@ const EditarLinguagem: NextPage = () => {
         url.href = `${process.env.NEXT_PUBLIC_API_URL}/languages/${idLinguagem}`
         console.log(url.href)
         LanguageService.get(url)
-            .then(() => {
-                setLanguage(language)
-                console.log(language)
+            .then((response) => {
+                setLanguage(response)
             }).catch((error) => {
             console.log(error)
         })

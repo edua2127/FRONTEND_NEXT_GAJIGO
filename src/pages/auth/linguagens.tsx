@@ -41,7 +41,7 @@ const Linguagens: NextPage = () => {
     return (
         <NavBar>
             <>
-                <header>
+                <header className={style.user_page_header}>
                     <h1>Linguagens</h1>
                 </header>
                 <main>
