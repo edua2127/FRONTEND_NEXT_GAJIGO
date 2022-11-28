@@ -2,8 +2,8 @@
 import {Grid} from "@mui/material";
 import Box from '@mui/material/Box';
 import IconEvent from '../assets/IconEvent.png'
-import IconPalestra from "../assets/IconPalestra.png"
 import IconUser from "../assets/IconUsers.png"
+import IconLanguage from '../assets/IconLanguage.png'
 import Router from 'next/router'
 type Props = {
     children: JSX.Element,
@@ -33,6 +33,10 @@ const NavBar = ({children}: Props) => {
                 <Grid item>
                     <img src={IconUser.src} alt="icone de evento" className={"icon_page_home"}
                          onClick={()=> Router.push("/auth/palestrantes")}/>
+                </Grid>
+                <Grid item>
+                    <img src={IconLanguage.src} alt="icone das linguagens" className={"icon_page_home"}
+                         onClick={()=> Router.push("/auth/linguagens")}/>
                 </Grid>
             </Box>
             <Box mx={9}
