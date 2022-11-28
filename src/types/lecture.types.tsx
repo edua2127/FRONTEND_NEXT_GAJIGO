@@ -13,22 +13,26 @@ export class Lecture implements AbstractEntity {
     active!: boolean;
     _links!: LectureLinks;
     event!: string;
-    language!:string;
+    language!:string[];
     tags!: string[];
     interval!: interval;
     attendanceMode!: string;
+    speakers!: string[];
+    participants!: string[];
     constructor() {
         this.name = '';
         this.description = '';
         this.room = '';
         this.event = '';
-        this.language = '';
+        this.language = [];
         this.tags = [];
         this.interval = {
             startDate: '',
             endDate: '',
         };
         this.attendanceMode = '';
+        this.speakers = [];
+        this.participants = [];
     }
 }
 
