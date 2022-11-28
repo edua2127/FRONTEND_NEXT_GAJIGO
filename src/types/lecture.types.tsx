@@ -21,6 +21,7 @@ export class Lecture implements AbstractEntity {
     language!:string;
     tags!: string[];
     interval!: interval;
+    attendanceMode!: string;
     constructor() {
         this.name = '';
         this.description = '';
@@ -31,7 +32,8 @@ export class Lecture implements AbstractEntity {
         this.interval = {
             startDate: '',
             endDate: '',
-        }
+        };
+        this.attendanceMode = '';
     }
 }
 

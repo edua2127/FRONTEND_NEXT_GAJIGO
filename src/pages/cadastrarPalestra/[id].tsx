@@ -3,11 +3,12 @@ import type {NextPage} from 'next'
 import Router, {useRouter} from "next/router";
 import {Lecture} from "@/types/lecture.types";
 import LectureService from "@/services/lecture.service";
-import {useEffect, useState} from "react";
+import React, {useEffect, useState} from "react";
 import style from '@/styles/CadastroPalestra.module.css'
 import {ApiLink, ApiLinkClass} from '@/types/api-link.types';
 import RoomService from "@/services/room.service";
 import {Room} from '@/types/room.types';
+
 const CadastroPalestra: NextPage = () => {
 
     const router = useRouter();
@@ -26,7 +27,7 @@ const CadastroPalestra: NextPage = () => {
 
     function cadastrar() {
 
-        const data:Lecture = {
+        const data: Lecture = {
             name: lecture.name,
             description: lecture.description,
             room: `${process.env.NEXT_PUBLIC_API_URL}/rooms/${idRoom}`,
@@ -37,6 +38,8 @@ const CadastroPalestra: NextPage = () => {
             active: true,
             tags: lecture.tags,
             language: '',
+            attendanceMode: lecture.attendanceMode,
+
         }
 
         LectureService.create(data).then((response) => {
@@ -73,13 +76,29 @@ const CadastroPalestra: NextPage = () => {
                                     Nome da Palestra
                                 </span>
                                 <input className={style.cadastro_palestra_input}
-                                    type="text" value={lecture.name} onChange={(e) => setLecture({...lecture, name: e.target.value})}/>
+                                       type="text" value={lecture.name}
+                                       onChange={(e) => setLecture({...lecture, name: e.target.value})}/>
                             </label>
                             <label className={style.cadastro_palestra_label}>
                                 <span>
                                     Descrição da Palestra
                                 </span>
-                                <input className={style.cadastro_palestra_input} type="text" value={lecture.description} onChange={(e) => setLecture({...lecture, description: e.target.value})}/>
+                                <input className={style.cadastro_palestra_input} type="text" value={lecture.description}
+                                       onChange={(e) => setLecture({...lecture, description: e.target.value})}/>
+                            </label>
+                        </article>
+                        <article className={style.cadastro_palestra_article}>
+                            <label className={style.cadastro_palestra_label}>
+                                <span>
+                                    Modo de Atendimento
+                                </span>
+                                <select className={style.cadastro_palestra_input_grande} value={lecture.attendanceMode}
+                                        onChange={(e) => setLecture({...lecture, attendanceMode: e.target.value})}>
+                                    <option value="">Selecione</option>
+                                    <option value="Offline">Presencial</option>
+                                    <option value="Online">Remoto</option>
+                                    <option value={"Mixed"}>Remoto e Presencial</option>
+                                </select>
                             </label>
                         </article>
                         <article className={style.cadastro_palestra_article}>
@@ -99,11 +118,13 @@ const CadastroPalestra: NextPage = () => {
                                 <input className={style.cadastro_palestra_input}
                                        type="datetime-local"
                                        value={lecture.interval.endDate}
-                                       onChange={(e)=> handleChangeDatadeFim(e) }/>
+                                       onChange={(e) => handleChangeDatadeFim(e)}/>
                             </label>
                         </article>
                         <article className={style.cadastro_palestra_article_button}>
-                            <button onClick={()=> Router.back()} className={style.cadastro_palestra_button_cancelar}>Cancelar</button>
+                            <button onClick={() => Router.back()}
+                                    className={style.cadastro_palestra_button_cancelar}>Cancelar
+                            </button>
                             <button onClick={cadastrar} className={style.cadastro_palestra_button}>Cadastrar</button>
                         </article>
                     </section>
