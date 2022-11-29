@@ -30,7 +30,7 @@ export class Lecture implements AbstractEntity {
         this.description = '';
         this.room = '';
         this.event = '';
-        this.language = [];
+        this.language = '';
         this.tags = [];
         this.interval = {
             startDate: '',
