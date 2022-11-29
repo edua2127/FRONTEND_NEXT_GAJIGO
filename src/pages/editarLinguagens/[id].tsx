@@ -63,14 +63,23 @@ const EditarLinguagem: NextPage = () => {
                 </header>
                 <main>
                     <section className={style.cadastro_palestra_section}>
+                        <article className={style.editar_events_article_checkbox}>
+                            <label className={style.editar_events_label_checkbox}>
+                                <span>Ativar Linguagem</span>
+                                <input className={style.cadastro_palestra_input} type="checkbox"
+                                       checked={language.active}
+                                       onChange={(e) => setLanguage({...language, active: e.target.checked})}/>
+                            </label>
+                        </article>
                         <article className={style.cadastro_palestra_label}>
                             <label className={style.cadastro_palestra_label}>
                                 <span>Nome da Linguagem</span>
-                                <input type="text" value={language.name} className={style.cadastro_palestra_input_grande}
+                                <input type="text" value={language.name}
+                                       className={style.cadastro_palestra_input_grande}
                                        onChange={(e) => setLanguage({...language, name: e.target.value})}/>
                             </label>
                         </article>
-                        <article  className={style.cadastro_palestra_article_button}>
+                        <article className={style.cadastro_palestra_article_button}>
                             <button className={style.cadastro_palestra_button_cancelar}
                                     onClick={() => Router.back()}>Voltar
                             </button>

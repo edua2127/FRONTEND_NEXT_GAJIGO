@@ -30,7 +30,7 @@ const EditarPalestrantes: NextPage = () => {
         const url: ApiLink = new ApiLinkClass()
         url.href = `${process.env.NEXT_PUBLIC_API_URL}/users/${idPalestrante}`
 
-        const id:number = parseInt(idPalestrante as string)
+        const id: number = parseInt(idPalestrante as string)
 
         const data = {
             id: id,
@@ -75,6 +75,13 @@ const EditarPalestrantes: NextPage = () => {
                 </header>
                 <main>
                     <section className={style.cadastro_palestra_section}>
+                        <article className={style.editar_events_article_checkbox}>
+                            <label className={style.editar_events_label_checkbox}>
+                                <span>Ativar Palestrante</span>
+                                <input type="checkbox" checked={user.active} className={style.editar_events_checkbox_input}
+                                       onChange={(e) => setUser({...user, active: e.target.checked})}/>
+                            </label>
+                        </article>
                         <article className={style.cadastro_palestra_article}>
                             <label className={style.cadastro_palestra_label}>
                                 <span>Nome do Palestrante</span>
