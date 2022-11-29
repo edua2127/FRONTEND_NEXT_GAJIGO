@@ -1,5 +1,6 @@
 
 import {Grid} from "@mui/material";
+import Box from '@mui/material/Box';
 import IconEvent from '../assets/IconEvent.png'
 import IconUser from "../assets/IconUsers.png"
 import IconLanguage from '../assets/IconLanguage.png'
@@ -12,9 +13,9 @@ type Props = {
 
 const NavBar = ({children}: Props) => {
     return (
-        <div className={style.nav_page_body}>
+        <Grid xs={12} height={'100vh'} container sx={{margin: 0}}>
             <nav className={style.navbar}>
-                <Grid item>
+            <Grid item>
                     <img src={IconEvent.src} alt="icone de evento" className={"icon_page_home"}
                          onClick={()=> Router.push("/auth/events")}/>
                 </Grid>
@@ -30,12 +31,11 @@ const NavBar = ({children}: Props) => {
                     <img src={IconTag.src} alt="icone das tags" className={"icon_page_home"}
                          onClick={()=> Router.push("/auth/tags")}/>
                 </Grid>
-            </nav> 
+            </nav>
             <main className={style.nav_page_main}>
                 {children}
             </main>
-        </div>
-        )
+        </Grid>)
 }
 
 export default NavBar
