@@ -44,6 +44,14 @@ const editarSala: NextPage = () => {
                 </header>
                 <main>
                     <section className={style.editar_sala_section}>
+                        <article className={style.editar_events_article_checkbox}>
+                            <label className={style.editar_events_label_checkbox}>
+                                <span>Ativar Sala</span>
+                                <input type="checkbox" checked={sala.active} className={style.editar_events_article_checkbox} onChange={(e) => {
+                                    setSala({...sala, active: e.target.checked}) 
+                                }}/>
+                            </label>
+                        </article>
                         <article className={style.editar_sala_article}>
                             <label className={style.editar_sala_label}>
                                 <span>Nome da Sala</span>

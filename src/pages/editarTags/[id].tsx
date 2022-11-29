@@ -62,6 +62,14 @@ const EditarTag: NextPage = () => {
                     <h1>Editar Tag</h1>
                 </header>
                 <section className={style.cadastro_palestra_section}>
+                    <article className={style.editar_events_article_checkbox}>
+                        <label className={style.editar_events_label_checkbox}>
+                            <span>Ativar Tag:</span>
+                            <input type="checkbox" checked={tag.active} className={style.editar_events_checkbox_input} onChange={(e) => {
+                                setTag({...tag, active: e.target.checked})
+                            }}/>
+                        </label>
+                    </article>
                     <article className={style.cadastro_palestra_label}>
                         <label className={style.cadastro_palestra_label}>
                             <span>Nome da Tag</span>
