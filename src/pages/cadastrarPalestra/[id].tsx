@@ -39,6 +39,7 @@ const CadastroPalestra: NextPage = () => {
         const url: ApiLink = new ApiLinkClass()
         url.href = `${process.env.NEXT_PUBLIC_API_URL}/tags`
         TagService.get(url).then((response) => {
+            // @ts-ignore
             setTag(response._embedded.tags)
         }).catch((error) => {
             console.log(error)
@@ -49,6 +50,7 @@ const CadastroPalestra: NextPage = () => {
         const url: ApiLink = new ApiLinkClass()
         url.href = `${process.env.NEXT_PUBLIC_API_URL}/languages`
         LanguageService.get(url).then((response) => {
+            // @ts-ignore
             setLanguages(response._embedded.languages)
         }).catch((error) => {
             console.log(error)
@@ -59,7 +61,9 @@ const CadastroPalestra: NextPage = () => {
         const url: ApiLink = new ApiLinkClass()
         url.href = `${process.env.NEXT_PUBLIC_API_URL}/users`
         UserService.get(url).then((response) => {
+            // @ts-ignore
             setPalestrantes(response._embedded.users.filter(user => !user.admin))
+            // @ts-ignore
             setParticipantes(response._embedded.users.filter(user => !user.admin))
         }).catch((error) => {
             console.log(error)
@@ -86,6 +90,7 @@ const CadastroPalestra: NextPage = () => {
             created: lecture.created,
             updated: lecture.updated,
             removed: lecture.removed,
+            _links: lecture._links
         }
         console.log(data)
         LectureService.create(data).then(() => {

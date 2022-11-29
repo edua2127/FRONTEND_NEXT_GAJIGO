@@ -15,7 +15,7 @@ const CadastroEvents: NextPage = () => {
     const [modoDeAtendimento, setModoDeAtendimento] = React.useState('')
     const [statusDoEvento, setStatusDoEvento] = React.useState('')
     const [owner, setOwner] = React.useState('')
-
+    const [location, setLocation] = React.useState('')
     function cadastroEvento() {
         const evento = criaEvento()
         console.log(evento)
@@ -40,6 +40,7 @@ const CadastroEvents: NextPage = () => {
         evento.owner = owner
         evento.attendanceMode = modoDeAtendimento
         evento.status = statusDoEvento
+        evento.location = location
         return evento
     }
 
@@ -106,6 +107,17 @@ const CadastroEvents: NextPage = () => {
                                     <option value={"EventRescheduled"}>Reagendado</option>
                                 </select>
                             </label>
+                        </article>
+                        <article className={style.cadastro_events_article}>
+                            {modoDeAtendimento === 'Offline' || modoDeAtendimento === 'Mixed'  ? 
+                            (<label className={style.cadastro_events_label}>
+                                <span>Localização</span>
+                                <input value={location} className={style.cadastro_palestra_input_grande} onChange={(e) => setLocation(e.target.value)} type="text" />
+                            </label>) : 
+                            (<label className={style.cadastro_events_label}>
+                                <span>Localização</span>
+                                <input value={location} className={style.cadastro_palestra_input_grande} onChange={(e) => setLocation(e.target.value)} type="text" disabled/>
+                            </label>)}
                         </article>
                         <article className={style.cadastro_events_article_button}>
                             <button onClick={cadastroEvento} className={style.btn_grad}>Cadastrar</button>

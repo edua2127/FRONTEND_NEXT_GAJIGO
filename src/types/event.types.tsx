@@ -27,6 +27,7 @@ export class Event implements AbstractEntity {
     active!: boolean;
     description!: string;
     status: string;
+    location!: string;
     constructor() {
         this.name = '';
         this.attendanceMode = '';
@@ -38,6 +39,7 @@ export class Event implements AbstractEntity {
         this.active = true;
         this.description = '';
         this.status = '';
+        this.location = '';
     }
 }
 
