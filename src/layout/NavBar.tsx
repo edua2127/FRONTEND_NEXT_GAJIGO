@@ -1,32 +1,19 @@
 
 import {Grid} from "@mui/material";
-import Box from '@mui/material/Box';
 import IconEvent from '../assets/IconEvent.png'
 import IconUser from "../assets/IconUsers.png"
 import IconLanguage from '../assets/IconLanguage.png'
 import IconTag from '../assets/IconTag.png'
 import Router from 'next/router'
+import style from '@/styles/NavBar.module.css'
 type Props = {
     children: JSX.Element,
 };
 
 const NavBar = ({children}: Props) => {
     return (
-        <Grid xs={12} height={'100vh'} container sx={{margin: 0}}>
-            <Box mx={3}
-                 sx={
-                     {
-                         display: "flex",
-                         alignSelf: "flex-start",
-                         backgroundColor: "#bebebe",
-                         height: "100%",
-                         width: "4%",
-                         margin: 0,
-                         flexDirection: 'column',
-                         boxShadow: 10,
-                         boxShadowColor: 'black',
-
-                     }}>
+        <div className={style.nav_page_body}>
+            <nav className={style.navbar}>
                 <Grid item>
                     <img src={IconEvent.src} alt="icone de evento" className={"icon_page_home"}
                          onClick={()=> Router.push("/auth/events")}/>
@@ -43,23 +30,12 @@ const NavBar = ({children}: Props) => {
                     <img src={IconTag.src} alt="icone das tags" className={"icon_page_home"}
                          onClick={()=> Router.push("/auth/tags")}/>
                 </Grid>
-            </Box>
-            <Box mx={9}
-                 sx={
-                     {
-                         display: "flex",
-                         alignSelf: "flex-start",
-                         margin: "0px",
-                         padding: "1.0319917440660475vh",
-                         flexDirection: 'column',
-                         width: "96%",
-                         height: "100%",
-                         backgroundColor: "#F8F8FF",
-                     }}
-            >
+            </nav> 
+            <main className={style.nav_page_main}>
                 {children}
-            </Box>
-        </Grid>)
+            </main>
+        </div>
+        )
 }
 
 export default NavBar
