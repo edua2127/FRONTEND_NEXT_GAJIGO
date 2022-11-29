@@ -6,7 +6,7 @@ import {useEffect, useState} from "react";
 import RoomService from "@/services/room.service";
 import {Lecture} from "@/types/lecture.types";
 import style from '@/styles/Lecture.module.css'
-
+import LectureService from "@/services/lecture.service";
 const Palestra: NextPage = () => {
 
     const router = useRouter();
@@ -25,6 +25,16 @@ const Palestra: NextPage = () => {
         })
     }
 
+    function excluirPalestra(id: string) {
+        const url: ApiLink = new ApiLinkClass()
+        url.href = `${process.env.NEXT_PUBLIC_API_URL}/lectures/${id}`
+        LectureService.delete(url).then(() => {
+            getPalestrasDaSala()
+        }).catch((error) => {
+            console.log(error)
+            alert('Erro ao excluir palestra, existe alguma dependência com essa palestra')
+        })
+    }
     useEffect(() => {
         getPalestrasDaSala()
     }, [idSala])
@@ -58,17 +68,19 @@ const Palestra: NextPage = () => {
                                 </thead>
                                 <tbody>
                                     {lectures.length > 0 && lectures.map((lecture) => {
-                                        const id = lecture._links.self.href.split('/').pop()
+                                        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+                                        // @ts-ignore
+                                        const idLocal:string = lecture._links.self.href.split('/').pop()
                                         return (
-                                            <tr key={id} className={style.lecture_table_tr}>
+                                            <tr key={idLocal} className={style.lecture_table_tr}>
                                                 <td  className={style.lecture_table_td}>{lecture.name}</td>
                                                 <td className={style.lecture_table_td}>{lecture.description}</td>
                                                 <td className={style.lecture_table_td_actions}>
                                                     <button  className={style.lecture_button_editar}
-                                                        onClick={() => Router.push(`/editarPalestra/${id}`)}>Editar
+                                                        onClick={() => Router.push(`/editarPalestra/${idLocal}`)}>Editar
                                                     </button>
                                                     <button className={style.lecture_button_excluir}
-                                                        onClick={() => Router.push(`/excluirPalestra/${id}`)}>Excluir
+                                                        onClick={() => excluirPalestra(idLocal)}>Excluir
                                                     </button>
                                                 </td>
                                             </tr>
