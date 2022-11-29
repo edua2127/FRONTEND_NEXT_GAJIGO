@@ -9,7 +9,7 @@ import LectureService from "@/services/lecture.service";
 import {Language} from "@/types/language.types";
 import {Tag} from "@/types/tag.types";
 import {User} from "@/types/user.types";
-
+import { interval } from '@/types/event.types';
 import TagService from "@/services/tag.service";
 import UserService from "@/services/user.service";
 import LanguageService from "@/services/languages.service";
@@ -20,12 +20,13 @@ const EditarPalestra: NextPage = () => {
     const idLecture = router.query.id
 
     const [lecture, setLecture] = useState<Lecture>(new Lecture())
+
     const [languages, setLanguages] = useState<Language[]>([])
     const [palestrantes, setPalestrantes] = useState<User[]>([])
     const [participantes, setParticipantes] = useState<User[]>([])
     const [tag, setTag] = useState<Tag[]>([])
-    
     const [loading, setLoading] = useState<boolean>(false)
+
 
     function getLecture() {
         const url: ApiLink = new ApiLinkClass()
@@ -33,18 +34,13 @@ const EditarPalestra: NextPage = () => {
         console.log(url.href)
         LectureService.get(url)
             .then((response) => {
-                setLecture({...lecture, active: response.active})
-                setLecture({...lecture, description: response.description})
-                setLecture({...lecture, name: response.name})
-                setLecture({...lecture, attendanceMode: response.attendanceMode})
-                setLecture({...lecture, created: response.created})
-                setLecture({...lecture, interval: response.interval})
+                setLecture({...lecture, ...response})
             }).catch((error) => {
             console.log(error)
         })
     }
 
- 
+
     function getLanguages() {
         const url: ApiLink = new ApiLinkClass()
         url.href = `${process.env.NEXT_PUBLIC_API_URL}/languages`
@@ -81,69 +77,10 @@ const EditarPalestra: NextPage = () => {
         })
     }
 
-    function getPalestranteDaPalestra() {
-        const url: ApiLink = new ApiLinkClass()
-        url.href = `${process.env.NEXT_PUBLIC_API_URL}/lectures/${idLecture}/speakers`
-        LectureService.get(url).then((response) => {
-            // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-            // @ts-ignore
-            setLecture({...lecture, speakers: response._embedded.users})
-        }).catch((error) => {
-            console.log(error)
-        })
-    }
-
-    function getParticipantesDaPalestra() {
-        const url: ApiLink = new ApiLinkClass()
-        url.href = `${process.env.NEXT_PUBLIC_API_URL}/lectures/${idLecture}/participants`
-        LectureService.get(url).then((response) => {
-            // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-            // @ts-ignore
-            setLecture({...lecture, participants: response._embedded.users})
-        }).catch((error) => {
-            console.log(error)
-        })
-    }
-
-    function getSalaDaPalestra() {
-        const url: ApiLink = new ApiLinkClass()
-        url.href = `${process.env.NEXT_PUBLIC_API_URL}/lectures/${idLecture}/room`
-        LectureService.get(url).then((response) => {
-            // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-            // @ts-ignore
-            setLecture({...lecture, room: response._links.self.href})
-        }).catch((error) => {
-            console.log(error)
-        })
-    }
-
-    function getEventoDaPalestra() {
-        const url: ApiLink = new ApiLinkClass()
-        url.href = `${process.env.NEXT_PUBLIC_API_URL}/lectures/${idLecture}/event`
-        LectureService.get(url).then((response) => {
-            // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-            // @ts-ignore
-            setLecture({...lecture, event: response._links.self.href})
-        }).catch((error) => {
-            console.log(error)
-        })
-    }
-
-    function getTagsDaPalestra() {
-        const url: ApiLink = new ApiLinkClass()
-        url.href = `${process.env.NEXT_PUBLIC_API_URL}/lectures/${idLecture}/tags`
-        LectureService.get(url).then((response) => {
-            // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-            // @ts-ignore
-            setLecture({...lecture, tags: response._embedded.tags})
-        }).catch((error) => {
-            console.log(error)
-        })
-    }
-
     function editar() {
         const url: ApiLink = new ApiLinkClass()
         url.href = `${process.env.NEXT_PUBLIC_API_URL}/lectures/${idLecture}`
+       
         LectureService.update(url, lecture).then((response) => {
             console.log(response)
             Router.back()
@@ -155,11 +92,6 @@ const EditarPalestra: NextPage = () => {
 
     useEffect(() => {
         setLoading(true)
-        getPalestranteDaPalestra()
-        getParticipantesDaPalestra()
-        getSalaDaPalestra()
-        getEventoDaPalestra()
-        getTagsDaPalestra()
         getLecture()
         getLanguages()
         getPalestrantesAndParticipantes()
