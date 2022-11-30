@@ -19,7 +19,7 @@ const Palestrantes: NextPage = () => {
   function getUsers() {
     const url: ApiLink = new ApiLinkClass()
     url.href = `${process.env.NEXT_PUBLIC_API_URL}/users`
-    UserService.get(url)
+    UserService.getAll(url)
       .then((response) => {
         setUsers(response._embedded.users)
       })
@@ -38,7 +38,7 @@ const Palestrantes: NextPage = () => {
     }
   }, [users])
 
-  function excluirPalestrante(id: string) {
+  function excluirPalestrante(id: number) {
     const url: ApiLink = new ApiLinkClass()
     url.href = `${process.env.NEXT_PUBLIC_API_URL}/users/${id}`
     UserService.delete(url)
@@ -77,12 +77,8 @@ const Palestrantes: NextPage = () => {
               <tbody>
                 {palestrantes.length > 0 &&
                   palestrantes.map((palestrante) => {
-                    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-                    // @ts-ignore
-                    const idLocal: string = palestrante._links.self.href.split('/').pop()
-
                     return (
-                      <tr key={idLocal} className={style.room_table_tr}>
+                      <tr key={palestrante.id} className={style.room_table_tr}>
                         <td className={style.room_table_td}>{palestrante.name}</td>
                         <td className={style.room_table_td}>{palestrante.description}</td>
                         <td className={style.room_table_td}>{palestrante.email}</td>
@@ -90,13 +86,13 @@ const Palestrantes: NextPage = () => {
                         <td className={style.room_table_td_actions}>
                           <button
                             className={style.room_button_editar}
-                            onClick={() => Router.push(`/editarPalestrantes/${idLocal}`)}
+                            onClick={() => Router.push(`/editarPalestrantes/${palestrante.id}`)}
                           >
                             Editar
                           </button>
                           <button
                             className={style.room_button_excluir}
-                            onClick={() => excluirPalestrante(idLocal)}
+                            onClick={() => excluirPalestrante(palestrante.id)}
                           >
                             Excluir
                           </button>

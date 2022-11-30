@@ -56,11 +56,9 @@ const EditarPalestra: NextPage = () => {
   function getPalestrantesAndParticipantes() {
     const url: ApiLink = new ApiLinkClass()
     url.href = `${process.env.NEXT_PUBLIC_API_URL}/users`
-    UserService.get(url)
+    UserService.getAll(url)
       .then((response) => {
-        // @ts-ignore
         setPalestrantes(response._embedded.users.filter((user) => !user.admin))
-        // @ts-ignore
         setParticipantes(response._embedded.users.filter((user) => !user.admin))
       })
       .catch((error) => {
@@ -71,9 +69,8 @@ const EditarPalestra: NextPage = () => {
   function getTags() {
     const url: ApiLink = new ApiLinkClass()
     url.href = `${process.env.NEXT_PUBLIC_API_URL}/tags`
-    TagService.get(url)
+    TagService.getAll(url)
       .then((response) => {
-        // @ts-ignore
         setTag(response._embedded.tags)
       })
       .catch((error) => {
