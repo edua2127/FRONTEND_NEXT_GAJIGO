@@ -125,7 +125,7 @@ const CadastroPalestra: NextPage = () => {
     }
 
     return (
-        <AppLayout text='Cadastrar Palestra'>
+        <AppLayout text='Cadastro da Palestra'>
             <>
                 <main>
                     <section className={style.cadastro_palestra_section}>

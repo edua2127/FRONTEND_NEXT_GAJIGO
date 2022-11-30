@@ -6,7 +6,7 @@ import NavBar from '@/layout/NavBar'
 import { Room } from '@/types/room.types'
 import RoomService from '@/services/room.service'
 import style from '@/styles/EditarSala.module.css'
-
+import AppLayout from '@/layout/AppLayout'
 const editarSala: NextPage = () => {
     const router = useRouter()
     const idSala = router.query.id
@@ -41,11 +41,8 @@ const editarSala: NextPage = () => {
     }, [idSala])
 
     return (
-        <NavBar>
+        <AppLayout  text="Editação da Sala">
             <>
-                <header className={style.editar_sala_header}>
-                    <h1>Editar Sala</h1>
-                </header>
                 <main>
                     <section className={style.editar_sala_section}>
                         <article className={style.editar_events_article_checkbox}>
@@ -94,7 +91,7 @@ const editarSala: NextPage = () => {
                     </section>
                 </main>
             </>
-        </NavBar>
+        </AppLayout>
     )
 }
 

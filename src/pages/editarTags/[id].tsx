@@ -6,7 +6,7 @@ import React, { useEffect, useState } from 'react'
 import style from '@/styles/EditarLinguagem.module.css'
 import { Tag } from '@/types/tag.types'
 import TagService from '@/services/tag.service'
-
+import AppLayout from '@/layout/AppLayout'
 const EditarTag: NextPage = () => {
     const router = useRouter()
     const idTag = router.query.id
@@ -56,11 +56,8 @@ const EditarTag: NextPage = () => {
     }, [])
 
     return (
-        <NavBar>
+        <AppLayout text="Editação da Tag">
             <>
-                <header className={style.user_page_header}>
-                    <h1>Editar Tag</h1>
-                </header>
                 <section className={style.cadastro_palestra_section}>
                     <article className={style.editar_events_article_checkbox}>
                         <label className={style.editar_events_label_checkbox}>
@@ -108,7 +105,7 @@ const EditarTag: NextPage = () => {
                     </article>
                 </section>
             </>
-        </NavBar>
+        </AppLayout>
     )
 }
 

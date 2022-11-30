@@ -7,7 +7,7 @@ import style from '@/styles/Room.module.css'
 import EventService from '@/services/event.service'
 import RoomService from '@/services/room.service'
 import { ApiLink, ApiLinkClass } from '@/types/api-link.types'
-
+import AppLayout from '@/layout/AppLayout'
 const Salas: NextPage = () => {
     const router = useRouter()
     const idEvento = router.query.id
@@ -46,11 +46,8 @@ const Salas: NextPage = () => {
     }
 
     return (
-        <NavBar>
+        <AppLayout text="Salas do Evento">
             <>
-                <header>
-                    <h1>Salas do Evento</h1>
-                </header>
                 <main>
                     <section className={style.room_section}>
                         <article className={style.room_article_cadastro_and_listar}>
@@ -123,7 +120,7 @@ const Salas: NextPage = () => {
                     </section>
                 </main>
             </>
-        </NavBar>
+        </AppLayout>
     )
 }
 

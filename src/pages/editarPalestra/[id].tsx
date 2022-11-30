@@ -114,7 +114,7 @@ const EditarPalestra: NextPage = () => {
     }
 
     return (
-        <AppLayout text="Ediçào da Palestra">
+        <AppLayout text="Edição da Palestra">
             <>
            
                 {loading ||

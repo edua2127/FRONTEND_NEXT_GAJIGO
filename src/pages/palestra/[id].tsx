@@ -7,6 +7,8 @@ import RoomService from '@/services/room.service'
 import { Lecture } from '@/types/lecture.types'
 import style from '@/styles/Lecture.module.css'
 import LectureService from '@/services/lecture.service'
+
+import AppLayout from '@/layout/AppLayout'
 const Palestra: NextPage = () => {
     const router = useRouter()
     const idSala = router.query.id
@@ -43,11 +45,8 @@ const Palestra: NextPage = () => {
     }, [idSala])
 
     return (
-        <NavBar>
+        <AppLayout text="Palestras da Sala">
             <>
-                <header>
-                    <h1>Palestras da Sala</h1>
-                </header>
                 <main>
                     <section className={style.lecture_section}>
                         <article className={style.lecture_article_cadastro_and_voltar}>
@@ -121,7 +120,7 @@ const Palestra: NextPage = () => {
                     </section>
                 </main>
             </>
-        </NavBar>
+        </AppLayout>
     )
 }
 
