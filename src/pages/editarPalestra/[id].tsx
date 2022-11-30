@@ -110,7 +110,7 @@ const EditarPalestra: NextPage = () => {
   }
 
   return (
-    <AppLayout text='Edição da Palestra'>
+    <AppLayout title='Edição da Palestra'>
       {loading ||
       lecture.speakers === undefined ||
       lecture.participants === undefined ||

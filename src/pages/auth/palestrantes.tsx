@@ -52,7 +52,7 @@ const Palestrantes: NextPage = () => {
   }
 
   return (
-    <AppLayout text='Palestrantes'>
+    <AppLayout title='Palestrantes'>
       <main>
         <section className={style.room_section}>
           <article className={style.room_article_cadastro_and_listar}>

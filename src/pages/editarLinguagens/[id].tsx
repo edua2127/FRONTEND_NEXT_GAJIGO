@@ -57,7 +57,7 @@ const EditarLinguagem: NextPage = () => {
   }, [])
 
   return (
-    <AppLayout text='Editar Linguagem'>
+    <AppLayout title='Editar Linguagem'>
       <>
         <header className={style.user_page_header}>
           <h1>Editar Linguagem</h1>

@@ -32,47 +32,42 @@ const CadastrarSala: NextPage = () => {
   }, [id])
 
   return (
-    <AppLayout text='Cadastrar da Sala'>
-      
-        <header className={style.cadastro_events_header}>
-          <h1>Cadastrar Sala</h1>
-        </header>
-        <main>
-          <section className={style.cadastro_events_section}>
-            <article className={style.cadastro_events_article}>
-              <label className={style.cadastro_events_label}>
-                <span>Nome da Sala</span>
-                <input
-                  type='text'
-                  value={room.name}
-                  className={style.cadastro_events_input}
-                  onChange={(e) => setRoom({ ...room, name: e.target.value })}
-                />
-              </label>
-              <label className={style.cadastro_events_label}>
-                <span>Descrição da Sala</span>
-                <input
-                  type='text'
-                  value={room.description}
-                  className={style.cadastro_events_input}
-                  onChange={(e) => setRoom({ ...room, description: e.target.value })}
-                />
-              </label>
-            </article>
-            <article className={style.cadastro_events_article_button}>
-              <button
-                className={style.cadastrar_sala_button_cancelar}
-                onClick={() => Router.back()}
-              >
-                Cancelar
-              </button>
-              <button className={style.cadastrar_sala_button} onClick={cadastrar}>
-                Cadastrar
-              </button>
-            </article>
-          </section>
-        </main>
-      
+    <AppLayout title='Cadastrar da Sala'>
+      <header className={style.cadastro_events_header}>
+        <h1>Cadastrar Sala</h1>
+      </header>
+      <main>
+        <section className={style.cadastro_events_section}>
+          <article className={style.cadastro_events_article}>
+            <label className={style.cadastro_events_label}>
+              <span>Nome da Sala</span>
+              <input
+                type='text'
+                value={room.name}
+                className={style.cadastro_events_input}
+                onChange={(e) => setRoom({ ...room, name: e.target.value })}
+              />
+            </label>
+            <label className={style.cadastro_events_label}>
+              <span>Descrição da Sala</span>
+              <input
+                type='text'
+                value={room.description}
+                className={style.cadastro_events_input}
+                onChange={(e) => setRoom({ ...room, description: e.target.value })}
+              />
+            </label>
+          </article>
+          <article className={style.cadastro_events_article_button}>
+            <button className={style.cadastrar_sala_button_cancelar} onClick={() => Router.back()}>
+              Cancelar
+            </button>
+            <button className={style.cadastrar_sala_button} onClick={cadastrar}>
+              Cadastrar
+            </button>
+          </article>
+        </section>
+      </main>
     </AppLayout>
   )
 }

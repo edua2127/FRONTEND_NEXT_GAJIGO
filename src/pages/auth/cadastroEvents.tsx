@@ -55,7 +55,7 @@ const CadastroEvents: NextPage = () => {
   }, [])
 
   return (
-    <AppLayout text='Cadastro de Eventos'>
+    <AppLayout title='Cadastro de Eventos'>
       <main>
         <section className={style.cadastro_events_section}>
           <article className={style.cadastro_events_article}>

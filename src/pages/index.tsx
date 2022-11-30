@@ -4,7 +4,7 @@ import NavBar from '../layout/NavBar'
 
 const Home: NextPage = () => {
   return (
-    <AppLayout text='Pagina Home'>
+    <AppLayout title='Pagina Home'>
       <br />
     </AppLayout>
   )

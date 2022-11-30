@@ -41,7 +41,7 @@ const editarSala: NextPage = () => {
   }, [idSala])
 
   return (
-    <AppLayout text='Editação da Sala'>
+    <AppLayout title='Editação da Sala'>
       <>
         <main>
           <section className={style.editar_sala_section}>

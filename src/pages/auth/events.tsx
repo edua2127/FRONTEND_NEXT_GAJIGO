@@ -56,7 +56,7 @@ const EventPage: NextPage = () => {
   }, [idCorrentUser])
 
   return (
-    <AppLayout text='Eventos'>
+    <AppLayout title='Eventos'>
       <main>
         <section className={style.events_section}>
           <article className={style.events_article_cadastro_and_listar}>

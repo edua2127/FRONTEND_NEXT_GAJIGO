@@ -41,7 +41,7 @@ const Palestra: NextPage = () => {
   }, [idSala])
 
   return (
-    <AppLayout text='Palestras da Sala'>
+    <AppLayout title='Palestras da Sala'>
       <main>
         <section className={style.lecture_section}>
           <article className={style.lecture_article_cadastro_and_voltar}>

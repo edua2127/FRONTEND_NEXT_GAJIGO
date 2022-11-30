@@ -40,7 +40,7 @@ const Tags: NextPage = () => {
   }
 
   return (
-    <AppLayout text='Tags'>
+    <AppLayout title='Tags'>
       <header className={style.user_page_header}>
         <h1>Tags</h1>
       </header>

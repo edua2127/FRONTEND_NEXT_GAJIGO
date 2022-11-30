@@ -42,7 +42,7 @@ const Salas: NextPage = () => {
   }
 
   return (
-    <AppLayout text='Salas do Evento'>
+    <AppLayout title='Salas do Evento'>
       <main>
         <section className={style.room_section}>
           <article className={style.room_article_cadastro_and_listar}>

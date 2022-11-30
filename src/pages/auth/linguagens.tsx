@@ -41,7 +41,7 @@ const Linguagens: NextPage = () => {
   }
 
   return (
-    <AppLayout text='Linguagens'>
+    <AppLayout title='Linguagens'>
       <main>
         <section className={style.room_section}>
           <article className={style.room_article_cadastro_and_listar}>

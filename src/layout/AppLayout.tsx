@@ -8,18 +8,23 @@ import Link from 'next/link'
 
 import style from '@/styles/NavBar.module.css'
 import { ReactNode } from 'react'
+import Head from 'next/head'
 
 type Props = {
   children: ReactNode
-  text: string
+  title: string
 }
 
 const drawerWidth = 200
 const appbarHeight = 75
 
-const AppLayout = ({ children, text }: Props) => {
+const AppLayout = ({ children, title }: Props) => {
   return (
     <Box sx={{ display: 'flex' }}>
+      <Head>
+        <title>{title}</title>
+      </Head>
+
       <AppBar
         position='fixed'
         color='secondary'
@@ -30,7 +35,7 @@ const AppLayout = ({ children, text }: Props) => {
         }}
       >
         <Toolbar>
-          <Typography variant='h6'>{text}</Typography>
+          <Typography variant='h6'>{title}</Typography>
         </Toolbar>
       </AppBar>
 
