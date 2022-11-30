@@ -48,10 +48,10 @@ export interface interval {
 
 export interface LectureCollectionResource extends CollectionResource<Lecture> {
   _embedded: {
-    palestras: Lecture[]
+    lectures: Lecture[]
   }
 }
 
 export interface LectureLinks extends AbstractLinks {
-  palestras: ApiLink
+  lectures: ApiLink
 }

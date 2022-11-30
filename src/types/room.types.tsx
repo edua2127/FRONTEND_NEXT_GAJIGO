@@ -28,10 +28,10 @@ export class Room implements AbstractEntity {
 
 export interface RoomCollectionResource extends CollectionResource<Room> {
   _embedded: {
-    salas: Room[]
+    rooms: Room[]
   }
 }
 
 export interface RoomLinks extends AbstractLinks {
-  salas: ApiLink
+  rooms: ApiLink
 }

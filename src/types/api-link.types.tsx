@@ -3,5 +3,5 @@ export interface ApiLink {
 }
 
 export class ApiLinkClass implements ApiLink {
-  href: string = ''
+  href = ''
 }

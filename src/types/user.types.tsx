@@ -24,6 +24,7 @@ export class User implements AbstractEntity {
   speaksIn!: []
   authorities!: autorities[]
   location!: string
+
   constructor() {
     this.created = new Date()
     this.updated = new Date()
