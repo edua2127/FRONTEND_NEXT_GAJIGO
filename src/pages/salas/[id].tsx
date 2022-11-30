@@ -46,7 +46,7 @@ const Salas: NextPage = () => {
     }
 
     return (
-        <AppLayout text="Salas do Evento">
+        <AppLayout text='Salas do Evento'>
             <>
                 <main>
                     <section className={style.room_section}>

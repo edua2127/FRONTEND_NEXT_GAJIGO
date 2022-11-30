@@ -7,7 +7,6 @@ import style from '@/styles/Linguagens.module.css'
 import { Tag } from '@/types/tag.types'
 import TagService from '@/services/tag.service'
 
-
 import AppLayout from '@/layout/AppLayout'
 const Tags: NextPage = () => {
     const [tags, setTags] = useState<Tag[]>([])

@@ -52,7 +52,10 @@ const AppLayout = ({ children, text }: Props) => {
                 <Box sx={{ overflow: 'auto' }}>
                     <List>
                         <ListItemText primary={'EVENTOS'} />
-                        {[{id: 1,  nome: 'cadastrar', url: 'cadastroEvents'}, {id: 1,  nome: 'ver', url: 'events'}].map((pagina) => (
+                        {[
+                            { id: 1, nome: 'cadastrar', url: 'cadastroEvents' },
+                            { id: 1, nome: 'ver', url: 'events' },
+                        ].map((pagina) => (
                             <ListItem key={pagina.id} disablePadding>
                                 <Link href={'/auth/' + pagina.url}>
                                     <ListItemButton>
@@ -65,7 +68,10 @@ const AppLayout = ({ children, text }: Props) => {
                     <Divider />
                     <List>
                         <ListItemText primary={'LINGUAGENS'} />
-                        {[{id: 1,  nome: 'cadastrar', url: 'cadastroLinguagens'}, {id: 1,  nome: 'ver', url: 'linguagens'}].map((pagina) => (
+                        {[
+                            { id: 1, nome: 'cadastrar', url: 'cadastroLinguagens' },
+                            { id: 1, nome: 'ver', url: 'linguagens' },
+                        ].map((pagina) => (
                             <ListItem key={pagina.id} disablePadding>
                                 <Link href={'/auth/' + pagina.url}>
                                     <ListItemButton>
@@ -78,7 +84,10 @@ const AppLayout = ({ children, text }: Props) => {
                     <Divider />
                     <List>
                         <ListItemText primary={'TAGS'} />
-                        {[{id: 1,  nome: 'cadastrar', url: 'cadastrarTags'}, {id: 1,  nome: 'ver', url: 'tags'}].map((pagina) => (
+                        {[
+                            { id: 1, nome: 'cadastrar', url: 'cadastrarTags' },
+                            { id: 1, nome: 'ver', url: 'tags' },
+                        ].map((pagina) => (
                             <ListItem key={pagina.id} disablePadding>
                                 <Link href={'/auth/' + pagina.url}>
                                     <ListItemButton>
@@ -91,7 +100,10 @@ const AppLayout = ({ children, text }: Props) => {
                     <Divider />
                     <List>
                         <ListItemText primary={'PALESTRANTES'} />
-                        {[{id: 1,  nome: 'cadastrar', url: 'cadastroPalestrante'}, {id: 1,  nome: 'ver', url: 'palestrantes'}].map((pagina) => (
+                        {[
+                            { id: 1, nome: 'cadastrar', url: 'cadastroPalestrante' },
+                            { id: 1, nome: 'ver', url: 'palestrantes' },
+                        ].map((pagina) => (
                             <ListItem key={pagina.id} disablePadding>
                                 <Link href={'/auth/' + pagina.url}>
                                     <ListItemButton>

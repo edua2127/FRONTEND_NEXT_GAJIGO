@@ -32,7 +32,7 @@ const CadastrarSala: NextPage = () => {
     }, [id])
 
     return (
-        <AppLayout text="Cadastrar da Sala">
+        <AppLayout text='Cadastrar da Sala'>
             <>
                 <header className={style.cadastro_events_header}>
                     <h1>Cadastrar Sala</h1>

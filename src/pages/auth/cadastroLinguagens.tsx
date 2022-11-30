@@ -21,7 +21,7 @@ const CadastroLinguagens: NextPage = () => {
     }
 
     return (
-        <AppLayout  text='Cadastro de Linguagens'>
+        <AppLayout text='Cadastro de Linguagens'>
             <>
                 <main>
                     <section className={style.cadastro_palestra_section}>

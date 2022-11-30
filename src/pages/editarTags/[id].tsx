@@ -56,7 +56,7 @@ const EditarTag: NextPage = () => {
     }, [])
 
     return (
-        <AppLayout text="Editação da Tag">
+        <AppLayout text='Editação da Tag'>
             <>
                 <section className={style.cadastro_palestra_section}>
                     <article className={style.editar_events_article_checkbox}>

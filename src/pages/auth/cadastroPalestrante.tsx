@@ -6,7 +6,6 @@ import { User } from '@/types/user.types'
 import style from '@/styles/cadastroPalestrante.module.css'
 import UserService from '@/services/user.service'
 
-
 import AppLayout from '@/layout/AppLayout'
 const CadastroPalestrante: NextPage = () => {
     const [user, setUser] = useState<User>(new User())

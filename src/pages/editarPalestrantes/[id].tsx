@@ -69,7 +69,7 @@ const EditarPalestrantes: NextPage = () => {
     }, [idPalestrante])
 
     return (
-        <AppLayout  text="Editação do Palestrante">
+        <AppLayout text='Editação do Palestrante'>
             <>
                 <main>
                     <section className={style.cadastro_palestra_section}>

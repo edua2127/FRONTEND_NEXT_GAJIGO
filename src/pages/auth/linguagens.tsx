@@ -7,7 +7,6 @@ import { Language } from '@/types/language.types'
 import LanguageService from '@/services/languages.service'
 import style from '@/styles/Linguagens.module.css'
 
-
 import AppLayout from '@/layout/AppLayout'
 const Linguagens: NextPage = () => {
     const [linguagens, setLinguagens] = useState<Language[]>([])

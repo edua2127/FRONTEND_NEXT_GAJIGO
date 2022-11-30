@@ -40,7 +40,7 @@ const EditarEvento: NextPage = () => {
     }, [])
 
     return (
-        <AppLayout text="Edição do Evento">
+        <AppLayout text='Edição do Evento'>
             <>
                 <main>
                     <section className={style.editar_events_section}>
