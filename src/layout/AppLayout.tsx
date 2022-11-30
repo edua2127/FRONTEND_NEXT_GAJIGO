@@ -9,6 +9,7 @@ import Link from 'next/link'
 import style from '@/styles/NavBar.module.css'
 import { ReactNode } from 'react'
 import Head from 'next/head'
+import { NavBar } from './NavBar'
 
 type Props = {
   children: ReactNode
@@ -39,89 +40,7 @@ const AppLayout = ({ children, title }: Props) => {
         </Toolbar>
       </AppBar>
 
-      <Drawer
-        sx={{
-          width: drawerWidth,
-          flexShrink: 0,
-          '& .MuiDrawer-paper': {
-            width: drawerWidth,
-            boxSizing: 'border-box',
-          },
-        }}
-        variant='permanent'
-        anchor='left'
-      >
-        <Toolbar>
-          <Typography variant='h6'>GAJIGO</Typography>
-        </Toolbar>
-        <Divider />
-        <Box sx={{ overflow: 'auto' }}>
-          <List>
-            <ListItemText primary={'EVENTOS'} />
-            {[
-              { id: 1, nome: 'cadastrar', url: 'cadastroEvents' },
-              { id: 2, nome: 'ver', url: 'events' },
-            ].map((pagina) => (
-              <ListItem key={pagina.id} disablePadding>
-                <Link href={'/auth/' + pagina.url}>
-                  <ListItemButton>
-                    <ListItemText primary={'• ' + pagina.nome} />
-                  </ListItemButton>
-                </Link>
-              </ListItem>
-            ))}
-          </List>
-          <Divider />
-          <List>
-            <ListItemText primary={'LINGUAGENS'} />
-            {[
-              { id: 1, nome: 'cadastrar', url: 'cadastroLinguagens' },
-              { id: 2, nome: 'ver', url: 'linguagens' },
-            ].map((pagina) => (
-              <ListItem key={pagina.id} disablePadding>
-                <Link href={'/auth/' + pagina.url}>
-                  <ListItemButton>
-                    <ListItemText primary={'• ' + pagina.nome} />
-                  </ListItemButton>
-                </Link>
-              </ListItem>
-            ))}
-          </List>
-          <Divider />
-          <List>
-            <ListItemText primary={'TAGS'} />
-            {[
-              { id: 1, nome: 'cadastrar', url: 'cadastrarTags' },
-              { id: 2, nome: 'ver', url: 'tags' },
-            ].map((pagina) => (
-              <ListItem key={pagina.id} disablePadding>
-                <Link href={'/auth/' + pagina.url}>
-                  <ListItemButton>
-                    <ListItemText primary={'• ' + pagina.nome} />
-                  </ListItemButton>
-                </Link>
-              </ListItem>
-            ))}
-          </List>
-          <Divider />
-          <List>
-            <ListItemText primary={'PALESTRANTES'} />
-            {[
-              { id: 1, nome: 'cadastrar', url: 'cadastroPalestrante' },
-              { id: 2, nome: 'ver', url: 'palestrantes' },
-            ].map((pagina) => (
-              <ListItem key={pagina.id} disablePadding>
-                <Link href={'/auth/' + pagina.url}>
-                  <ListItemButton>
-                    <ListItemText primary={'• ' + pagina.nome} />
-                  </ListItemButton>
-                </Link>
-              </ListItem>
-            ))}
-          </List>
-          <Divider />
-        </Box>
-      </Drawer>
+      <NavBar drawerWidth={drawerWidth} />
       <div className={style.nav_page_main}>{children}</div>
     </Box>
   )

@@ -1,55 +1,96 @@
-import { Grid } from '@mui/material'
-import Box from '@mui/material/Box'
-import IconEvent from '../assets/IconEvent.png'
-import IconUser from '../assets/IconUsers.png'
-import IconLanguage from '../assets/IconLanguage.png'
-import IconTag from '../assets/IconTag.png'
-import Router from 'next/router'
-import style from '@/styles/NavBar.module.css'
+import { Drawer, List, Toolbar, Typography } from '@mui/material'
+import { Box } from '@mui/system'
+import Divider from '@mui/material/Divider'
+import ListItem from '@mui/material/ListItem'
+import ListItemButton from '@mui/material/ListItemButton'
+import ListItemText from '@mui/material/ListItemText'
+import Link from 'next/link'
+
 type Props = {
-  children: JSX.Element
+  drawerWidth: number
 }
 
-const NavBar = ({ children }: Props) => {
+type NavBarLink = {
+  id: number
+  name: string
+  url: string
+}
+
+type NavBarItemProps = {
+  name: string
+  links: NavBarLink[]
+}
+
+const NavBarItem = ({ name, links }: NavBarItemProps) => {
+  // TODO remove /auth/ as it has nothing to do with any of these links
   return (
-    <Grid xs={12} height={'100vh'} container sx={{ margin: 0 }}>
-      <nav className={style.navbar}>
-        <Grid item>
-          <img
-            src={IconEvent.src}
-            alt='icone de evento'
-            className={'icon_page_home'}
-            onClick={() => Router.push('/auth/events')}
-          />
-        </Grid>
-        <Grid item>
-          <img
-            src={IconUser.src}
-            alt='icone de evento'
-            className={'icon_page_home'}
-            onClick={() => Router.push('/auth/palestrantes')}
-          />
-        </Grid>
-        <Grid item>
-          <img
-            src={IconLanguage.src}
-            alt='icone das linguagens'
-            className={'icon_page_home'}
-            onClick={() => Router.push('/auth/linguagens')}
-          />
-        </Grid>
-        <Grid item>
-          <img
-            src={IconTag.src}
-            alt='icone das tags'
-            className={'icon_page_home'}
-            onClick={() => Router.push('/auth/tags')}
-          />
-        </Grid>
-      </nav>
-      <main className={style.nav_page_main}>{children}</main>
-    </Grid>
+    <>
+      <List>
+        <ListItemText primary={name} />
+        {links.map((link) => (
+          <ListItem key={link.id} disablePadding>
+            <Link href={'/auth/' + link.url}>
+              <ListItemButton>
+                <ListItemText primary={`• ${link.name}`} />
+              </ListItemButton>
+            </Link>
+          </ListItem>
+        ))}
+      </List>
+      <Divider />
+    </>
   )
 }
 
-export default NavBar
+export const NavBar = ({ drawerWidth }: Props) => {
+  return (
+    <Drawer
+      sx={{
+        width: drawerWidth,
+        flexShrink: 0,
+        '& .MuiDrawer-paper': {
+          width: drawerWidth,
+          boxSizing: 'border-box',
+        },
+      }}
+      variant='permanent'
+      anchor='left'
+    >
+      <Toolbar>
+        <Typography variant='h6'>GAJIGO</Typography>
+      </Toolbar>
+
+      <Divider />
+      <Box sx={{ overflow: 'auto' }}>
+        <NavBarItem
+          name='EVENTOS'
+          links={[
+            { id: 1, name: 'cadastrar', url: 'cadastroEvents' },
+            { id: 2, name: 'ver', url: 'events' },
+          ]}
+        />
+        <NavBarItem
+          name='LINGUAGENS'
+          links={[
+            { id: 1, name: 'cadastrar', url: 'cadastroLinguagens' },
+            { id: 2, name: 'ver', url: 'linguagens' },
+          ]}
+        />
+        <NavBarItem
+          name='TAGS'
+          links={[
+            { id: 1, name: 'cadastrar', url: 'cadastrarTags' },
+            { id: 2, name: 'ver', url: 'tags' },
+          ]}
+        />
+        <NavBarItem
+          name='PALESTRANTES'
+          links={[
+            { id: 1, name: 'cadastrar', url: 'cadastroPalestrantes' },
+            { id: 2, name: 'ver', url: 'palestrantes' },
+          ]}
+        />
+      </Box>
+    </Drawer>
+  )
+}
