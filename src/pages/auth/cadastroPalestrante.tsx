@@ -1,12 +1,11 @@
-import NavBar from '@/layout/NavBar'
 import type { NextPage } from 'next'
 import Router from 'next/router'
 import React, { useState } from 'react'
 import { User } from '@/types/user.types'
 import style from '@/styles/cadastroPalestrante.module.css'
 import UserService from '@/services/user.service'
-
 import AppLayout from '@/layout/AppLayout'
+
 const CadastroPalestrante: NextPage = () => {
   const [user, setUser] = useState<User>(new User())
 

@@ -1,11 +1,6 @@
-import NavBar from '@/layout/NavBar'
-
 import type { NextPage } from 'next'
-
-import Router, { useRouter } from 'next/router'
-
+import Router from 'next/router'
 import { useEffect, useState } from 'react'
-
 import { ApiLink, ApiLinkClass } from '@/types/api-link.types'
 import { User } from '@/types/user.types'
 import UserService from '@/services/user.service'

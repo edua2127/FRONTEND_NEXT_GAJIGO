@@ -1,6 +1,5 @@
 import type { NextPage } from 'next'
 import Router, { useRouter } from 'next/router'
-import NavBar from '@/layout/NavBar'
 import { ApiLink, ApiLinkClass } from '@/types/api-link.types'
 import React, { useEffect, useState } from 'react'
 import style from '@/styles/EditarLinguagem.module.css'
@@ -58,48 +57,46 @@ const EditarLinguagem: NextPage = () => {
 
   return (
     <AppLayout title='Editar Linguagem'>
-      <>
-        <header className={style.user_page_header}>
-          <h1>Editar Linguagem</h1>
-        </header>
-        <main>
-          <section className={style.cadastro_palestra_section}>
-            <article className={style.editar_events_article_checkbox}>
-              <label className={style.editar_events_label_checkbox}>
-                <span>Ativar Linguagem</span>
-                <input
-                  className={style.cadastro_palestra_input}
-                  type='checkbox'
-                  checked={language.active}
-                  onChange={(e) => setLanguage({ ...language, active: e.target.checked })}
-                />
-              </label>
-            </article>
-            <article className={style.cadastro_palestra_label}>
-              <label className={style.cadastro_palestra_label}>
-                <span>Nome da Linguagem</span>
-                <input
-                  type='text'
-                  value={language.name}
-                  className={style.cadastro_palestra_input_grande}
-                  onChange={(e) => setLanguage({ ...language, name: e.target.value })}
-                />
-              </label>
-            </article>
-            <article className={style.cadastro_palestra_article_button}>
-              <button
-                className={style.cadastro_palestra_button_cancelar}
-                onClick={() => Router.back()}
-              >
-                Voltar
-              </button>
-              <button className={style.cadastro_palestra_button} onClick={editar}>
-                Editar
-              </button>
-            </article>
-          </section>
-        </main>
-      </>
+      <header className={style.user_page_header}>
+        <h1>Editar Linguagem</h1>
+      </header>
+      <main>
+        <section className={style.cadastro_palestra_section}>
+          <article className={style.editar_events_article_checkbox}>
+            <label className={style.editar_events_label_checkbox}>
+              <span>Ativar Linguagem</span>
+              <input
+                className={style.cadastro_palestra_input}
+                type='checkbox'
+                checked={language.active}
+                onChange={(e) => setLanguage({ ...language, active: e.target.checked })}
+              />
+            </label>
+          </article>
+          <article className={style.cadastro_palestra_label}>
+            <label className={style.cadastro_palestra_label}>
+              <span>Nome da Linguagem</span>
+              <input
+                type='text'
+                value={language.name}
+                className={style.cadastro_palestra_input_grande}
+                onChange={(e) => setLanguage({ ...language, name: e.target.value })}
+              />
+            </label>
+          </article>
+          <article className={style.cadastro_palestra_article_button}>
+            <button
+              className={style.cadastro_palestra_button_cancelar}
+              onClick={() => Router.back()}
+            >
+              Voltar
+            </button>
+            <button className={style.cadastro_palestra_button} onClick={editar}>
+              Editar
+            </button>
+          </article>
+        </section>
+      </main>
     </AppLayout>
   )
 }

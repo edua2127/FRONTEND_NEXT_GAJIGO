@@ -1,7 +1,6 @@
 import type { NextPage } from 'next'
-import NavBar from '@/layout/NavBar'
-
 import AppLayout from '@/layout/AppLayout'
+
 const UserPage: NextPage = () => {
   return (
     <AppLayout title='Configurações'>

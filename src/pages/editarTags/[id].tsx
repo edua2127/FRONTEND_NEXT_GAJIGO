@@ -1,6 +1,5 @@
 import type { NextPage } from 'next'
 import Router, { useRouter } from 'next/router'
-import NavBar from '@/layout/NavBar'
 import { ApiLink, ApiLinkClass } from '@/types/api-link.types'
 import React, { useEffect, useState } from 'react'
 import style from '@/styles/EditarLinguagem.module.css'

@@ -1,4 +1,3 @@
-import NavBar from '@/layout/NavBar'
 import type { NextPage } from 'next'
 import Router from 'next/router'
 import React, { useState } from 'react'
@@ -6,6 +5,7 @@ import style from '@/styles/cadastroLinguagens.module.css'
 import { Tag } from '@/types/tag.types'
 import TagService from '@/services/tag.service'
 import AppLayout from '@/layout/AppLayout'
+
 const CadastroTags: NextPage = () => {
   const [tag, setTag] = useState<Tag>(new Tag())
 

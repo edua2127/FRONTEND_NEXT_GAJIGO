@@ -1,4 +1,3 @@
-import NavBar from '@/layout/NavBar'
 import type { NextPage } from 'next'
 import Router, { useRouter } from 'next/router'
 import { Room } from '@/types/room.types'

@@ -1,6 +1,5 @@
 import type { NextPage } from 'next'
 import Router, { useRouter } from 'next/router'
-import NavBar from '@/layout/NavBar'
 import { ApiLink, ApiLinkClass } from '@/types/api-link.types'
 import React, { useEffect, useState } from 'react'
 import style from '@/styles/EditarLinguagem.module.css'
@@ -9,12 +8,10 @@ import LectureService from '@/services/lecture.service'
 import { Language } from '@/types/language.types'
 import { Tag } from '@/types/tag.types'
 import { User } from '@/types/user.types'
-import { interval } from '@/types/event.types'
-import TagService from '@/services/tag.service'
 import UserService from '@/services/user.service'
 import LanguageService from '@/services/languages.service'
-
 import AppLayout from '@/layout/AppLayout'
+
 const EditarPalestra: NextPage = () => {
   const router = useRouter()
   const idLecture = router.query.id

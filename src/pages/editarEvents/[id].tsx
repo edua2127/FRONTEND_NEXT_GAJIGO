@@ -1,10 +1,9 @@
 import Router, { useRouter } from 'next/router'
 import type { NextPage } from 'next'
 import EventService from '@/services/event.service'
-import { IEvent, Event } from '@/types/event.types'
+import { Event } from '@/types/event.types'
 import { ApiLink, ApiLinkClass } from '@/types/api-link.types'
 import React, { useEffect, useState } from 'react'
-import NavBar from '@/layout/NavBar'
 import style from '@/styles/EditarEvents.module.css'
 
 import AppLayout from '@/layout/AppLayout'
