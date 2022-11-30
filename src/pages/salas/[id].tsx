@@ -47,7 +47,7 @@ const Salas: NextPage = () => {
 
   return (
     <AppLayout text='Salas do Evento'>
-      <>
+      
         <main>
           <section className={style.room_section}>
             <article className={style.room_article_cadastro_and_listar}>
@@ -108,7 +108,7 @@ const Salas: NextPage = () => {
             </article>
           </section>
         </main>
-      </>
+      
     </AppLayout>
   )
 }

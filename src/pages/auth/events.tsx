@@ -58,7 +58,7 @@ const Event: NextPage = () => {
 
   return (
     <AppLayout text='Eventos'>
-      <>
+      
         <main>
           <section className={style.events_section}>
             <article className={style.events_article_cadastro_and_listar}>
@@ -138,7 +138,7 @@ const Event: NextPage = () => {
             </article>
           </section>
         </main>
-      </>
+      
     </AppLayout>
   )
 }

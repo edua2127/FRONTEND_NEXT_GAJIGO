@@ -5,7 +5,7 @@ import AppLayout from '@/layout/AppLayout'
 const UserPage: NextPage = () => {
   return (
     <AppLayout text='Configurações'>
-      <>
+      
         <header>
           <h1>Configuração</h1>
         </header>
@@ -14,7 +14,7 @@ const UserPage: NextPage = () => {
             <article></article>
           </section>
         </main>
-      </>
+      
     </AppLayout>
   )
 }

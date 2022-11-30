@@ -46,7 +46,7 @@ const Palestra: NextPage = () => {
 
   return (
     <AppLayout text='Palestras da Sala'>
-      <>
+      
         <main>
           <section className={style.lecture_section}>
             <article className={style.lecture_article_cadastro_and_voltar}>
@@ -103,7 +103,7 @@ const Palestra: NextPage = () => {
             </article>
           </section>
         </main>
-      </>
+      
     </AppLayout>
   )
 }

@@ -44,7 +44,7 @@ const Tags: NextPage = () => {
 
   return (
     <AppLayout text='Tags'>
-      <>
+      
         <header className={style.user_page_header}>
           <h1>Tags</h1>
         </header>
@@ -102,7 +102,7 @@ const Tags: NextPage = () => {
             </article>
           </section>
         </main>
-      </>
+      
     </AppLayout>
   )
 }

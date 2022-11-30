@@ -5,14 +5,15 @@ import ListItem from '@mui/material/ListItem'
 import ListItemButton from '@mui/material/ListItemButton'
 import ListItemText from '@mui/material/ListItemText'
 import Link from 'next/link'
-import { alignProperty } from '@mui/material/styles/cssUtils'
-import lightThemeOptions from '@/styles/theme/lightTheme'
 
 import style from '@/styles/NavBar.module.css'
+import { ReactNode } from 'react'
+
 type Props = {
-  children: JSX.Element
+  children: ReactNode
   text: string
 }
+
 const drawerWidth = 200
 const appbarHeight = 75
 

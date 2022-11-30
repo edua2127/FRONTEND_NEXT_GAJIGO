@@ -57,7 +57,7 @@ const EditarTag: NextPage = () => {
 
   return (
     <AppLayout text='Editação da Tag'>
-      <>
+      
         <section className={style.cadastro_palestra_section}>
           <article className={style.editar_events_article_checkbox}>
             <label className={style.editar_events_label_checkbox}>
@@ -104,7 +104,7 @@ const EditarTag: NextPage = () => {
             </button>
           </article>
         </section>
-      </>
+      
     </AppLayout>
   )
 }
