@@ -79,7 +79,8 @@ const EventPage: NextPage = () => {
                 </tr>
               </thead>
               <tbody>
-                {events && events.length > 0 &&
+                {events &&
+                  events.length > 0 &&
                   events.map((event) => {
                     const statusEventLocal = {
                       EventCancelled: 'Cancelado',
