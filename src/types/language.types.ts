@@ -12,12 +12,6 @@ export class Language implements AbstractEntity {
   name!: string
   active!: boolean
   _links!: LanguageLinks
-  contructor() {
-    this.created = new Date()
-    this.updated = new Date()
-    this.removed = new Date()
-    this.name = ''
-  }
 }
 
 export interface LanguageCollection extends CollectionResource<Language> {

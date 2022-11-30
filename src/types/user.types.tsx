@@ -8,46 +8,22 @@ export class User implements AbstractEntity {
   created!: Date
   updated!: Date
   removed!: Date
-  name: string
-  email: string
-  username: string
-  password: string
+  name!: string
+  email!: string
+  username!: string
+  password!: string
   _links!: UserLinks
-  active: boolean
-  description: string
+  active!: boolean
+  description!: string
   events!: []
   documents!: []
-  admin: boolean
+  admin!: boolean
   organizes!: []
   telephone!: string
   participatesIn!: []
   speaksIn!: []
   authorities!: autorities[]
   location!: string
-
-  constructor() {
-    this.created = new Date()
-    this.updated = new Date()
-    this.removed = new Date()
-    this.name = ''
-    this.email = ''
-    this.username = ''
-    this.password = ''
-    this.active = true
-    this.description = ''
-    this.documents = []
-    this.admin = false
-    this.organizes = []
-    this.telephone = ''
-    this.participatesIn = []
-    this.speaksIn = []
-    this.authorities = []
-    this.location = ''
-  }
-
-  get passwords() {
-    return // eventService.getAll(this._links.events)
-  }
 }
 
 export interface autorities {

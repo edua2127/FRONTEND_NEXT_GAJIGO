@@ -12,18 +12,12 @@ interface IRoom {
 
 export class Room implements AbstractEntity {
   id!: number
-  name: string
-  description: string
-  event: string
+  name!: string
+  description!: string
+  event!: string
   active!: boolean
   _links!: RoomLinks
   lectures!: []
-  constructor() {
-    this.name = ''
-    this.description = ''
-    this.event = ''
-    this.lectures = []
-  }
 }
 
 export interface RoomCollectionResource extends CollectionResource<Room> {

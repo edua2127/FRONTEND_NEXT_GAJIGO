@@ -18,28 +18,15 @@ export interface interval {
 
 export class Event implements AbstractEntity {
   id!: number
-  name: string
-  attendanceMode: string
-  interval: interval
-  owner: string
+  name!: string
+  attendanceMode!: string
+  interval!: interval
+  owner!: string
   _links!: EventLinks
   active!: boolean
   description!: string
-  status: string
+  status!: string
   location!: string
-  constructor() {
-    this.name = ''
-    this.attendanceMode = ''
-    this.interval = {
-      startDate: '',
-      endDate: '',
-    }
-    this.owner = ''
-    this.active = true
-    this.description = ''
-    this.status = ''
-    this.location = ''
-  }
 }
 
 export interface EventCollectionResource extends CollectionResource<Event> {

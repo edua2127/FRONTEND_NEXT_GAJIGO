@@ -1,8 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit'
 import { RootState } from '../store/store'
 
-import { User, UserCollection } from '@/types/user.types'
-
 interface geralInicialState {
   id: number
   username: string

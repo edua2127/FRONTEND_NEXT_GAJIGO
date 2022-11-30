@@ -9,8 +9,8 @@ export class Lecture implements AbstractEntity {
   created!: Date
   updated!: Date
   removed!: Date
-  name: string
-  description: string
+  name!: string
+  description!: string
   room!: string
   active!: boolean
   _links!: LectureLinks
@@ -21,24 +21,6 @@ export class Lecture implements AbstractEntity {
   attendanceMode!: string
   speakers!: string[]
   participants!: string[]
-  constructor() {
-    this.created = new Date()
-    this.updated = new Date()
-    this.removed = new Date()
-    this.name = ''
-    this.description = ''
-    this.room = ''
-    this.event = ''
-    this.language = ''
-    this.tags = []
-    this.interval = {
-      startDate: '',
-      endDate: '',
-    }
-    this.attendanceMode = ''
-    this.speakers = []
-    this.participants = []
-  }
 }
 
 export interface interval {
