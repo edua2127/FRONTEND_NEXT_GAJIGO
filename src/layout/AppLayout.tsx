@@ -52,11 +52,11 @@ const AppLayout = ({ children, text }: Props) => {
                 <Box sx={{ overflow: 'auto' }}>
                     <List>
                         <ListItemText primary={'EVENTOS'} />
-                        {['Cadastrar', 'Ver', 'Gerenciar Cargos', 'Listar Totens'].map((text) => (
-                            <ListItem key={text} disablePadding>
-                                <Link href={'/evento/' + text.toLowerCase()}>
+                        {[{id: 1,  nome: 'cadastrar', url: 'cadastroEvents'}, {id: 1,  nome: 'ver', url: 'events'}].map((pagina) => (
+                            <ListItem key={pagina.id} disablePadding>
+                                <Link href={'/auth/' + pagina.url}>
                                     <ListItemButton>
-                                        <ListItemText primary={'• ' + text} />
+                                        <ListItemText primary={'• ' + pagina.nome} />
                                     </ListItemButton>
                                 </Link>
                             </ListItem>
@@ -64,12 +64,12 @@ const AppLayout = ({ children, text }: Props) => {
                     </List>
                     <Divider />
                     <List>
-                        <ListItemText primary={'PALESTRAS'} />
-                        {['Cadastrar', 'Ver', 'Chick-ins'].map((text) => (
-                            <ListItem key={text} disablePadding>
-                                <Link href={'/palestra/' + text.toLowerCase()}>
+                        <ListItemText primary={'LINGUAGENS'} />
+                        {[{id: 1,  nome: 'cadastrar', url: 'cadastroLinguagens'}, {id: 1,  nome: 'ver', url: 'linguagens'}].map((pagina) => (
+                            <ListItem key={pagina.id} disablePadding>
+                                <Link href={'/auth/' + pagina.url}>
                                     <ListItemButton>
-                                        <ListItemText primary={'• ' + text} />
+                                        <ListItemText primary={'• ' + pagina.nome} />
                                     </ListItemButton>
                                 </Link>
                             </ListItem>
@@ -77,12 +77,12 @@ const AppLayout = ({ children, text }: Props) => {
                     </List>
                     <Divider />
                     <List>
-                        <ListItemText primary={'SALAS'} />
-                        {['Cadastrar', 'Ver', 'Totens', 'Cronograma'].map((text) => (
-                            <ListItem key={text} disablePadding>
-                                <Link href={'/salas/' + text.toLowerCase()}>
+                        <ListItemText primary={'TAGS'} />
+                        {[{id: 1,  nome: 'cadastrar', url: 'cadastrarTags'}, {id: 1,  nome: 'ver', url: 'tags'}].map((pagina) => (
+                            <ListItem key={pagina.id} disablePadding>
+                                <Link href={'/auth/' + pagina.url}>
                                     <ListItemButton>
-                                        <ListItemText primary={'• ' + text} />
+                                        <ListItemText primary={'• ' + pagina.nome} />
                                     </ListItemButton>
                                 </Link>
                             </ListItem>
@@ -90,12 +90,12 @@ const AppLayout = ({ children, text }: Props) => {
                     </List>
                     <Divider />
                     <List>
-                        <ListItemText primary={'Usuarios'} />
-                        {['Cadastrar'].map((text) => (
-                            <ListItem key={text} disablePadding>
-                                <Link href={'/usuarios/' + text.toLowerCase()}>
+                        <ListItemText primary={'PALESTRANTES'} />
+                        {[{id: 1,  nome: 'cadastrar', url: 'cadastroPalestrante'}, {id: 1,  nome: 'ver', url: 'palestrantes'}].map((pagina) => (
+                            <ListItem key={pagina.id} disablePadding>
+                                <Link href={'/auth/' + pagina.url}>
                                     <ListItemButton>
-                                        <ListItemText primary={'• ' + text} />
+                                        <ListItemText primary={'• ' + pagina.nome} />
                                     </ListItemButton>
                                 </Link>
                             </ListItem>
