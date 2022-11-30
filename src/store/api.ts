@@ -1,6 +1,7 @@
 import { fetchBaseQuery } from '@reduxjs/toolkit/dist/query'
 import { createApi } from '@reduxjs/toolkit/dist/query/react'
 import { RootState } from '.'
+import { EventCollectionResource } from '@/types/event.types';
 
 export const baseApi = createApi({
   baseQuery: fetchBaseQuery({
@@ -47,8 +48,9 @@ export const injectGetByUrl = <T>(name: string, endpoint: string) => {
 export const injectGetAll = <T>(name: string, endpoint: string) => {
   const entityApi = baseApi.injectEndpoints({
     endpoints: (build) => ({
-      [name]: build.query<T, string | null>({
+      [name]: build.query<T[], string | null>({
         query: (url) => ({ url: url || endpoint }),
+        transformResponse: (response: { _embedded: { [entityCollection: string]: T[] } }) => (response._embedded[endpoint])
       }),
     }),
   });
