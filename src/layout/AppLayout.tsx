@@ -54,7 +54,7 @@ const AppLayout = ({ children, text }: Props) => {
             <ListItemText primary={'EVENTOS'} />
             {[
               { id: 1, nome: 'cadastrar', url: 'cadastroEvents' },
-              { id: 1, nome: 'ver', url: 'events' },
+              { id: 2, nome: 'ver', url: 'events' },
             ].map((pagina) => (
               <ListItem key={pagina.id} disablePadding>
                 <Link href={'/auth/' + pagina.url}>
@@ -70,7 +70,7 @@ const AppLayout = ({ children, text }: Props) => {
             <ListItemText primary={'LINGUAGENS'} />
             {[
               { id: 1, nome: 'cadastrar', url: 'cadastroLinguagens' },
-              { id: 1, nome: 'ver', url: 'linguagens' },
+              { id: 2, nome: 'ver', url: 'linguagens' },
             ].map((pagina) => (
               <ListItem key={pagina.id} disablePadding>
                 <Link href={'/auth/' + pagina.url}>
@@ -86,7 +86,7 @@ const AppLayout = ({ children, text }: Props) => {
             <ListItemText primary={'TAGS'} />
             {[
               { id: 1, nome: 'cadastrar', url: 'cadastrarTags' },
-              { id: 1, nome: 'ver', url: 'tags' },
+              { id: 2, nome: 'ver', url: 'tags' },
             ].map((pagina) => (
               <ListItem key={pagina.id} disablePadding>
                 <Link href={'/auth/' + pagina.url}>
@@ -102,7 +102,7 @@ const AppLayout = ({ children, text }: Props) => {
             <ListItemText primary={'PALESTRANTES'} />
             {[
               { id: 1, nome: 'cadastrar', url: 'cadastroPalestrante' },
-              { id: 1, nome: 'ver', url: 'palestrantes' },
+              { id: 2, nome: 'ver', url: 'palestrantes' },
             ].map((pagina) => (
               <ListItem key={pagina.id} disablePadding>
                 <Link href={'/auth/' + pagina.url}>
