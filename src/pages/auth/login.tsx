@@ -2,16 +2,14 @@ import type { NextPage } from 'next'
 import * as React from 'react'
 import { FormLogin } from '@/types/auth.types'
 import { useRouter } from 'next/router'
-import UserService from '@/services/user.service'
 import style from '@/styles/Login.module.css'
 import { TextField } from '@mui/material'
 import Button from '@mui/material/Button'
 import { useLoginMutation } from '@/store/auth/api'
+import { useEffect } from 'react'
 const Login: NextPage = () => {
   const router = useRouter()
-  const [login, { isLoading }] = useLoginMutation()
-
-  const [error, setError] = React.useState<string>('')
+  const [login, { data, isSuccess }] = useLoginMutation()
 
   const [loginData, setLoginData] = React.useState<FormLogin>({
     username: '',
@@ -26,17 +24,15 @@ const Login: NextPage = () => {
 
     if (username && password) {
       login({ username, password })
-      UserService.login(loginData)
-        .then(() => {
-          const returnUrl = router.query.returnUrl || '/auth/events'
-          router.push(returnUrl.toString())
-        })
-        .catch((error) => {
-          setError(error)
-          console.log(error)
-        })
     }
   }
+
+  useEffect(() => {
+    if (data) {
+      const returnUrl = router.query.returnUrl?.toString() || '/auth/events'
+      router.push(returnUrl)
+    }
+  }, [data, isSuccess])
 
   return (
     <div className={style.login_body}>

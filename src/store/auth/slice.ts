@@ -1,3 +1,4 @@
+import Cookie from 'universal-cookie'
 import { TokenResponse } from '@/types/auth.types'
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 
@@ -15,6 +16,8 @@ export const authSlice = createSlice({
   reducers: {
     login: (state, action: PayloadAction<TokenResponse>) => {
       state.token = action.payload
+      const cookies = new Cookie()
+      cookies.set('token', state.token.access_token)
     },
 
     logout: () => initialState,

@@ -17,14 +17,14 @@ const drawerWidth = 200
 const appbarHeight = 75
 
 const AppLayout = ({ children, title }: Props) => {
-  const { error: unauthenticated } = useGetCurrentUserQuery()
+  const { isError: isUnauthenticated } = useGetCurrentUserQuery()
   const router = useRouter()
 
   useEffect(() => {
-    if (unauthenticated) {
+    if (isUnauthenticated) {
       router.push('/auth/login')
     }
-  }, [unauthenticated])
+  }, [isUnauthenticated])
 
   return (
     <Box sx={{ display: 'flex' }}>

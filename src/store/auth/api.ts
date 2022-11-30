@@ -9,6 +9,7 @@ export const api = baseApi.injectEndpoints({
       query: () => ({
         url: `users/me`,
       }),
+      keepUnusedDataFor: 0.0001,
     }),
 
     login: build.mutation<User, { username: string; password: string }>({
