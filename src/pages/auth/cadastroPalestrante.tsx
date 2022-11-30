@@ -23,7 +23,7 @@ const CadastroPalestrante: NextPage = () => {
 
   return (
     <AppLayout text='Cadastro de Palestrantes'>
-      <>
+      
         <main>
           <section className={style.cadastro_palestra_section}>
             <article className={style.cadastro_palestra_article}>
@@ -105,7 +105,7 @@ const CadastroPalestrante: NextPage = () => {
             </article>
           </section>
         </main>
-      </>
+      
     </AppLayout>
   )
 }

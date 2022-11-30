@@ -44,7 +44,7 @@ const Linguagens: NextPage = () => {
 
   return (
     <AppLayout text='Linguagens'>
-      <>
+      
         <main>
           <section className={style.room_section}>
             <article className={style.room_article_cadastro_and_listar}>
@@ -96,7 +96,7 @@ const Linguagens: NextPage = () => {
             </article>
           </section>
         </main>
-      </>
+      
     </AppLayout>
   )
 }

@@ -22,7 +22,7 @@ const CadastroTags: NextPage = () => {
 
   return (
     <AppLayout text='Cadastro de Tags'>
-      <>
+      
         <header>
           <h1>Cadastro de Tags</h1>
         </header>
@@ -63,7 +63,7 @@ const CadastroTags: NextPage = () => {
             </article>
           </section>
         </main>
-      </>
+      
     </AppLayout>
   )
 }

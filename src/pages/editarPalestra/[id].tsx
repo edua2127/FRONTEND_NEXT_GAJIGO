@@ -115,7 +115,7 @@ const EditarPalestra: NextPage = () => {
 
   return (
     <AppLayout text='Edição da Palestra'>
-      <>
+      
         {loading ||
         lecture.speakers === undefined ||
         lecture.participants === undefined ||
@@ -267,7 +267,7 @@ const EditarPalestra: NextPage = () => {
             </article>
           </section>
         )}
-      </>
+      
     </AppLayout>
   )
 }
