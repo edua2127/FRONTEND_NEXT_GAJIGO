@@ -1,15 +1,12 @@
-import { AppBar, Drawer, List, Toolbar, Typography } from '@mui/material'
+import { AppBar, Toolbar, Typography } from '@mui/material'
 import { Box } from '@mui/system'
-import Divider from '@mui/material/Divider'
-import ListItem from '@mui/material/ListItem'
-import ListItemButton from '@mui/material/ListItemButton'
-import ListItemText from '@mui/material/ListItemText'
-import Link from 'next/link'
 
 import style from '@/styles/NavBar.module.css'
-import { ReactNode } from 'react'
+import { ReactNode, useEffect } from 'react'
 import Head from 'next/head'
 import { NavBar } from './NavBar'
+import { useGetCurrentUserQuery } from '@/store/auth/api'
+import { useRouter } from 'next/router'
 
 type Props = {
   children: ReactNode
@@ -20,6 +17,15 @@ const drawerWidth = 200
 const appbarHeight = 75
 
 const AppLayout = ({ children, title }: Props) => {
+  const { error: unauthenticated } = useGetCurrentUserQuery()
+  const router = useRouter()
+
+  useEffect(() => {
+    if (unauthenticated) {
+      router.push('/auth/login')
+    }
+  }, [unauthenticated])
+
   return (
     <Box sx={{ display: 'flex' }}>
       <Head>

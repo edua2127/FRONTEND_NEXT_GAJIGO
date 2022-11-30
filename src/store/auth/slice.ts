@@ -1,7 +1,8 @@
+import { TokenResponse } from '@/types/auth.types'
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 
 export interface AuthState {
-  token: string | null
+  token: TokenResponse | null
 }
 
 const initialState: AuthState = {
@@ -12,7 +13,7 @@ export const authSlice = createSlice({
   name: 'auth',
   initialState,
   reducers: {
-    login: (state, action: PayloadAction<string>) => {
+    login: (state, action: PayloadAction<TokenResponse>) => {
       state.token = action.payload
     },
 

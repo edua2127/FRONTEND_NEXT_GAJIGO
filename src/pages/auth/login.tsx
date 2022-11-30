@@ -6,23 +6,27 @@ import UserService from '@/services/user.service'
 import style from '@/styles/Login.module.css'
 import { TextField } from '@mui/material'
 import Button from '@mui/material/Button'
+import { useLoginMutation } from '@/store/auth/api'
 const Login: NextPage = () => {
   const router = useRouter()
+  const [login, { isLoading }] = useLoginMutation()
 
   const [error, setError] = React.useState<string>('')
 
-  const [login, setLogin] = React.useState<FormLogin>({
+  const [loginData, setLoginData] = React.useState<FormLogin>({
     username: '',
     password: '',
   })
 
-  const handleSubmit = (
+  const handleSubmit = async (
     event: React.MouseEvent<HTMLAnchorElement> | React.MouseEvent<HTMLButtonElement>,
   ) => {
     event.preventDefault()
-    console.log(login)
-    if (login.password && login.username) {
-      UserService.login(login)
+    const { username, password } = loginData
+
+    if (username && password) {
+      login({ username, password })
+      UserService.login(loginData)
         .then(() => {
           const returnUrl = router.query.returnUrl || '/auth/events'
           router.push(returnUrl.toString())
@@ -49,8 +53,8 @@ const Login: NextPage = () => {
                 label='Username'
                 variant='outlined'
                 type={'text'}
-                value={login.username}
-                onChange={(event) => setLogin({ ...login, username: event.target.value })}
+                value={loginData.username}
+                onChange={(event) => setLoginData({ ...loginData, username: event.target.value })}
               />
             </label>
             <label className={style.login_label}>
@@ -60,8 +64,8 @@ const Login: NextPage = () => {
                 label='Password'
                 variant='outlined'
                 type={'password'}
-                value={login.password}
-                onChange={(event) => setLogin({ ...login, password: event.target.value })}
+                value={loginData.password}
+                onChange={(event) => setLoginData({ ...loginData, password: event.target.value })}
               />
             </label>
           </article>

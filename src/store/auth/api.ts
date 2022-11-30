@@ -11,7 +11,7 @@ export const api = baseApi.injectEndpoints({
       }),
     }),
 
-    login: build.query<User, { username: string; password: string }>({
+    login: build.mutation<User, { username: string; password: string }>({
       query: (body) => ({
         url: `users/login`,
         method: 'POST',
@@ -38,4 +38,4 @@ export const api = baseApi.injectEndpoints({
   }),
 })
 
-export const { useGetCurrentUserQuery, useLoginQuery, useRegisterMutation } = api
+export const { useGetCurrentUserQuery, useLoginMutation, useRegisterMutation } = api
