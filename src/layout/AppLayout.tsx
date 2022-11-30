@@ -8,6 +8,7 @@ import Link from 'next/link'
 import { alignProperty } from '@mui/material/styles/cssUtils'
 import lightThemeOptions from '@/styles/theme/lightTheme'
 
+import style from '@/styles/NavBar.module.css'
 type Props = {
     children: JSX.Element
     text: string
@@ -103,17 +104,7 @@ const AppLayout = ({ children, text }: Props) => {
                     <Divider />
                 </Box>
             </Drawer>
-            <Box
-                sx={{
-                    display: 'flex',
-                    width: `calc(100% - ${drawerWidth}px)`,
-                    minHeight: `calc(100vh - ${appbarHeight}px)`,
-                    mt: `${appbarHeight}px`,
-                    background: 'white',
-                }}
-            >
-                {children}
-            </Box>
+            <div className={style.nav_page_main}>{children}</div>
         </Box>
     )
 }
