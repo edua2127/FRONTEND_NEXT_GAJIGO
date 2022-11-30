@@ -7,10 +7,12 @@ import EventService from '@/services/event.service'
 import { ApiLink, ApiLinkClass } from '@/types/api-link.types'
 import AppLayout from '@/layout/AppLayout'
 import { Event } from '@/types/event.types'
+import { useListEventsQuery } from '@/store/events/api'
 
 const EventPage: NextPage = () => {
-  const [events, setEvents] = useState<Event[]>([])
   const [idCorrentUser, setUrlCorrentUser] = useState<number>(0)
+
+  const { data: events } = useListEventsQuery(null)
 
   async function getEvents() {
     const url: ApiLink = new ApiLinkClass()
@@ -19,7 +21,6 @@ const EventPage: NextPage = () => {
 
     EventService.getAll(url).then((response) => {
       console.log(response._embedded.events)
-      setEvents(response._embedded.events)
     })
   }
 
