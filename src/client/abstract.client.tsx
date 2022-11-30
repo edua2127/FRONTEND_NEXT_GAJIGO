@@ -8,7 +8,7 @@ import { AbstractEntity } from '@/types/abstract-entity.types'
 export abstract class AbstractClient<
     T extends AbstractEntity, // Tipo singular do recurso (e.g. User, Event, Lecture)
     U extends CollectionResource<T>, // Tipo coletivo do recurso (e.g. UserCollection, EventCollection)
-    > {
+> {
     protected axiosClient: AxiosInstance
 
     defaultHeader: object = {

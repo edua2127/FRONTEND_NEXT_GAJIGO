@@ -21,7 +21,7 @@
 }
 
 .btn_grad {
-    background-image: linear-gradient(to right, #02AAB0 0%, #00CDAC  51%, #02AAB0  100%);
+    background-image: linear-gradient(to right, #02aab0 0%, #00cdac 51%, #02aab0 100%);
     margin-left: 40px;
     text-align: center;
     text-transform: uppercase;
@@ -42,7 +42,6 @@
     color: #fff;
     text-decoration: none;
 }
-
 
 .cadastro_events_article_button {
     display: flex;
@@ -79,5 +78,5 @@
 }
 
 .cadastro_events_header {
-    margin-left: 5px
+    margin-left: 5px;
 }

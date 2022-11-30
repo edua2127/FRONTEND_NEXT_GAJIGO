@@ -1,22 +1,21 @@
 import type { NextPage } from 'next'
 import NavBar from '@/layout/NavBar'
 
+import AppLayout from '@/layout/AppLayout'
 const UserPage: NextPage = () => {
-
     return (
-        <NavBar>
-           <>
+        <AppLayout text='Configurações'>
+            <>
                 <header>
                     <h1>Configuração</h1>
                 </header>
                 <main>
                     <section>
-                        <article>
-                        </article>
+                        <article></article>
                     </section>
                 </main>
-           </>
-        </NavBar>
+            </>
+        </AppLayout>
     )
 }
 

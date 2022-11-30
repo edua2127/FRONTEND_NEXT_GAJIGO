@@ -1,4 +1,3 @@
-
 .room_section {
     display: flex;
     flex-direction: column;
@@ -16,9 +15,8 @@
     max-width: 1100px;
 }
 
-
 .room_button_cadastrar {
-    background-image: linear-gradient(to right, #66de27 0%, #a8e063  51%, #56ab2f  100%);
+    background-image: linear-gradient(to right, #66de27 0%, #a8e063 51%, #56ab2f 100%);
     text-align: center;
     text-transform: uppercase;
     transition: 0.5s;
@@ -33,7 +31,6 @@
     cursor: pointer;
     margin-right: 15px;
 }
-
 
 .room_button_cadastrar:hover {
     background-position: right center;
@@ -70,7 +67,6 @@
     margin: 10px 10px 10px 3%;
     width: 100%;
     max-width: 1000px;
-
 }
 
 .room_table {
@@ -104,7 +100,6 @@
     width: 100%;
     justify-content: center;
 }
-
 
 .room_button_editar {
     background-image: linear-gradient(to right, #2753e5 0%, #5542cb 51%, #357a94 100%);
@@ -150,10 +145,8 @@
     text-decoration: none;
 }
 
-
-
 .room_button_excluir {
-    background-image: linear-gradient(to right, #e52d27 0%, #b31217  51%, #e52d27  100%);
+    background-image: linear-gradient(to right, #e52d27 0%, #b31217 51%, #e52d27 100%);
     text-transform: uppercase;
     transition: 0.5s;
     background-size: 200% auto;

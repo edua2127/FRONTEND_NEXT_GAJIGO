@@ -1,14 +1,12 @@
 import type { NextPage } from 'next'
-
+import AppLayout from '@/layout/AppLayout'
 import NavBar from '../layout/NavBar'
 
 const Home: NextPage = () => {
-
-
     return (
-       <NavBar>
-           <h3>Pagina Home</h3>
-       </NavBar>
+        <AppLayout text='Pagina Home'>
+            <br />
+        </AppLayout>
     )
 }
 

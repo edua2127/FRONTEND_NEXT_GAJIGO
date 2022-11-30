@@ -12,7 +12,7 @@
 }
 
 .cadastrar_sala_button {
-    background-image: linear-gradient(to right, #02AAB0 0%, #00CDAC  51%, #02AAB0  100%);
+    background-image: linear-gradient(to right, #02aab0 0%, #00cdac 51%, #02aab0 100%);
     margin-left: 40px;
     text-align: center;
     text-transform: uppercase;
@@ -35,7 +35,7 @@
 }
 
 .cadastrar_sala_button_cancelar {
-    background-image: linear-gradient(to right, #FF416C 0%, #a34ccb 51%, #428f98 100%);
+    background-image: linear-gradient(to right, #ff416c 0%, #a34ccb 51%, #428f98 100%);
     margin-left: 40px;
     text-align: center;
     text-transform: uppercase;
@@ -56,7 +56,6 @@
     color: #fff;
     text-decoration: none;
 }
-
 
 .cadastro_events_article_button {
     display: flex;
@@ -93,5 +92,5 @@
 }
 
 .cadastro_events_header {
-    margin-left: 5px
+    margin-left: 5px;
 }

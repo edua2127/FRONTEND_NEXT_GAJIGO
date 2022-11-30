@@ -1,19 +1,18 @@
-
 import { createSlice } from '@reduxjs/toolkit'
 import { RootState } from '../store/store'
 
 import { User, UserCollection } from '@/types/user.types'
 
 interface geralInicialState {
-    id: number,
-    username: string,
+    id: number
+    username: string
     password: string
 }
 
-export const initialState: geralInicialState =  {
+export const initialState: geralInicialState = {
     id: 0,
     username: '',
-    password: ''
+    password: '',
 }
 
 export const geralSlice = createSlice({
@@ -28,8 +27,8 @@ export const geralSlice = createSlice({
         },
         editaId: (state, action) => {
             state.id = action.payload
-        }
-    }
+        },
+    },
 })
 
 export const { editaUsername, editaPassword, editaId } = geralSlice.actions

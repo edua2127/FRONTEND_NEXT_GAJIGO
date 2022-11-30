@@ -1,10 +1,9 @@
 import { configureStore } from '@reduxjs/toolkit'
 import geralSlice from '../slice/geralSlice'
 
-
 export const store = configureStore({
     reducer: {
-      geral: geralSlice
+        geral: geralSlice,
     },
 })
 

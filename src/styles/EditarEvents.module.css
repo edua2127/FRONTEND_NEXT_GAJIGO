@@ -36,7 +36,7 @@
 }
 
 .botao_editar {
-    background-image: linear-gradient(to right, #1A2980 0%, #26D0CE  51%, #1A2980  100%);
+    background-image: linear-gradient(to right, #1a2980 0%, #26d0ce 51%, #1a2980 100%);
     margin-left: 40px;
     text-align: center;
     text-transform: uppercase;
@@ -58,9 +58,8 @@
     text-decoration: none;
 }
 
-
 .botao_excluir {
-    background-image: linear-gradient(to right, #FF512F 0%, #DD2476  51%, #FF512F  100%);
+    background-image: linear-gradient(to right, #ff512f 0%, #dd2476 51%, #ff512f 100%);
     margin-left: 20px;
     text-align: center;
     text-transform: uppercase;
@@ -126,5 +125,5 @@
 }
 
 .editar_events_header {
-    margin-left: 5px
+    margin-left: 5px;
 }

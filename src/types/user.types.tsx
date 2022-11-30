@@ -4,44 +4,44 @@ import { CollectionResource } from '@/types/collection-resource.types'
 import { AbstractEntity } from '@/types/abstract-entity.types'
 
 export class User implements AbstractEntity {
-    id!: number;
-    created!: Date;
-    updated!: Date;
-    removed!: Date;
-    name: string;
-    email: string;
-    username: string;
-    password: string;
-    _links!: UserLinks;
-    active: boolean;
-    description: string;
-    events!: [];
-    documents!: [];
-    admin: boolean;
-    organizes!: [];
-    telephone!: string;
-    participatesIn!: [];
-    speaksIn!: [];
-    authorities!: autorities[];
-    location!: string;
+    id!: number
+    created!: Date
+    updated!: Date
+    removed!: Date
+    name: string
+    email: string
+    username: string
+    password: string
+    _links!: UserLinks
+    active: boolean
+    description: string
+    events!: []
+    documents!: []
+    admin: boolean
+    organizes!: []
+    telephone!: string
+    participatesIn!: []
+    speaksIn!: []
+    authorities!: autorities[]
+    location!: string
     constructor() {
-        this.created = new Date();
-        this.updated = new Date();
-        this.removed = new Date();
-        this.name = '';
-        this.email = '';
-        this.username = '';
-        this.password = '';
-        this.active = true;
-        this.description = '';
-        this.documents = [];
-        this.admin = false;
-        this.organizes = [];
-        this.telephone = '';
-        this.participatesIn = [];
-        this.speaksIn = [];
-        this.authorities = [];
-        this.location = '';
+        this.created = new Date()
+        this.updated = new Date()
+        this.removed = new Date()
+        this.name = ''
+        this.email = ''
+        this.username = ''
+        this.password = ''
+        this.active = true
+        this.description = ''
+        this.documents = []
+        this.admin = false
+        this.organizes = []
+        this.telephone = ''
+        this.participatesIn = []
+        this.speaksIn = []
+        this.authorities = []
+        this.location = ''
     }
 
     get passwords() {
@@ -50,7 +50,7 @@ export class User implements AbstractEntity {
 }
 
 export interface autorities {
-    authority: string;
+    authority: string
 }
 
 export interface UserCollection extends CollectionResource<User> {
