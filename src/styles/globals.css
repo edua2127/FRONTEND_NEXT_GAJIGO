@@ -1,37 +1,37 @@
 html,
 body {
-    padding: 0;
-    margin: 0;
-    font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell,
-        Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
-    min-height: 100%;
-    min-width: 100%;
-    width: 100%;
-    height: 100%;
+  padding: 0;
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell,
+    Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  min-height: 100%;
+  min-width: 100%;
+  width: 100%;
+  height: 100%;
 }
 
 a {
-    color: inherit;
-    text-decoration: none;
+  color: inherit;
+  text-decoration: none;
 }
 
 * {
-    box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 .icon_page_home {
-    height: 3.9215686274509802vh;
-    width: 1.9791666666666667vw;
-    margin: 1.5479876160990713vh 1.238390092879257vh 1.5479876160990713vh 1.5479876160990713vh;
-    cursor: pointer;
+  height: 3.9215686274509802vh;
+  width: 1.9791666666666667vw;
+  margin: 1.5479876160990713vh 1.238390092879257vh 1.5479876160990713vh 1.5479876160990713vh;
+  cursor: pointer;
 }
 @media (prefers-color-scheme: dark) {
-    html {
-        color-scheme: dark;
-    }
-    body {
-        color: white;
-        background: black;
-        max-width: 100%;
-    }
+  html {
+    color-scheme: dark;
+  }
+  body {
+    color: white;
+    background: black;
+    max-width: 100%;
+  }
 }

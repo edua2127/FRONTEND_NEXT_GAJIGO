@@ -3,127 +3,127 @@
  */
 
 .editar_events_input {
-    width: 80%;
-    height: 40px;
-    border: 1px solid #000;
-    border-radius: 5px;
-    padding: 0 10px;
-    margin-bottom: 10px;
+  width: 80%;
+  height: 40px;
+  border: 1px solid #000;
+  border-radius: 5px;
+  padding: 0 10px;
+  margin-bottom: 10px;
 }
 .editar_events_checkbox {
-    margin: 0 10px 0 0;
-    width: 40%;
-    height: 30px;
+  margin: 0 10px 0 0;
+  width: 40%;
+  height: 30px;
 }
 
 .editar_events_label_checkbox {
-    margin: 0 10px 0 0;
-    width: 20%;
-    height: 20px;
-    display: flex;
-    align-items: center;
+  margin: 0 10px 0 0;
+  width: 20%;
+  height: 20px;
+  display: flex;
+  align-items: center;
 }
 .editar_events_article_checkbox {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-content: center;
-    align-items: center;
-    width: 100%;
-    height: 20px;
-    margin-bottom: 20px;
-    margin-left: 3%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-content: center;
+  align-items: center;
+  width: 100%;
+  height: 20px;
+  margin-bottom: 20px;
+  margin-left: 3%;
 }
 
 .botao_editar {
-    background-image: linear-gradient(to right, #1a2980 0%, #26d0ce 51%, #1a2980 100%);
-    margin-left: 40px;
-    text-align: center;
-    text-transform: uppercase;
-    transition: 0.5s;
-    background-size: 200% auto;
-    color: white;
-    box-shadow: 0 0 20px #eee;
-    border-radius: 5px;
-    display: block;
-    width: 17.5%;
-    height: 40px;
-    border: 0;
-    cursor: pointer;
+  background-image: linear-gradient(to right, #1a2980 0%, #26d0ce 51%, #1a2980 100%);
+  margin-left: 40px;
+  text-align: center;
+  text-transform: uppercase;
+  transition: 0.5s;
+  background-size: 200% auto;
+  color: white;
+  box-shadow: 0 0 20px #eee;
+  border-radius: 5px;
+  display: block;
+  width: 17.5%;
+  height: 40px;
+  border: 0;
+  cursor: pointer;
 }
 
 .botao_editar:hover {
-    background-position: right center; /* change the direction of the change here */
-    color: #fff;
-    text-decoration: none;
+  background-position: right center; /* change the direction of the change here */
+  color: #fff;
+  text-decoration: none;
 }
 
 .botao_excluir {
-    background-image: linear-gradient(to right, #ff512f 0%, #dd2476 51%, #ff512f 100%);
-    margin-left: 20px;
-    text-align: center;
-    text-transform: uppercase;
-    transition: 0.5s;
-    background-size: 200% auto;
-    color: white;
-    box-shadow: 0 0 20px #eee;
-    border-radius: 5px;
-    display: block;
-    width: 18%;
-    height: 40px;
-    border: 0;
-    cursor: pointer;
+  background-image: linear-gradient(to right, #ff512f 0%, #dd2476 51%, #ff512f 100%);
+  margin-left: 20px;
+  text-align: center;
+  text-transform: uppercase;
+  transition: 0.5s;
+  background-size: 200% auto;
+  color: white;
+  box-shadow: 0 0 20px #eee;
+  border-radius: 5px;
+  display: block;
+  width: 18%;
+  height: 40px;
+  border: 0;
+  cursor: pointer;
 }
 
 .botao_excluir:hover {
-    background-position: right center; /* change the direction of the change here */
-    color: #fff;
-    text-decoration: none;
+  background-position: right center; /* change the direction of the change here */
+  color: #fff;
+  text-decoration: none;
 }
 
 .editar_input {
-    width: 80%;
-    height: 40px;
-    border: 1px solid #000;
-    border-radius: 5px;
-    padding: 0 10px;
-    margin-bottom: 10px;
+  width: 80%;
+  height: 40px;
+  border: 1px solid #000;
+  border-radius: 5px;
+  padding: 0 10px;
+  margin-bottom: 10px;
 }
 
 .editar_events_article_button {
-    display: flex;
-    flex-direction: row;
-    width: 100%;
-    height: 100%;
-    justify-content: flex-end;
-    margin-right: 20%;
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  height: 100%;
+  justify-content: flex-end;
+  margin-right: 20%;
 }
 .editar_events_article {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-around;
-    width: 100%;
-    height: 100%;
-    margin: 15px 0;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+  width: 100%;
+  height: 100%;
+  margin: 15px 0;
 }
 .editar_events_label {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    height: 100%;
-    justify-content: space-around;
-    padding-left: 10px;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  justify-content: space-around;
+  padding-left: 10px;
 }
 .editar_events_section {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-around;
-    width: 100%;
-    height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  width: 100%;
+  height: 100%;
 }
 
 .editar_events_header {
-    margin-left: 5px;
+  margin-left: 5px;
 }

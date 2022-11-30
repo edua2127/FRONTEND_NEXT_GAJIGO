@@ -15,18 +15,18 @@ const clientSideEmotionCache = createEmotionCache()
 const defaultTheme = createTheme(lightThemeOptions)
 
 interface MyAppProps extends AppProps {
-    emotionCache?: EmotionCache
+  emotionCache?: EmotionCache
 }
 
 export default function MyApp(props: MyAppProps) {
-    const { Component, emotionCache = clientSideEmotionCache, pageProps } = props
-    return (
-        <Provider store={store}>
-            <CacheProvider value={emotionCache}>
-                <ThemeProvider theme={defaultTheme}>
-                    <Component {...pageProps} />
-                </ThemeProvider>
-            </CacheProvider>
-        </Provider>
-    )
+  const { Component, emotionCache = clientSideEmotionCache, pageProps } = props
+  return (
+    <Provider store={store}>
+      <CacheProvider value={emotionCache}>
+        <ThemeProvider theme={defaultTheme}>
+          <Component {...pageProps} />
+        </ThemeProvider>
+      </CacheProvider>
+    </Provider>
+  )
 }

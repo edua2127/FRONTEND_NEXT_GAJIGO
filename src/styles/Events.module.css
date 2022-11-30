@@ -1,148 +1,148 @@
 .events_table {
-    width: 100%;
-    border-collapse: collapse;
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+  width: 100%;
+  border-collapse: collapse;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
 }
 
 .events_table_thead {
-    background-color: #f2f2f2;
+  background-color: #f2f2f2;
 }
 
 .events_table_tr {
-    border-bottom: 1px solid #ddd;
+  border-bottom: 1px solid #ddd;
 }
 
 .events_table_th {
-    padding: 8px;
-    text-align: center;
+  padding: 8px;
+  text-align: center;
 }
 
 .events_table_td {
-    padding: 8px;
-    text-align: center;
+  padding: 8px;
+  text-align: center;
 }
 
 .events_table_td_actions {
-    display: flex;
-    padding: 8px;
-    flex-direction: row;
-    width: 100%;
+  display: flex;
+  padding: 8px;
+  flex-direction: row;
+  width: 100%;
 }
 
 .btn_grad {
-    background-image: linear-gradient(to right, #56ab2f 0%, #a8e063 51%, #56ab2f 100%);
-    text-align: center;
-    text-transform: uppercase;
-    transition: 0.5s;
-    background-size: 200% auto;
-    color: white;
-    box-shadow: 0 0 20px #eee;
-    border-radius: 10px;
-    display: block;
-    width: 20%;
-    height: 40px;
-    border: 0;
-    cursor: pointer;
+  background-image: linear-gradient(to right, #56ab2f 0%, #a8e063 51%, #56ab2f 100%);
+  text-align: center;
+  text-transform: uppercase;
+  transition: 0.5s;
+  background-size: 200% auto;
+  color: white;
+  box-shadow: 0 0 20px #eee;
+  border-radius: 10px;
+  display: block;
+  width: 20%;
+  height: 40px;
+  border: 0;
+  cursor: pointer;
 }
 
 .btn_grad:hover {
-    background-position: right center; /* change the direction of the change here */
-    color: #fff;
-    text-decoration: none;
+  background-position: right center; /* change the direction of the change here */
+  color: #fff;
+  text-decoration: none;
 }
 .events_article_btn {
-    display: flex;
-    justify-content: space-between;
+  display: flex;
+  justify-content: space-between;
 }
 
 .events_section {
-    display: flex;
-    flex-direction: column;
+  display: flex;
+  flex-direction: column;
 }
 
 .events_article {
-    margin: 10px auto;
-    width: 100%;
-    max-width: 1000px;
+  margin: 10px auto;
+  width: 100%;
+  max-width: 1000px;
 }
 
 .events_article_table {
-    margin: 10px auto;
-    width: 100%;
-    max-width: 1100px;
+  margin: 10px auto;
+  width: 100%;
+  max-width: 1100px;
 }
 
 .events_article_cadastro_and_listar {
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-start;
-    width: 100%;
-    max-width: 1000px;
-    margin: 10px 10px 10px 3%;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  width: 100%;
+  max-width: 1000px;
+  margin: 10px 10px 10px 3%;
 }
 
 .events_button_editar {
-    background-image: linear-gradient(to right, #2753e5 0%, #5542cb 51%, #357a94 100%);
-    text-transform: uppercase;
-    transition: 0.5s;
-    background-size: 200% auto;
-    color: white;
-    box-shadow: 0 0 20px #eee;
-    border-radius: 10px;
-    display: block;
-    border: 0;
-    cursor: pointer;
-    margin: 0 0.5rem;
-    width: 30%;
-    height: 40px;
+  background-image: linear-gradient(to right, #2753e5 0%, #5542cb 51%, #357a94 100%);
+  text-transform: uppercase;
+  transition: 0.5s;
+  background-size: 200% auto;
+  color: white;
+  box-shadow: 0 0 20px #eee;
+  border-radius: 10px;
+  display: block;
+  border: 0;
+  cursor: pointer;
+  margin: 0 0.5rem;
+  width: 30%;
+  height: 40px;
 }
 
 .events_button_selecionar {
-    background-image: linear-gradient(to right, #27e59c 0%, #2e7893 51%, #1c546b 100%);
-    text-transform: uppercase;
-    transition: 0.5s;
-    background-size: 200% auto;
-    color: white;
-    box-shadow: 0 0 20px #eee;
-    border-radius: 10px;
-    display: block;
-    border: 0;
-    cursor: pointer;
-    margin: 0 0.5rem;
-    width: 40%;
-    height: 40px;
+  background-image: linear-gradient(to right, #27e59c 0%, #2e7893 51%, #1c546b 100%);
+  text-transform: uppercase;
+  transition: 0.5s;
+  background-size: 200% auto;
+  color: white;
+  box-shadow: 0 0 20px #eee;
+  border-radius: 10px;
+  display: block;
+  border: 0;
+  cursor: pointer;
+  margin: 0 0.5rem;
+  width: 40%;
+  height: 40px;
 }
 
 .events_button_selecionar:hover {
-    background-position: right center; /* change the direction of the change here */
-    color: #fff;
-    text-decoration: none;
+  background-position: right center; /* change the direction of the change here */
+  color: #fff;
+  text-decoration: none;
 }
 
 .events_button_editar:hover {
-    background-position: right center; /* change the direction of the change here */
-    color: #fff;
-    text-decoration: none;
+  background-position: right center; /* change the direction of the change here */
+  color: #fff;
+  text-decoration: none;
 }
 
 .events_button_excluir {
-    background-image: linear-gradient(to right, #e52d27 0%, #b31217 51%, #e52d27 100%);
-    text-transform: uppercase;
-    transition: 0.5s;
-    background-size: 200% auto;
-    color: white;
-    box-shadow: 0 0 20px #eee;
-    border-radius: 10px;
-    display: block;
-    border: 0;
-    cursor: pointer;
-    margin: 0 0.5rem;
-    width: 30%;
-    height: 40px;
+  background-image: linear-gradient(to right, #e52d27 0%, #b31217 51%, #e52d27 100%);
+  text-transform: uppercase;
+  transition: 0.5s;
+  background-size: 200% auto;
+  color: white;
+  box-shadow: 0 0 20px #eee;
+  border-radius: 10px;
+  display: block;
+  border: 0;
+  cursor: pointer;
+  margin: 0 0.5rem;
+  width: 30%;
+  height: 40px;
 }
 
 .events_button_excluir:hover {
-    background-position: right center; /* change the direction of the change here */
-    color: #fff;
-    text-decoration: none;
+  background-position: right center; /* change the direction of the change here */
+  color: #fff;
+  text-decoration: none;
 }

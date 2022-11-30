@@ -5,27 +5,27 @@ import { CollectionResource } from '@/types/collection-resource.types'
 import { AbstractEntity } from '@/types/abstract-entity.types'
 
 export class Language implements AbstractEntity {
-    id!: number
-    created!: Date
-    updated!: Date
-    removed!: Date
-    name!: string
-    active!: boolean
-    _links!: LanguageLinks
-    contructor() {
-        this.created = new Date()
-        this.updated = new Date()
-        this.removed = new Date()
-        this.name = ''
-    }
+  id!: number
+  created!: Date
+  updated!: Date
+  removed!: Date
+  name!: string
+  active!: boolean
+  _links!: LanguageLinks
+  contructor() {
+    this.created = new Date()
+    this.updated = new Date()
+    this.removed = new Date()
+    this.name = ''
+  }
 }
 
 export interface LanguageCollection extends CollectionResource<Language> {
-    _embedded: {
-        languages: Language[]
-    }
+  _embedded: {
+    languages: Language[]
+  }
 }
 
 export interface LanguageLinks extends AbstractLinks {
-    self: ApiLink
+  self: ApiLink
 }

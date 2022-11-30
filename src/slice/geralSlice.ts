@@ -4,31 +4,31 @@ import { RootState } from '../store/store'
 import { User, UserCollection } from '@/types/user.types'
 
 interface geralInicialState {
-    id: number
-    username: string
-    password: string
+  id: number
+  username: string
+  password: string
 }
 
 export const initialState: geralInicialState = {
-    id: 0,
-    username: '',
-    password: '',
+  id: 0,
+  username: '',
+  password: '',
 }
 
 export const geralSlice = createSlice({
-    name: 'geral',
-    initialState,
-    reducers: {
-        editaUsername: (state, action) => {
-            state.username = action.payload
-        },
-        editaPassword: (state, action) => {
-            state.password = action.payload
-        },
-        editaId: (state, action) => {
-            state.id = action.payload
-        },
+  name: 'geral',
+  initialState,
+  reducers: {
+    editaUsername: (state, action) => {
+      state.username = action.payload
     },
+    editaPassword: (state, action) => {
+      state.password = action.payload
+    },
+    editaId: (state, action) => {
+      state.id = action.payload
+    },
+  },
 })
 
 export const { editaUsername, editaPassword, editaId } = geralSlice.actions

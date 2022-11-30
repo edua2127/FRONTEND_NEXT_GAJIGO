@@ -4,26 +4,26 @@ import { FormRegister } from '@/types/auth.types'
 import UserService from '@/services/user.service'
 
 export class UserClient extends AbstractClient<User, UserCollection> {
-    constructor() {
-        super('users')
-    }
+  constructor() {
+    super('users')
+  }
 
-    public login(username: string, password: string): Promise<any> {
-        return this.fetchEndpoint('/login', { username, password }, {}, 'POST')
-    }
+  public login(username: string, password: string): Promise<any> {
+    return this.fetchEndpoint('/login', { username, password }, {}, 'POST')
+  }
 
-    public register(user: FormRegister): Promise<any> {
-        return this.fetchEndpoint('/register', user, {}, 'POST')
-    }
+  public register(user: FormRegister): Promise<any> {
+    return this.fetchEndpoint('/register', user, {}, 'POST')
+  }
 
-    public getCorrentUser(): Promise<any> {
-        const token: string = UserService.getAuthenticatedToken()
+  public getCorrentUser(): Promise<any> {
+    const token: string = UserService.getAuthenticatedToken()
 
-        return this.fetchFromURL(
-            `${process.env.NEXT_PUBLIC_API_URL}/users/me`,
-            {},
-            { Authorization: `Bearer ${token}` },
-            'GET',
-        )
-    }
+    return this.fetchFromURL(
+      `${process.env.NEXT_PUBLIC_API_URL}/users/me`,
+      {},
+      { Authorization: `Bearer ${token}` },
+      'GET',
+    )
+  }
 }

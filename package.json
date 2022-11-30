@@ -7,7 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint --fix src/**/*.{js,jsx,ts,tsx}",
-    "format": "prettier --write src/**/*.{js,jsx,ts,tsx,css,md} --config ./.prettierrc"
+    "format": "prettier -w ."
   },
   "dependencies": {
     "@emotion/react": "^11.10.4",

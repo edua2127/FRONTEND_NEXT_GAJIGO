@@ -3,20 +3,20 @@ import NavBar from '@/layout/NavBar'
 
 import AppLayout from '@/layout/AppLayout'
 const UserPage: NextPage = () => {
-    return (
-        <AppLayout text='Configurações'>
-            <>
-                <header>
-                    <h1>Configuração</h1>
-                </header>
-                <main>
-                    <section>
-                        <article></article>
-                    </section>
-                </main>
-            </>
-        </AppLayout>
-    )
+  return (
+    <AppLayout text='Configurações'>
+      <>
+        <header>
+          <h1>Configuração</h1>
+        </header>
+        <main>
+          <section>
+            <article></article>
+          </section>
+        </main>
+      </>
+    </AppLayout>
+  )
 }
 
 export default UserPage

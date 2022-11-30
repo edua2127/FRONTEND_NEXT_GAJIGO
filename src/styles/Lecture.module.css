@@ -1,168 +1,168 @@
 .lecture_section {
-    display: flex;
-    flex-direction: column;
+  display: flex;
+  flex-direction: column;
 }
 
 .lecture_article {
-    margin: 10px auto;
-    width: 100%;
-    max-width: 1000px;
+  margin: 10px auto;
+  width: 100%;
+  max-width: 1000px;
 }
 
 .lecture_article_table {
-    margin: 10px auto;
-    width: 100%;
-    max-width: 1100px;
+  margin: 10px auto;
+  width: 100%;
+  max-width: 1100px;
 }
 
 .lecture_button_cadastrar {
-    background-image: linear-gradient(to right, #66de27 0%, #a8e063 51%, #56ab2f 100%);
-    text-align: center;
-    text-transform: uppercase;
-    transition: 0.5s;
-    background-size: 200% auto;
-    color: white;
-    box-shadow: 0 0 20px #eee;
-    border-radius: 10px;
-    display: block;
-    width: 20%;
-    height: 40px;
-    border: 0;
-    cursor: pointer;
-    margin-right: 15px;
+  background-image: linear-gradient(to right, #66de27 0%, #a8e063 51%, #56ab2f 100%);
+  text-align: center;
+  text-transform: uppercase;
+  transition: 0.5s;
+  background-size: 200% auto;
+  color: white;
+  box-shadow: 0 0 20px #eee;
+  border-radius: 10px;
+  display: block;
+  width: 20%;
+  height: 40px;
+  border: 0;
+  cursor: pointer;
+  margin-right: 15px;
 }
 
 .lecture_button_cadastrar:hover {
-    background-position: right center;
-    color: #fff;
-    text-decoration: none;
+  background-position: right center;
+  color: #fff;
+  text-decoration: none;
 }
 
 .lecture_button_voltar {
-    background-image: linear-gradient(to right, #e31010 0%, #c71c92 51%, #800f9d 100%);
-    text-align: center;
-    text-transform: uppercase;
-    transition: 0.5s;
-    background-size: 200% auto;
-    color: white;
-    box-shadow: 0 0 20px #eee;
-    border-radius: 10px;
-    display: block;
-    width: 20%;
-    height: 40px;
-    border: 0;
-    cursor: pointer;
+  background-image: linear-gradient(to right, #e31010 0%, #c71c92 51%, #800f9d 100%);
+  text-align: center;
+  text-transform: uppercase;
+  transition: 0.5s;
+  background-size: 200% auto;
+  color: white;
+  box-shadow: 0 0 20px #eee;
+  border-radius: 10px;
+  display: block;
+  width: 20%;
+  height: 40px;
+  border: 0;
+  cursor: pointer;
 }
 
 .lecture_button_voltar:hover {
-    background-position: right center;
-    color: #fff;
-    text-decoration: none;
+  background-position: right center;
+  color: #fff;
+  text-decoration: none;
 }
 
 .lecture_article_cadastro_and_voltar {
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-start;
-    margin: 10px 10px 10px 3%;
-    width: 100%;
-    max-width: 1000px;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  margin: 10px 10px 10px 3%;
+  width: 100%;
+  max-width: 1000px;
 }
 
 .lecture_table {
-    width: 100%;
-    border-collapse: collapse;
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+  width: 100%;
+  border-collapse: collapse;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
 }
 
 .lecture_table_thead {
-    background-color: #f2f2f2;
+  background-color: #f2f2f2;
 }
 
 .lecture_table_tr {
-    border-bottom: 1px solid #ddd;
+  border-bottom: 1px solid #ddd;
 }
 
 .lecture_table_th {
-    padding: 8px;
-    text-align: center;
+  padding: 8px;
+  text-align: center;
 }
 
 .lecture_table_td {
-    padding: 8px;
-    text-align: center;
+  padding: 8px;
+  text-align: center;
 }
 
 .lecture_table_td_actions {
-    display: flex;
-    padding: 8px;
-    flex-direction: row;
-    width: 100%;
-    justify-content: center;
+  display: flex;
+  padding: 8px;
+  flex-direction: row;
+  width: 100%;
+  justify-content: center;
 }
 
 .lecture_button_editar {
-    background-image: linear-gradient(to right, #2753e5 0%, #5542cb 51%, #357a94 100%);
-    text-transform: uppercase;
-    transition: 0.5s;
-    background-size: 200% auto;
-    color: white;
-    box-shadow: 0 0 20px #eee;
-    border-radius: 10px;
-    display: block;
-    border: 0;
-    cursor: pointer;
-    margin: 0 0.5rem;
-    width: 15%;
-    height: 40px;
+  background-image: linear-gradient(to right, #2753e5 0%, #5542cb 51%, #357a94 100%);
+  text-transform: uppercase;
+  transition: 0.5s;
+  background-size: 200% auto;
+  color: white;
+  box-shadow: 0 0 20px #eee;
+  border-radius: 10px;
+  display: block;
+  border: 0;
+  cursor: pointer;
+  margin: 0 0.5rem;
+  width: 15%;
+  height: 40px;
 }
 
 .lecture_button_editar:hover {
-    background-position: right center; /* change the direction of the change here */
-    color: #fff;
-    text-decoration: none;
+  background-position: right center; /* change the direction of the change here */
+  color: #fff;
+  text-decoration: none;
 }
 
 .lecture_button_selecionar {
-    background-image: linear-gradient(to right, #27e59c 0%, #2e7893 51%, #1c546b 100%);
-    text-transform: uppercase;
-    transition: 0.5s;
-    background-size: 200% auto;
-    color: white;
-    box-shadow: 0 0 20px #eee;
-    border-radius: 10px;
-    display: block;
-    border: 0;
-    cursor: pointer;
-    margin: 0 0.5rem;
-    width: 20%;
-    height: 40px;
+  background-image: linear-gradient(to right, #27e59c 0%, #2e7893 51%, #1c546b 100%);
+  text-transform: uppercase;
+  transition: 0.5s;
+  background-size: 200% auto;
+  color: white;
+  box-shadow: 0 0 20px #eee;
+  border-radius: 10px;
+  display: block;
+  border: 0;
+  cursor: pointer;
+  margin: 0 0.5rem;
+  width: 20%;
+  height: 40px;
 }
 
 .lecture_button_selecionar:hover {
-    background-position: right center; /* change the direction of the change here */
-    color: #fff;
-    text-decoration: none;
+  background-position: right center; /* change the direction of the change here */
+  color: #fff;
+  text-decoration: none;
 }
 
 .lecture_button_excluir {
-    background-image: linear-gradient(to right, #e52d27 0%, #b31217 51%, #e52d27 100%);
-    text-transform: uppercase;
-    transition: 0.5s;
-    background-size: 200% auto;
-    color: white;
-    box-shadow: 0 0 20px #eee;
-    border-radius: 10px;
-    display: block;
-    border: 0;
-    cursor: pointer;
-    margin: 0 0.5rem;
-    width: 15%;
-    height: 40px;
+  background-image: linear-gradient(to right, #e52d27 0%, #b31217 51%, #e52d27 100%);
+  text-transform: uppercase;
+  transition: 0.5s;
+  background-size: 200% auto;
+  color: white;
+  box-shadow: 0 0 20px #eee;
+  border-radius: 10px;
+  display: block;
+  border: 0;
+  cursor: pointer;
+  margin: 0 0.5rem;
+  width: 15%;
+  height: 40px;
 }
 
 .lecture_button_excluir:hover {
-    background-position: right center; /* change the direction of the change here */
-    color: #fff;
-    text-decoration: none;
+  background-position: right center; /* change the direction of the change here */
+  color: #fff;
+  text-decoration: none;
 }

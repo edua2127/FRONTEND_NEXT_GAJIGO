@@ -1,16 +1,16 @@
 export type FormRegister = {
-    name: string
-    username: string
-    email: string
-    password: string
+  name: string
+  username: string
+  email: string
+  password: string
 }
 
 export type TokenResponse = {
-    access_token: string
-    refresh_token: string
+  access_token: string
+  refresh_token: string
 }
 
 export type FormLogin = {
-    username: string
-    password: string
+  username: string
+  password: string
 }
