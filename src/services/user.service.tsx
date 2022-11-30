@@ -4,10 +4,6 @@ import { FormLogin, FormRegister, TokenResponse } from '@/types/auth.types'
 import { AbstractService } from '@/services/abstract.service'
 import { User, UserCollection } from '@/types/user.types'
 import { UserClient } from '@/client/user.client'
-import type { RootState } from '../store/store'
-
-import { useDispatch, useSelector } from 'react-redux'
-import { editaUsername, editaPassword } from '../slice/geralSlice'
 
 class UserService extends AbstractService<User, UserCollection> {
   constructor() {
@@ -19,24 +15,22 @@ class UserService extends AbstractService<User, UserCollection> {
     return cookies.get('token')
   }
 
-  public login(login: FormLogin) {
-    return new UserClient().login(login.username, login.password).then((user: TokenResponse) => {
-      const cookies = new Cookie()
-      cookies.set('token', user.access_token)
-      return user
-    })
+  public async login(login: FormLogin) {
+    const tokenResponse: TokenResponse = await new UserClient().login(
+      login.username,
+      login.password,
+    )
+    const cookies = new Cookie()
+    cookies.set('token', tokenResponse.access_token)
+    return tokenResponse
   }
 
-  public getCorrentUser() {
-    return new UserClient().getCorrentUser().then((user: User) => {
-      return user
-    })
+  public async getCorrentUser() {
+    return await new UserClient().getCurrentUser()
   }
 
-  public register(user: FormRegister) {
-    return new UserClient().register(user).then((user: FormRegister) => {
-      return user
-    })
+  public async register(user: FormRegister) {
+    return await new UserClient().register(user)
   }
 
   public logout() {

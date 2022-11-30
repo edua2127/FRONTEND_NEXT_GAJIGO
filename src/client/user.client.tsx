@@ -16,7 +16,7 @@ export class UserClient extends AbstractClient<User, UserCollection> {
     return this.fetchEndpoint('/register', user, {}, 'POST')
   }
 
-  public getCorrentUser(): Promise<any> {
+  public getCurrentUser(): Promise<any> {
     const token: string = UserService.getAuthenticatedToken()
 
     return this.fetchFromURL(
