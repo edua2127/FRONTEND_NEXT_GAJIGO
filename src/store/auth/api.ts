@@ -29,9 +29,9 @@ export const api = baseApi.injectEndpoints({
       },
     }),
 
-    register: build.mutation<User, FormRegister>({
+    signUp: build.mutation<User, FormRegister>({
       query: (body) => ({
-        url: `users/register`,
+        url: `users`,
         method: 'POST',
         body,
       }),
@@ -39,4 +39,4 @@ export const api = baseApi.injectEndpoints({
   }),
 })
 
-export const { useGetCurrentUserQuery, useLoginMutation, useRegisterMutation } = api
+export const { useGetCurrentUserQuery, useLoginMutation, useSignUpMutation } = api

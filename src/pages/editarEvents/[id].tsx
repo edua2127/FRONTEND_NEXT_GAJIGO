@@ -15,12 +15,9 @@ const EditarEvento: NextPage = () => {
     attendanceMode: '',
     interval: { startDate: '', endDate: '' },
     owner: '',
-    active: true,
     description: '',
     status: '',
     location: '',
-    id: 0,
-    _links: { events: { href: '' }, self: { href: '' } },
   })
 
   function resgataOsDadosDoEvento() {

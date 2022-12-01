@@ -7,9 +7,10 @@ import { TextField } from '@mui/material'
 import Button from '@mui/material/Button'
 import { useLoginMutation } from '@/store/auth/api'
 import { useEffect } from 'react'
+
 const Login: NextPage = () => {
+  const [login, { isSuccess }] = useLoginMutation()
   const router = useRouter()
-  const [login, { data, isSuccess }] = useLoginMutation()
 
   const [loginData, setLoginData] = React.useState<FormLogin>({
     username: '',
@@ -28,11 +29,11 @@ const Login: NextPage = () => {
   }
 
   useEffect(() => {
-    if (data) {
+    if (isSuccess) {
       const returnUrl = router.query.returnUrl?.toString() || '/auth/events'
       router.push(returnUrl)
     }
-  }, [data, isSuccess])
+  }, [isSuccess])
 
   return (
     <div className={style.login_body}>
@@ -66,6 +67,7 @@ const Login: NextPage = () => {
             </label>
           </article>
           <article className={style.login_article_button}>
+            <Button href='/auth/register'>Sign Up</Button>
             <Button className={style.login_button} variant='contained' onClick={handleSubmit}>
               Login
             </Button>

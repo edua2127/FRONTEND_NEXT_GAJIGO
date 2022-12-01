@@ -5,7 +5,6 @@ import UserService from '@/services/user.service'
 import EventService from '@/services/event.service'
 import { Event } from '@/types/event.types'
 import AppLayout from '@/layout/AppLayout'
-import Router from 'next/router'
 
 const CadastroEvents: NextPage = () => {
   const [name, setName] = React.useState('')
