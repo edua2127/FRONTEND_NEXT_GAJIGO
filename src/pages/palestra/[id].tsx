@@ -77,6 +77,12 @@ const Palestra: NextPage = () => {
                         <td className={style.lecture_table_td_actions}>
                           <button
                             className={style.lecture_button_editar}
+                            onClick={() => Router.push(`/display-totem/${id}`)}
+                          >
+                            Totem
+                          </button>
+                          <button
+                            className={style.lecture_button_editar}
                             onClick={() => Router.push(`/editarPalestra/${id}`)}
                           >
                             Editar
