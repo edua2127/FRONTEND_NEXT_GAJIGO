@@ -30,6 +30,7 @@ const Totem: NextPage = () => {
       {router.isReady && (
         <QRCode value={process.env.NEXT_PUBLIC_FRONTEND_URL + 'totem/' + lectureId} />
       )}
+      <a href={`/display-totem/${lectureId}/participants`} />
     </div>
   )
 }
