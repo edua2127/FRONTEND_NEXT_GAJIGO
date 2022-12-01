@@ -7,9 +7,11 @@ import TagService from '@/services/tag.service'
 import AppLayout from '@/layout/AppLayout'
 
 const CadastroTags: NextPage = () => {
-  const [tag, setTag] = useState<Tag>(new Tag())
+  // @ts-ignore
+  const [tag, setTag] = useState<Tag>({name: '', description: '', active: true, created: new Date(), updated: new Date(), removed: new Date(), taggedLectures: []})
 
   function cadastrar() {
+
     TagService.create(tag)
       .then(() => {
         console.log('cadastro realizado com sucesso')

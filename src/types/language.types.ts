@@ -12,6 +12,7 @@ export class Language implements AbstractEntity {
   name!: string
   active!: boolean
   _links!: LanguageLinks
+  
 }
 
 export interface LanguageCollection extends CollectionResource<Language> {

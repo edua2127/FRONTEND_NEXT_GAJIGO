@@ -10,7 +10,7 @@ import AppLayout from '@/layout/AppLayout'
 const EditarEvento: NextPage = () => {
   const router = useRouter()
   const { id } = router.query
-  const [event, setEvent] = useState<Event>(new Event())
+  const [event, setEvent] = useState<Event>({name: '', attendanceMode: '', interval: {startDate: '', endDate: ''}, owner: '', active:true, description: '', status: '', location: '', id: 0, _links: {events: {href: ''}, self: {href: ''}}})
 
   function resgataOsDadosDoEvento() {
     const url: ApiLink = new ApiLinkClass()

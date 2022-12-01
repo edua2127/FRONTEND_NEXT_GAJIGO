@@ -67,6 +67,8 @@ const Tags: NextPage = () => {
               <tbody>
                 {tags.length > 0 &&
                   tags.map((tag) => {
+
+                    const id = Number(tag._links.self.href.split('/').pop())
                     return (
                       <tr key={tag.id} className={style.room_table_tr}>
                         <td className={style.room_table_td}>{tag.name}</td>
@@ -75,13 +77,13 @@ const Tags: NextPage = () => {
                         <td className={style.room_table_td_actions}>
                           <button
                             className={style.room_button_editar}
-                            onClick={() => Router.push(`/editarTags/${tag.id}`)}
+                            onClick={() => Router.push(`/editarTags/${id}`)}
                           >
                             Editar
                           </button>
                           <button
                             className={style.room_button_excluir}
-                            onClick={() => excluirTag(tag.id)}
+                            onClick={() => excluirTag(id)}
                           >
                             Excluir
                           </button>

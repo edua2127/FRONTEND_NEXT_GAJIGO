@@ -12,7 +12,7 @@ import { useListEventsQuery } from '@/store/events/api'
 const EventPage: NextPage = () => {
   const [idCorrentUser, setUrlCorrentUser] = useState<number>(0)
 
-  const { data: events } = useListEventsQuery(null)
+  const [events, setEvents] = useState<Event[]>([])
 
   async function getEvents() {
     const url: ApiLink = new ApiLinkClass()
@@ -21,6 +21,7 @@ const EventPage: NextPage = () => {
 
     EventService.getAll(url).then((response) => {
       console.log(response._embedded.events)
+      setEvents(response._embedded.events)
     })
   }
 
@@ -91,6 +92,8 @@ const EventPage: NextPage = () => {
 
                     const statusEvent = statusEventLocal[event.status]
                     const description = event.description
+                    const id = Number(event._links.self.href.split('/').pop())
+
 
                     return (
                       <tr key={event.id} className={style.events_table_tr}>
@@ -103,19 +106,19 @@ const EventPage: NextPage = () => {
                         <td className={style.events_table_td_actions}>
                           <button
                             className={style.events_button_selecionar}
-                            onClick={() => Router.push(`/salas/${event.id}`)}
+                            onClick={() => Router.push(`/salas/${id}`)}
                           >
                             selecionar
                           </button>
                           <button
                             className={style.events_button_editar}
-                            onClick={() => Router.push(`/editarEvents/${event.id}`)}
+                            onClick={() => Router.push(`/editarEvents/${id}`)}
                           >
                             Editar
                           </button>
                           <button
                             className={style.events_button_excluir}
-                            onClick={() => deleteEvents(event.id)}
+                            onClick={() => deleteEvents(id)}
                           >
                             Excluir
                           </button>

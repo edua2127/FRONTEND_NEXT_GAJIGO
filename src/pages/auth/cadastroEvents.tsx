@@ -16,13 +16,14 @@ const CadastroEvents: NextPage = () => {
   const [statusDoEvento, setStatusDoEvento] = React.useState('')
   const [owner, setOwner] = React.useState('')
   const [location, setLocation] = React.useState('')
+  
   function cadastroEvento() {
     const evento = criaEvento()
     console.log(evento)
     EventService.create(evento)
       .then(() => {
         console.log('Evento criado com sucesso')
-        Router.push('/auth/events')
+        console.log(evento)
       })
       .catch((error) => {
         console.log('Erro ao criar evento: ' + error)
@@ -32,17 +33,26 @@ const CadastroEvents: NextPage = () => {
   function criaEvento() {
     // @ts-ignore
     const evento: Event = {
-      name: name,
-      description: description,
+      name: '',
+      description: '',
       interval: {
-        startDate: dateDeInicio,
-        endDate: dateDeFim,
+        startDate: '',
+        endDate: '',
       },
-      attendanceMode: modoDeAtendimento,
-      status: statusDoEvento,
-      owner: owner,
-      location: location,
+      attendanceMode: '',
+      status: '',
+      owner: '',
+      location: '',
     }
+
+    evento.name = name
+    evento.description = description
+    evento.interval.startDate = dateDeInicio
+    evento.interval.endDate = dateDeFim
+    evento.attendanceMode = modoDeAtendimento
+    evento.status = statusDoEvento
+    evento.owner = owner
+    evento.location = location
     return evento
   }
 
