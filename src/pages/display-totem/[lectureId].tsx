@@ -7,6 +7,7 @@ import { useEffect } from 'react'
 import { useGetLectureByIdQuery } from '@/store/lectures/api'
 import { skipToken } from '@reduxjs/toolkit/dist/query'
 import QRCode from 'react-qr-code'
+import Link from 'next/link'
 
 const Totem: NextPage = () => {
   const router = useRouter()
@@ -30,7 +31,7 @@ const Totem: NextPage = () => {
       {router.isReady && (
         <QRCode value={process.env.NEXT_PUBLIC_FRONTEND_URL + 'totem/' + lectureId} />
       )}
-      <a href={`/display-totem/${lectureId}/participants`} />
+      <Link href={`/display-totem/${lectureId}/participants`}>PARTICIPANTES</Link>
     </div>
   )
 }

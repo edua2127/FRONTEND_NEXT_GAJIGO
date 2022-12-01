@@ -27,7 +27,7 @@ const Totem: NextPage = () => {
       return skipToken
     }
 
-    return process.env.NEXT_PUBLIC_API_URL + `lectures/${lectureId}/participants`
+    return process.env.NEXT_PUBLIC_API_URL + `/lectures/${lectureId}/participants`
   }
 
   const { data: participants } = useListUsersQuery(
