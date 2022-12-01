@@ -11,7 +11,7 @@ import {
 const endpoint = 'lectures'
 
 export const { useGetLectureByIdQuery } = injectGetById<Lecture>('getLectureById', endpoint)
-export const { useGetLectureByUrlQuery } = injectGetByUrl<Lecture>('getLectureByUrl', endpoint)
+export const { useGetLectureByUrlQuery } = injectGetByUrl<Lecture>('getLectureByUrl')
 export const { useListLecturesQuery } = injectGetAll<Lecture>('listLectures', endpoint)
 export const { useCreateLectureMutation } = injectCreate<Lecture>('createLecture', endpoint)
 export const { useUpdateLectureMutation } = injectUpdate<Lecture>('updateLecture', endpoint)

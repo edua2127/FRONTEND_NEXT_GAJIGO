@@ -36,4 +36,5 @@ export interface LectureCollectionResource extends CollectionResource<Lecture> {
 
 export interface LectureLinks extends AbstractLinks {
   lectures: ApiLink
+  participants: ApiLink
 }

@@ -46,10 +46,10 @@ const Login: NextPage = () => {
             <label className={style.login_label}>
               <TextField
                 className={style.login_input}
-                id={'username'}
+                id='username'
                 label='Username'
                 variant='outlined'
-                type={'text'}
+                type='text'
                 value={loginData.username}
                 onChange={(event) => setLoginData({ ...loginData, username: event.target.value })}
               />
@@ -57,17 +57,23 @@ const Login: NextPage = () => {
             <label className={style.login_label}>
               <TextField
                 className={style.login_input}
-                id={'password'}
+                id='password'
                 label='Password'
                 variant='outlined'
-                type={'password'}
+                type='password'
                 value={loginData.password}
                 onChange={(event) => setLoginData({ ...loginData, password: event.target.value })}
               />
             </label>
           </article>
           <article className={style.login_article_button}>
-            <Button href='/auth/register'>Sign Up</Button>
+            <Button
+              href={`/auth/register${
+                router.query.returnUrl ? `?returnUrl=${router.query.returnUrl}` : ''
+              }`}
+            >
+              Sign Up
+            </Button>
             <Button className={style.login_button} variant='contained' onClick={handleSubmit}>
               Login
             </Button>

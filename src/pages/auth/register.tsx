@@ -100,7 +100,13 @@ const SignUp: NextPage = () => {
             </label>
           </article>
           <article className={style.login_article_button}>
-            <Button href='/auth/login'>Back</Button>
+            <Button
+              href={`/auth/login${
+                router.query.returnUrl ? `?returnUrl=${router.query.returnUrl}` : ''
+              }`}
+            >
+              Sign Up
+            </Button>
             <Button className={style.login_button} variant='contained' onClick={handleSubmit}>
               Sign Up
             </Button>

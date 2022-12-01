@@ -11,7 +11,7 @@ import {
 const endpoint = 'events'
 
 export const { useGetEventByIdQuery } = injectGetById<Event>('getEventById', endpoint)
-export const { useGetEventByUrlQuery } = injectGetByUrl<Event>('getEventByUrl', endpoint)
+export const { useGetEventByUrlQuery } = injectGetByUrl<Event>('getEventByUrl')
 export const { useListEventsQuery } = injectGetAll<Event>('listEvents', endpoint)
 export const { useCreateEventMutation } = injectCreate<Event>('createEvent', endpoint)
 export const { useUpdateEventMutation } = injectUpdate<Event>('updateEvent', endpoint)

@@ -11,7 +11,7 @@ import {
 const endpoint = 'rooms'
 
 export const { useGetRoomByIdQuery } = injectGetById<Room>('getRoomById', endpoint)
-export const { useGetRoomByUrlQuery } = injectGetByUrl<Room>('getRoomByUrl', endpoint)
+export const { useGetRoomByUrlQuery } = injectGetByUrl<Room>('getRoomByUrl')
 export const { useListRoomsQuery } = injectGetAll<Room>('listRooms', endpoint)
 export const { useCreateRoomMutation } = injectCreate<Room>('createRoom', endpoint)
 export const { useUpdateRoomMutation } = injectUpdate<Room>('updateRoom', endpoint)

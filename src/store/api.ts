@@ -1,7 +1,6 @@
 import { fetchBaseQuery } from '@reduxjs/toolkit/dist/query'
 import { createApi } from '@reduxjs/toolkit/dist/query/react'
 import { RootState } from '.'
-import { EventCollectionResource } from '@/types/event.types'
 
 export const baseApi = createApi({
   baseQuery: fetchBaseQuery({
@@ -21,11 +20,36 @@ export const baseApi = createApi({
   endpoints: () => ({}),
 })
 
+const commonMethods = baseApi.injectEndpoints({
+  endpoints: (build) => ({
+    linkEntityToCollection: build.mutation<null, { url: string; entityLink: string }>({
+      query: ({ url, entityLink }) => ({
+        url,
+        body: entityLink,
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'text/uri-list',
+        },
+      }),
+    }),
+
+    linkIndividualEntity: build.mutation<null, { url: string; resource: string; entity: string }>({
+      query: ({ url, resource, entity }) => ({
+        url,
+        body: { [resource]: entity },
+        method: 'PATCH',
+      }),
+    }),
+  }),
+})
+
+export const { useLinkEntityToCollectionMutation, useLinkIndividualEntityMutation } = commonMethods
+
 export const injectGetById = <T>(name: string, endpoint: string) => {
   const entityApi = baseApi.injectEndpoints({
     endpoints: (build) => ({
       [name]: build.query<T, number>({
-        query: (id) => ({ url: endpoint + id }),
+        query: (id) => ({ url: endpoint + '/' + id }),
       }),
     }),
   })
@@ -33,7 +57,7 @@ export const injectGetById = <T>(name: string, endpoint: string) => {
   return entityApi
 }
 
-export const injectGetByUrl = <T>(name: string, endpoint: string) => {
+export const injectGetByUrl = <T>(name: string) => {
   const entityApi = baseApi.injectEndpoints({
     endpoints: (build) => ({
       [name]: build.query<T, string>({
@@ -63,7 +87,7 @@ export const injectUpdate = <T>(name: string, endpoint: string) => {
   const entityApi = baseApi.injectEndpoints({
     endpoints: (build) => ({
       [name]: build.mutation<T, { id: number; body: Partial<T> }>({
-        query: ({ id, body }) => ({ url: endpoint + id, method: 'PATCH', body }),
+        query: ({ id, body }) => ({ url: endpoint + '/' + id, method: 'PATCH', body }),
       }),
     }),
   })
@@ -76,6 +100,7 @@ export const injectCreate = <T>(name: string, endpoint: string) => {
     endpoints: (build) => ({
       [name]: build.mutation<T, Partial<T>>({
         query: (body) => ({ url: endpoint, body }),
+        method: 'POST',
       }),
     }),
   })
@@ -87,7 +112,7 @@ export const injectDelete = (name: string, endpoint: string) => {
   const entityApi = baseApi.injectEndpoints({
     endpoints: (build) => ({
       [name]: build.mutation<null, number>({
-        query: (id) => ({ url: endpoint + id, method: 'DELETE' }),
+        query: (id) => ({ url: endpoint + '/' + id, method: 'DELETE' }),
       }),
     }),
   })
