@@ -17,7 +17,25 @@ import AppLayout from '@/layout/AppLayout'
 const CadastroPalestra: NextPage = () => {
   const router = useRouter()
   const idRoom = router.query.id
-  const [lecture, setLecture] = useState<Lecture>(new Lecture())
+  // @ts-ignore
+  const [lecture, setLecture] = useState<Lecture>({
+    created: new Date(),
+    updated: new Date(),
+    removed: new Date(),
+    name: '',
+    description: '',
+    room: '',
+    event: '',
+    language: '',
+    tags: [],
+    interval: {
+      startDate: '',
+      endDate: '',
+    },
+    attendanceMode: '',
+    speakers: [],
+    participants: [],
+  })
   const [languages, setLanguages] = useState<Language[]>([])
   const [palestrantes, setPalestrantes] = useState<User[]>([])
   const [participantes, setParticipantes] = useState<User[]>([])

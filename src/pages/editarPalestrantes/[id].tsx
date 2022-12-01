@@ -9,8 +9,26 @@ import AppLayout from '@/layout/AppLayout'
 const EditarPalestrantes: NextPage = () => {
   const router = useRouter()
   const idPalestrante = router.query.id
-
-  const [user, setUser] = useState<User>(new User())
+  // @ts-ignore
+  const [user, setUser] = useState<User>({
+    created: new Date(),
+    updated: new Date(),
+    removed: new Date(),
+    name: '',
+    email: '',
+    password: '',
+    active: true,
+    username: '',
+    description: '',
+    documents: [],
+    admin: false,
+    organizes: [],
+    telephone: '',
+    participatesIn: [],
+    speaksIn: [],
+    authorities: [],
+    location: '',
+  })
 
   function getPalestrante() {
     const url: ApiLink = new ApiLinkClass()

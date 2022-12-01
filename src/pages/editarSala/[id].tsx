@@ -9,7 +9,13 @@ import AppLayout from '@/layout/AppLayout'
 const editarSala: NextPage = () => {
   const router = useRouter()
   const idSala = router.query.id
-  const [sala, setSala] = useState<Room>(new Room())
+  // @ts-ignore
+  const [sala, setSala] = useState<Room>({
+    name: '',
+    description: '',
+    event: '',
+    lectures: [],
+  })
 
   function getSala() {
     const url: ApiLink = new ApiLinkClass()

@@ -8,11 +8,17 @@ import AppLayout from '@/layout/AppLayout'
 const CadastrarSala: NextPage = () => {
   const router = useRouter()
   const { id } = router.query
-  const [room, setRoom] = useState<Room>(new Room())
+  // @ts-ignore
+  const [room, setRoom] = useState<Room>({
+    name: '',
+    description: '',
+    event: '',
+    lectures: [],
+  })
 
   function cadastrar() {
     RoomService.create(room)
-      .then((response) => {
+      .then(() => {
         console.log('cadastrado com sucesso')
         Router.back()
       })

@@ -72,7 +72,6 @@ const Palestrantes: NextPage = () => {
               <tbody>
                 {palestrantes.length > 0 &&
                   palestrantes.map((palestrante) => {
-
                     const id = Number(palestrante._links.self.href.split('/').pop())
                     return (
                       <tr key={palestrante.id} className={style.room_table_tr}>

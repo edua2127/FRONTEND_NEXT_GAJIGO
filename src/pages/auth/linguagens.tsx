@@ -63,6 +63,7 @@ const Linguagens: NextPage = () => {
               <tbody>
                 {linguagens.length > 0 &&
                   linguagens.map((linguagem) => {
+                    const id = Number(linguagem._links.self.href.split('/').pop())
                     return (
                       <tr key={linguagem.id} className={style.room_table_th}>
                         <td className={style.room_table_td}>{linguagem.name}</td>
@@ -70,13 +71,13 @@ const Linguagens: NextPage = () => {
                         <td className={style.room_table_td_actions}>
                           <button
                             className={style.room_button_editar}
-                            onClick={() => Router.push(`/editarLinguagens/${linguagem.id}`)}
+                            onClick={() => Router.push(`/editarLinguagens/${id}`)}
                           >
                             Editar
                           </button>
                           <button
                             className={style.room_button_excluir}
-                            onClick={() => excluirLinguagem(linguagem.id)}
+                            onClick={() => excluirLinguagem(id)}
                           >
                             Excluir
                           </button>

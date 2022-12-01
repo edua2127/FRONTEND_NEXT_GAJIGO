@@ -11,12 +11,29 @@ import { User } from '@/types/user.types'
 import UserService from '@/services/user.service'
 import LanguageService from '@/services/languages.service'
 import AppLayout from '@/layout/AppLayout'
-
+import TagService from '@/services/tag.service'
 const EditarPalestra: NextPage = () => {
   const router = useRouter()
   const idLecture = router.query.id
-
-  const [lecture, setLecture] = useState<Lecture>(new Lecture())
+  // @ts-ignore
+  const [lecture, setLecture] = useState<Lecture>({
+    created: new Date(),
+    updated: new Date(),
+    removed: new Date(),
+    name: '',
+    description: '',
+    room: '',
+    event: '',
+    language: '',
+    tags: [],
+    interval: {
+      startDate: '',
+      endDate: '',
+    },
+    attendanceMode: '',
+    speakers: [],
+    participants: [],
+  })
 
   const [languages, setLanguages] = useState<Language[]>([])
   const [palestrantes, setPalestrantes] = useState<User[]>([])

@@ -10,7 +10,16 @@ const EditarTag: NextPage = () => {
   const router = useRouter()
   const idTag = router.query.id
 
-  const [tag, setTag] = useState<Tag>(new Tag())
+  // @ts-ignore
+  const [tag, setTag] = useState<Tag>({
+    name: '',
+    description: '',
+    active: true,
+    created: new Date(),
+    updated: new Date(),
+    removed: new Date(),
+    taggedLectures: [],
+  })
 
   function getTag() {
     const url: ApiLink = new ApiLinkClass()
