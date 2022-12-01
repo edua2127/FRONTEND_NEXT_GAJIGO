@@ -94,7 +94,6 @@ const EventPage: NextPage = () => {
                     const description = event.description
                     const id = Number(event._links.self.href.split('/').pop())
 
-
                     return (
                       <tr key={event.id} className={style.events_table_tr}>
                         <td className={style.events_table_td}>{event.name}</td>

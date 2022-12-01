@@ -7,7 +7,26 @@ import UserService from '@/services/user.service'
 import AppLayout from '@/layout/AppLayout'
 
 const CadastroPalestrante: NextPage = () => {
-  const [user, setUser] = useState<User>(new User())
+  // @ts-ignore
+  const [user, setUser] = useState<User>({
+    created: new Date(),
+    updated: new Date(),
+    removed: new Date(),
+    name: '',
+    email: '',
+    password: '',
+    active: true,
+    username: '',
+    description: '',
+    documents: [],
+    admin: false,
+    organizes: [],
+    telephone: '',
+    participatesIn: [],
+    speaksIn: [],
+    authorities: [],
+    location: '',
+  })
 
   function cadastrar() {
     UserService.create(user)

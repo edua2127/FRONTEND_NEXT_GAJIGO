@@ -10,7 +10,15 @@ const EditarLinguagem: NextPage = () => {
   const router = useRouter()
   const idLinguagem = router.query.id
 
-  const [language, setLanguage] = useState<Language>({active: true, name: '', id: 0, _links: {self: {href: ''}}, created: new Date(), updated: new Date(), removed: new Date()})
+  const [language, setLanguage] = useState<Language>({
+    active: true,
+    name: '',
+    id: 0,
+    _links: { self: { href: '' } },
+    created: new Date(),
+    updated: new Date(),
+    removed: new Date(),
+  })
 
   function getLanguage() {
     const url: ApiLink = new ApiLinkClass()

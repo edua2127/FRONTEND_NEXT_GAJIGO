@@ -72,6 +72,8 @@ const Palestrantes: NextPage = () => {
               <tbody>
                 {palestrantes.length > 0 &&
                   palestrantes.map((palestrante) => {
+
+                    const id = Number(palestrante._links.self.href.split('/').pop())
                     return (
                       <tr key={palestrante.id} className={style.room_table_tr}>
                         <td className={style.room_table_td}>{palestrante.name}</td>
@@ -81,13 +83,13 @@ const Palestrantes: NextPage = () => {
                         <td className={style.room_table_td_actions}>
                           <button
                             className={style.room_button_editar}
-                            onClick={() => Router.push(`/editarPalestrantes/${palestrante.id}`)}
+                            onClick={() => Router.push(`/editarPalestrantes/${id}`)}
                           >
                             Editar
                           </button>
                           <button
                             className={style.room_button_excluir}
-                            onClick={() => excluirPalestrante(palestrante.id)}
+                            onClick={() => excluirPalestrante(id)}
                           >
                             Excluir
                           </button>

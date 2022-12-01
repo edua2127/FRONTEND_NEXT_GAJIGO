@@ -67,7 +67,6 @@ const Tags: NextPage = () => {
               <tbody>
                 {tags.length > 0 &&
                   tags.map((tag) => {
-
                     const id = Number(tag._links.self.href.split('/').pop())
                     return (
                       <tr key={tag.id} className={style.room_table_tr}>

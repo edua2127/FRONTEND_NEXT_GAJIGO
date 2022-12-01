@@ -16,7 +16,7 @@ const CadastroEvents: NextPage = () => {
   const [statusDoEvento, setStatusDoEvento] = React.useState('')
   const [owner, setOwner] = React.useState('')
   const [location, setLocation] = React.useState('')
-  
+
   function cadastroEvento() {
     const evento = criaEvento()
     console.log(evento)
