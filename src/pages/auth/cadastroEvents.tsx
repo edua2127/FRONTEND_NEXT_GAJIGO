@@ -30,18 +30,19 @@ const CadastroEvents: NextPage = () => {
   }
 
   function criaEvento() {
-    const evento = new Event()
-    evento.name = name
-    evento.attendanceMode = modoDeAtendimento
-    evento.interval.startDate = dateDeInicio
-    evento.interval.endDate = dateDeFim
-    evento.owner = owner
-    evento.active = true
-    evento.description = description
-    evento.owner = owner
-    evento.attendanceMode = modoDeAtendimento
-    evento.status = statusDoEvento
-    evento.location = location
+    // @ts-ignore
+    const evento: Event = {
+      name: name,
+      description: description,
+      interval: {
+        startDate: dateDeInicio,
+        endDate: dateDeFim,
+      },
+      attendanceMode: modoDeAtendimento,
+      status: statusDoEvento,
+      owner: owner,
+      location: location,
+    }
     return evento
   }
 
