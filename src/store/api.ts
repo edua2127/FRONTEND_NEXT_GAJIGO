@@ -99,8 +99,7 @@ export const injectCreate = <T>(name: string, endpoint: string) => {
   const entityApi = baseApi.injectEndpoints({
     endpoints: (build) => ({
       [name]: build.mutation<T, Partial<T>>({
-        query: (body) => ({ url: endpoint, body }),
-        method: 'POST',
+        query: (body) => ({ url: endpoint, body, method: 'POST' }),
       }),
     }),
   })
