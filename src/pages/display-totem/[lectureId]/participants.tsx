@@ -30,19 +30,38 @@ const Totem: NextPage = () => {
     return process.env.NEXT_PUBLIC_API_URL + `/lectures/${lectureId}/participants`
   }
 
-  const { data: participants } = useListUsersQuery(
-    getParticipantsUrl(),
-    { pollingInterval: 1000 }
-  )
+  const { data: participants } = useListUsersQuery(getParticipantsUrl(), { pollingInterval: 1000 })
 
   useEffect(() => {
     console.log(participants)
   }, [participants])
 
   return (
-    <div className={style.login_body}>
-      <h1 style={{ color: 'black' }}>CHECK-IN CONCLUIDO!</h1>
-    </div>
+    <section className={style.lecture_section}>
+    <article className={style.lecture_article_table}>
+    <table className={style.room_table}>
+      <thead className={style.room_table_thead}>
+        <tr className={style.room_table_tr}>
+          <th className={style.room_table_th}>Nome</th>
+          <th className={style.room_table_th}>Username</th>
+          <th className={style.room_table_th}>Email</th>
+        </tr>
+      </thead>
+      <tbody>
+        {participants && participants.length > 0 &&
+          participants.map((participant) => {
+            return (
+              <tr key={participant.id} className={style.room_table_tr}>
+                <td className={style.room_table_td}>{participant.name}</td>
+                <td className={style.room_table_td}>{participant.username}</td>
+                <td className={style.room_table_td}>{participant.email}</td>
+              </tr>
+            )
+          })}
+      </tbody>
+    </table>
+    </article>
+    </section>
   )
 }
 
