@@ -11,7 +11,7 @@ import Link from 'next/link'
 import Tabs from '@mui/material/Tabs'
 import Tab from '@mui/material/Tab'
 
-const Totem: NextPage = () => [ 
+const Totem: NextPage = () => { 
   const router = useRouter()
   const { lectureId } = router.query
 
@@ -63,6 +63,6 @@ const Totem: NextPage = () => [
       <Link href={`/display-totem/${lectureId}/participants`}>PARTICIPANTES</Link>
     </div>
   )
- ]
+ }
 
 export default Totem
