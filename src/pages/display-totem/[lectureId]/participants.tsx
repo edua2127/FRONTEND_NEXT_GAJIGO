@@ -1,5 +1,6 @@
 import type { NextPage } from 'next'
-import style from '@/styles/Login.module.css'
+
+import style from '@/styles/User.module.css'
 import { useLinkEntityToCollectionMutation } from '@/store/api'
 import { useGetCurrentUserQuery } from '@/store/auth/api'
 import { useRouter } from 'next/router'
@@ -45,39 +46,38 @@ const Totem: NextPage = () => {
   }
 
   return (
-    <div>
-      <Tabs value={1} onChange={handleTab}>
-        <LinkTab label='TOTEM' href={tabUrls[0]} />
-        <LinkTab label='PARTICIPANTS' href={tabUrls[1]} />
-      </Tabs>
-
-      <section className={style.lecture_section}>
-        <article className={style.lecture_article_table}>
-          <table className={style.room_table}>
-            <thead className={style.room_table_thead}>
-              <tr className={style.room_table_tr}>
-                <th className={style.room_table_th}>Nome</th>
-                <th className={style.room_table_th}>Username</th>
-                <th className={style.room_table_th}>Email</th>
-              </tr>
-            </thead>
-            <tbody>
-              {participants &&
-                participants.length > 0 &&
-                participants.map((participant) => {
-                  return (
-                    <tr key={participant.id} className={style.room_table_tr}>
-                      <td className={style.room_table_td}>{participant.name}</td>
-                      <td className={style.room_table_td}>{participant.username}</td>
-                      <td className={style.room_table_td}>{participant.email}</td>
-                    </tr>
-                  )
-                })}
-            </tbody>
-          </table>
-        </article>
-      </section>
-    </div>
+    <section className={style.lecture_section}>
+      <article className={style.participants_article_tabs}>
+        <Tabs value={1} onChange={handleTab}>
+          <LinkTab label='TOTEM' href={tabUrls[0]} />
+          <LinkTab label='PARTICIPANTS' href={tabUrls[1]} />
+        </Tabs>
+      </article>
+      <article className={style.lecture_article_table}>
+        <table className={style.room_table}>
+          <thead className={style.room_table_thead}>
+            <tr className={style.room_table_tr}>
+              <th className={style.room_table_th}>Nome</th>
+              <th className={style.room_table_th}>Username</th>
+              <th className={style.room_table_th}>Email</th>
+            </tr>
+          </thead>
+          <tbody>
+            {participants &&
+              participants.length > 0 &&
+              participants.map((participant) => {
+                return (
+                  <tr key={participant.id} className={style.room_table_tr}>
+                    <td className={style.room_table_td}>{participant.name}</td>
+                    <td className={style.room_table_td}>{participant.username}</td>
+                    <td className={style.room_table_td}>{participant.email}</td>
+                  </tr>
+                )
+              })}
+          </tbody>
+        </table>
+      </article>
+    </section>
   )
 }
 

@@ -3,6 +3,11 @@
   flex-direction: column;
 }
 
+.participants_article_tabs {
+  display: flex;
+  justify-content: space-around;
+}
+
 .room_article {
   margin: 10px auto;
   width: 100%;
