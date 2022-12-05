@@ -7,7 +7,6 @@ import UserService from '@/services/user.service'
 import AppLayout from '@/layout/AppLayout'
 
 const CadastroPalestrante: NextPage = () => {
-  // @ts-ignore
   const [user, setUser] = useState<User>({
     created: new Date(),
     updated: new Date(),

@@ -30,7 +30,6 @@ const CadastroEvents: NextPage = () => {
   }
 
   function criaEvento() {
-    // @ts-ignore
     const evento: Event = {
       name: '',
       description: '',

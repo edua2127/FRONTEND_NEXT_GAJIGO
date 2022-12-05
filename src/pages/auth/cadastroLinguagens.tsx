@@ -6,7 +6,6 @@ import { Language } from '@/types/language.types'
 import LanguagesService from '@/services/languages.service'
 import AppLayout from '@/layout/AppLayout'
 const CadastroLinguagens: NextPage = () => {
-  // @ts-ignore
   const [language, setLanguage] = useState<Language>({
     created: new Date(),
     updated: new Date(),

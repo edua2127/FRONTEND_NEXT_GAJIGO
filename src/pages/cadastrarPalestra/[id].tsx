@@ -17,7 +17,6 @@ import AppLayout from '@/layout/AppLayout'
 const CadastroPalestra: NextPage = () => {
   const router = useRouter()
   const idRoom = router.query.id
-  // @ts-ignore
   const [lecture, setLecture] = useState<Lecture>({
     created: new Date(),
     updated: new Date(),

@@ -7,8 +7,7 @@ import TagService from '@/services/tag.service'
 import AppLayout from '@/layout/AppLayout'
 
 const CadastroTags: NextPage = () => {
-  // @ts-ignore
-  const [tag, setTag] = useState<Tag>({
+  const [tag, setTag] = useState<Partial<Tag>>({
     name: '',
     description: '',
     active: true,

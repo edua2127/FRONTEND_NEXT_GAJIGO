@@ -9,7 +9,6 @@ import AppLayout from '@/layout/AppLayout'
 const editarSala: NextPage = () => {
   const router = useRouter()
   const idSala = router.query.id
-  // @ts-ignore
   const [sala, setSala] = useState<Room>({
     name: '',
     description: '',

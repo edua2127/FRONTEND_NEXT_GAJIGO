@@ -9,7 +9,6 @@ import AppLayout from '@/layout/AppLayout'
 const EditarPalestrantes: NextPage = () => {
   const router = useRouter()
   const idPalestrante = router.query.id
-  // @ts-ignore
   const [user, setUser] = useState<User>({
     created: new Date(),
     updated: new Date(),
