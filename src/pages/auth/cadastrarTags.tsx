@@ -1,10 +1,10 @@
 import type { NextPage } from 'next'
 import Router from 'next/router'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import style from '@/styles/cadastroLinguagens.module.css'
 import { Tag } from '@/types/tag.types'
-import TagService from '@/services/tag.service'
 import AppLayout from '@/layout/AppLayout'
+import { useCreateTagMutation } from '@/store/tags/api'
 
 const CadastroTags: NextPage = () => {
   const [tag, setTag] = useState<Partial<Tag>>({
@@ -17,16 +17,13 @@ const CadastroTags: NextPage = () => {
     taggedLectures: [],
   })
 
-  function cadastrar() {
-    TagService.create(tag)
-      .then(() => {
-        console.log('cadastro realizado com sucesso')
-        Router.push('/auth/tags')
-      })
-      .catch((error) => {
-        console.log(error)
-      })
-  }
+  const [saveTag, { isSuccess }] = useCreateTagMutation()
+
+  useEffect(() => {
+    if (isSuccess) {
+      Router.push('/auth/tags')
+    }
+  }, [isSuccess])
 
   return (
     <AppLayout title='Cadastro de Tags'>
@@ -64,7 +61,7 @@ const CadastroTags: NextPage = () => {
             >
               Voltar
             </button>
-            <button className={style.cadastro_palestra_button} onClick={cadastrar}>
+            <button className={style.cadastro_palestra_button} onClick={() => saveTag(tag)}>
               Cadastrar
             </button>
           </article>
