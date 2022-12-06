@@ -4,6 +4,7 @@ import style from '@/styles/CadastroEvents.module.css'
 import AppLayout from '@/layout/AppLayout'
 import { useCreateEventMutation } from '@/store/events/api'
 import { useGetCurrentUserQuery } from '@/store/auth/api'
+import Router from 'next/router'
 
 const CadastroEvents: NextPage = () => {
   const [name, setName] = React.useState('')
@@ -15,7 +16,7 @@ const CadastroEvents: NextPage = () => {
   const [owner, setOwner] = React.useState('')
   const [location, setLocation] = React.useState('')
 
-  const [saveEvent] = useCreateEventMutation()
+  const [saveEvent, { isSuccess }] = useCreateEventMutation()
   const { data: currentUser } = useGetCurrentUserQuery()
 
   const criaEvento = () => ({
@@ -30,6 +31,12 @@ const CadastroEvents: NextPage = () => {
     owner,
     location,
   })
+
+  useEffect(() => {
+    if (isSuccess) {
+      Router.push('/auth/events')
+    }
+  }, [isSuccess])
 
   useEffect(() => {
     setOwner('/' + currentUser?.id)
