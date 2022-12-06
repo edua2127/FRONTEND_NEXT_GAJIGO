@@ -11,14 +11,16 @@ import { useListTagsQuery } from '@/store/tags/api'
 import { useListLanguagesQuery } from '@/store/languages/api'
 import { convertQueryToNumberOrSkip } from '@/utils'
 import { useGetRoomByIdQuery } from '@/store/rooms/api'
+import roomService from '@/services/room.service'
 
+import { ApiLink, ApiLinkClass } from '@/types/api-link.types'
 const CadastroPalestra: NextPage = () => {
   const router = useRouter()
   const idRoom = router.query.id
   const [lecture, setLecture] = useState<Partial<Lecture>>({
     name: '',
     description: '',
-    room: `/${idRoom}`,
+    room: `${process.env.NEXT_PUBLIC_API_URL}/rooms/${idRoom}`,
     event: '',
     language: '',
     tags: [],
@@ -40,14 +42,24 @@ const CadastroPalestra: NextPage = () => {
   useEffect(() => {
     if (isSuccess) {
       Router.back()
+    } else {
+      console.log(lecture)
     }
   }, [isSuccess])
 
   useEffect(() => {
-    if (foundRoom && room) {
-      setLecture({ ...lecture, event: '/' + room.id })
-    }
-  }, [foundRoom, room])
+    const url: ApiLink = new ApiLinkClass()
+    url.href = `${process.env.NEXT_PUBLIC_API_URL}/rooms/${idRoom}/event`
+    roomService
+      .get(url)
+      .then((response) => {
+        // @ts-ignore
+        setLecture({ ...lecture, event: response._links.self.href })
+      })
+      .catch((error) => {
+        console.log(error)
+      })
+  }, [])
 
   const handleChangeDatadeInicio = (event: any) => {
     const startDate = event.target.value
@@ -71,6 +83,11 @@ const CadastroPalestra: NextPage = () => {
       // @ts-ignore
       interval: { ...lecture.interval, endDate: endDate === undefined ? '' : endDate },
     })
+  }
+
+  const cadastrarPalestra = () => {
+    saveLecture(lecture)
+    console.log(lecture)
   }
 
   return (
@@ -198,7 +215,7 @@ const CadastroPalestra: NextPage = () => {
             >
               Cancelar
             </button>
-            <button onClick={() => saveLecture(lecture)} className={style.cadastro_palestra_button}>
+            <button onClick={cadastrarPalestra} className={style.cadastro_palestra_button}>
               Cadastrar
             </button>
           </article>
