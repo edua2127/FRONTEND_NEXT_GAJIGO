@@ -8,6 +8,7 @@ import AppLayout from '@/layout/AppLayout'
 const CadastrarSala: NextPage = () => {
   const router = useRouter()
   const { id } = router.query
+  // @ts-ignore
   const [room, setRoom] = useState<Room>({
     name: '',
     description: '',
