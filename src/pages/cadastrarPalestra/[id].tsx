@@ -1,29 +1,24 @@
 import type { NextPage } from 'next'
 import Router, { useRouter } from 'next/router'
 import { Lecture } from '@/types/lecture.types'
-import LectureService from '@/services/lecture.service'
 import React, { useEffect, useState } from 'react'
 import style from '@/styles/CadastroPalestra.module.css'
-import { ApiLink, ApiLinkClass } from '@/types/api-link.types'
-import RoomService from '@/services/room.service'
-import { Language } from '@/types/language.types'
-import LanguageService from '@/services/languages.service'
-import { User } from '@/types/user.types'
-import UserService from '@/services/user.service'
-import TagService from '@/services/tag.service'
-import { Tag } from '@/types/tag.types'
 
 import AppLayout from '@/layout/AppLayout'
+import { useCreateLectureMutation } from '@/store/lectures/api'
+import { useListUsersQuery } from '@/store/users/api'
+import { useListTagsQuery } from '@/store/tags/api'
+import { useListLanguagesQuery } from '@/store/languages/api'
+import { convertQueryToNumberOrSkip } from '@/utils'
+import { useGetRoomByIdQuery } from '@/store/rooms/api'
+
 const CadastroPalestra: NextPage = () => {
   const router = useRouter()
   const idRoom = router.query.id
-  const [lecture, setLecture] = useState<Lecture>({
-    created: new Date(),
-    updated: new Date(),
-    removed: new Date(),
+  const [lecture, setLecture] = useState<Partial<Lecture>>({
     name: '',
     description: '',
-    room: '',
+    room: `/${idRoom}`,
     event: '',
     language: '',
     tags: [],
@@ -32,107 +27,50 @@ const CadastroPalestra: NextPage = () => {
       endDate: '',
     },
     attendanceMode: '',
-    speakers: [],
-    participants: [],
   })
-  const [languages, setLanguages] = useState<Language[]>([])
-  const [palestrantes, setPalestrantes] = useState<User[]>([])
-  const [participantes, setParticipantes] = useState<User[]>([])
-  const [tag, setTag] = useState<Tag[]>([])
 
-  function getEvent() {
-    const url: ApiLink = new ApiLinkClass()
-    url.href = `${process.env.NEXT_PUBLIC_API_URL}/rooms/${idRoom}/event`
-    RoomService.get(url)
-      .then((response) => {
-        setLecture({ ...lecture, event: response._links.self.href })
-      })
-      .catch((error) => {
-        console.log(error)
-      })
-  }
-
-  function getTags() {
-    const url: ApiLink = new ApiLinkClass()
-    url.href = `${process.env.NEXT_PUBLIC_API_URL}/tags`
-    TagService.getAll(url)
-      .then((response) => {
-        setTag(response._embedded.tags)
-      })
-      .catch((error) => {
-        console.log(error)
-      })
-  }
-
-  function getLanguages() {
-    const url: ApiLink = new ApiLinkClass()
-    url.href = `${process.env.NEXT_PUBLIC_API_URL}/languages`
-    LanguageService.getAll(url)
-      .then((response) => {
-        setLanguages(response._embedded.languages)
-      })
-      .catch((error) => {
-        console.log(error)
-      })
-  }
-
-  function getPalestrantes() {
-    const url: ApiLink = new ApiLinkClass()
-    url.href = `${process.env.NEXT_PUBLIC_API_URL}/users`
-    UserService.getAll(url)
-      .then((response) => {
-        setPalestrantes(response._embedded.users.filter((user) => !user.admin))
-        setParticipantes(response._embedded.users.filter((user) => !user.admin))
-      })
-      .catch((error) => {
-        console.log(error)
-      })
-  }
-
-  function cadastrar() {
-    const data: Lecture = {
-      name: lecture.name,
-      description: lecture.description,
-      room: `${process.env.NEXT_PUBLIC_API_URL}/rooms/${idRoom}`,
-      event: lecture.event,
-      interval: lecture.interval,
-      active: true,
-      tags: lecture.tags,
-      language: lecture.language,
-      attendanceMode: lecture.attendanceMode,
-      speakers: lecture.speakers,
-      participants: lecture.participants,
-      id: lecture.id,
-      created: lecture.created,
-      updated: lecture.updated,
-      removed: lecture.removed,
-      _links: lecture._links,
-    }
-    console.log(data)
-    LectureService.create(data)
-      .then(() => {
-        console.log('cadastrado com sucesso')
-        Router.back()
-      })
-      .catch((error) => {
-        console.log(error)
-        console.log(data)
-      })
-  }
+  const [saveLecture, { isSuccess }] = useCreateLectureMutation()
+  const { data: room, isSuccess: foundRoom } = useGetRoomByIdQuery(
+    convertQueryToNumberOrSkip(router, idRoom),
+  )
+  const { data: lecturers } = useListUsersQuery(null)
+  const { data: languages } = useListLanguagesQuery(null)
+  const { data: tags } = useListTagsQuery(null)
 
   useEffect(() => {
-    getEvent()
-    getLanguages()
-    getPalestrantes()
-    getTags()
-  }, [idRoom])
+    if (isSuccess) {
+      Router.back()
+    }
+  }, [isSuccess])
+
+  useEffect(() => {
+    if (foundRoom && room) {
+      setLecture({ ...lecture, event: '/' + room.id })
+    }
+  }, [foundRoom, room])
 
   const handleChangeDatadeInicio = (event: any) => {
-    setLecture({ ...lecture, interval: { ...lecture.interval, startDate: event.target.value } })
+    const startDate = event.target.value
+
+    // Typescript complains about this code, claiming the other side of
+    // interval could be undefined. This seems to me to be a typescript
+    // bug as even if the typing was wrong it should complain about the
+    // current side as well.
+    setLecture({
+      ...lecture,
+      // @ts-ignore
+      interval: { ...lecture.interval, startDate: startDate === undefined ? '' : startDate },
+    })
   }
 
   const handleChangeDatadeFim = (event: any) => {
-    setLecture({ ...lecture, interval: { ...lecture.interval, endDate: event.target.value } })
+    const endDate = event.target.value
+
+    setLecture({
+      ...lecture,
+      // @ts-ignore
+      interval: { ...lecture.interval, endDate: endDate === undefined ? '' : endDate },
+    })
   }
 
   return (
@@ -181,7 +119,8 @@ const CadastroPalestra: NextPage = () => {
                 onChange={(e) => setLecture({ ...lecture, language: e.target.value })}
               >
                 <option value=''>Selecione</option>
-                {languages.length > 0 &&
+                {languages &&
+                  languages.length > 0 &&
                   languages.map((language, index) => {
                     return (
                       <option key={index} value={language._links.self.href}>
@@ -197,12 +136,13 @@ const CadastroPalestra: NextPage = () => {
               <span>Palestrante Inicial da Palestra</span>
               <select
                 className={style.cadastro_palestra_input}
-                value={lecture.speakers[0]}
+                value={lecture && lecture.speakers ? lecture.speakers[0] : ''}
                 onChange={(e) => setLecture({ ...lecture, speakers: [e.target.value] })}
               >
                 <option value=''>Selecione</option>
-                {palestrantes.length > 0 &&
-                  palestrantes.map((palestrante, index) => {
+                {lecturers &&
+                  lecturers.length > 0 &&
+                  lecturers.map((palestrante, index) => {
                     return (
                       <option key={index} value={palestrante._links.self.href}>
                         {palestrante.name}
@@ -215,12 +155,13 @@ const CadastroPalestra: NextPage = () => {
               <span>Tag inical</span>
               <select
                 className={style.cadastro_palestra_input}
-                value={lecture.tags[0]}
+                value={lecture && lecture.tags ? lecture.tags[0] : ''}
                 onChange={(e) => setLecture({ ...lecture, tags: [e.target.value] })}
               >
                 <option value=''>Selecione</option>
-                {tag.length > 0 &&
-                  tag.map((tag, index) => {
+                {tags &&
+                  tags.length > 0 &&
+                  tags.map((tag, index) => {
                     return (
                       <option key={index} value={tag._links.self.href}>
                         {tag.name}
@@ -236,7 +177,7 @@ const CadastroPalestra: NextPage = () => {
               <input
                 className={style.cadastro_palestra_input}
                 type='datetime-local'
-                value={lecture.interval.startDate}
+                value={lecture.interval?.startDate}
                 onChange={(e) => handleChangeDatadeInicio(e)}
               />
             </label>
@@ -245,29 +186,9 @@ const CadastroPalestra: NextPage = () => {
               <input
                 className={style.cadastro_palestra_input}
                 type='datetime-local'
-                value={lecture.interval.endDate}
+                value={lecture.interval?.endDate}
                 onChange={(e) => handleChangeDatadeFim(e)}
               />
-            </label>
-          </article>
-          <article className={style.cadastro_palestra_article}>
-            <label className={style.cadastro_palestra_label}>
-              <span>Participante inicial</span>
-              <select
-                className={style.cadastro_palestra_input_grande}
-                value={lecture.participants[0]}
-                onChange={(e) => setLecture({ ...lecture, participants: [e.target.value] })}
-              >
-                <option value=''>Selecione</option>
-                {participantes.length > 0 &&
-                  participantes.map((participante, index) => {
-                    return (
-                      <option key={index} value={participante._links.self.href}>
-                        {participante.name}
-                      </option>
-                    )
-                  })}
-              </select>
             </label>
           </article>
           <article className={style.cadastro_palestra_article_button}>
@@ -277,7 +198,7 @@ const CadastroPalestra: NextPage = () => {
             >
               Cancelar
             </button>
-            <button onClick={cadastrar} className={style.cadastro_palestra_button}>
+            <button onClick={() => saveLecture(lecture)} className={style.cadastro_palestra_button}>
               Cadastrar
             </button>
           </article>

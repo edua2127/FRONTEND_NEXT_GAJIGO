@@ -1,28 +1,18 @@
 import type { NextPage } from 'next'
 import Router from 'next/router'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import style from '@/styles/cadastroLinguagens.module.css'
-import { Language } from '@/types/language.types'
-import LanguagesService from '@/services/languages.service'
 import AppLayout from '@/layout/AppLayout'
+import { useCreateLanguageMutation } from '@/store/languages/api'
 const CadastroLinguagens: NextPage = () => {
-  const [language, setLanguage] = useState<Language>({
-    created: new Date(),
-    updated: new Date(),
-    removed: new Date(),
-    name: '',
-  })
+  const [name, setName] = useState('')
+  const [saveLanguage, { isSuccess }] = useCreateLanguageMutation()
 
-  function cadastrar() {
-    LanguagesService.create(language)
-      .then(() => {
-        console.log('cadastro realizado com sucesso')
-        Router.push('/auth/linguagens')
-      })
-      .catch((error) => {
-        console.log(error)
-      })
-  }
+  useEffect(() => {
+    if (isSuccess) {
+      Router.push('/auth/linguagens')
+    }
+  }, [isSuccess])
 
   return (
     <AppLayout title='Cadastro de Linguagens'>
@@ -35,8 +25,8 @@ const CadastroLinguagens: NextPage = () => {
                 type='text'
                 placeholder='Nome da Linguagem'
                 className={style.cadastro_palestra_input_grande}
-                value={language.name}
-                onChange={(e) => setLanguage({ ...language, name: e.target.value })}
+                value={name}
+                onChange={(e) => setName(e.target.value)}
               />
             </label>
           </article>
@@ -47,7 +37,10 @@ const CadastroLinguagens: NextPage = () => {
             >
               Voltar
             </button>
-            <button className={style.cadastro_palestra_button} onClick={cadastrar}>
+            <button
+              className={style.cadastro_palestra_button}
+              onClick={() => saveLanguage({ name })}
+            >
               Cadastrar
             </button>
           </article>

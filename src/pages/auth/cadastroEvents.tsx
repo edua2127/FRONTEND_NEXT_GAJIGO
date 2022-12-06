@@ -69,7 +69,7 @@ const CadastroEvents: NextPage = () => {
             <label className={style.cadastro_events_label}>
               <span>Data de Início</span>
               <input
-                value={startDate.toString()}
+                value={startDate}
                 onChange={(e) => setStartDate(e.target.value)}
                 type='datetime-local'
                 className={style.cadastro_events_input}
@@ -78,7 +78,7 @@ const CadastroEvents: NextPage = () => {
             <label className={style.cadastro_events_label}>
               <span>Data de Fim</span>
               <input
-                value={endDate.toString()}
+                value={endDate}
                 onChange={(e) => setEndDate(e.target.value)}
                 type='datetime-local'
                 className={style.cadastro_events_input}

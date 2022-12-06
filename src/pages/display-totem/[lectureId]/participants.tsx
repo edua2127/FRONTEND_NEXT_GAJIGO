@@ -1,36 +1,25 @@
 import type { NextPage } from 'next'
 
 import style from '@/styles/User.module.css'
-import { useLinkEntityToCollectionMutation } from '@/store/api'
-import { useGetCurrentUserQuery } from '@/store/auth/api'
 import { useRouter } from 'next/router'
 import { useEffect } from 'react'
-import { useGetLectureByIdQuery } from '@/store/lectures/api'
 import { skipToken } from '@reduxjs/toolkit/dist/query'
 import { useListUsersQuery } from '@/store/users/api'
 import Tabs from '@mui/material/Tabs'
 import { LinkTab } from '@/utils/LinkTab'
+import { convertQueryToNumberOrSkip } from '@/utils'
 
 const Totem: NextPage = () => {
   const router = useRouter()
   const { lectureId } = router.query
 
-  const getLectureIdFromRouter = () => {
-    if (!router.isReady || !lectureId || Array.isArray(lectureId)) {
-      return skipToken
-    }
-
-    const parsedLectureId = parseInt(lectureId, 10)
-    return isNaN(parsedLectureId) ? skipToken : parsedLectureId
-  }
-
   const getParticipantsUrl = () => {
-    const lectureId = getLectureIdFromRouter()
-    if (lectureId === skipToken) {
+    const id = convertQueryToNumberOrSkip(router, lectureId)
+    if (id === skipToken) {
       return skipToken
     }
 
-    return process.env.NEXT_PUBLIC_API_URL + `/lectures/${lectureId}/participants`
+    return process.env.NEXT_PUBLIC_API_URL + `/lectures/${id}/participants`
   }
 
   const { data: participants } = useListUsersQuery(getParticipantsUrl(), { pollingInterval: 1000 })
