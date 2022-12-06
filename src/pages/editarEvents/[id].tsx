@@ -10,6 +10,7 @@ import AppLayout from '@/layout/AppLayout'
 const EditarEvento: NextPage = () => {
   const router = useRouter()
   const { id } = router.query
+  // @ts-ignore
   const [event, setEvent] = useState<Event>({
     name: '',
     attendanceMode: '',

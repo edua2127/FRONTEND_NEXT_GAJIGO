@@ -9,7 +9,7 @@ import AppLayout from '@/layout/AppLayout'
 const EditarTag: NextPage = () => {
   const router = useRouter()
   const idTag = router.query.id
-
+  // @ts-ignore
   const [tag, setTag] = useState<Tag>({
     name: '',
     description: '',
