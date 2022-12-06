@@ -32,13 +32,6 @@ class UserService extends AbstractService<User, UserCollection> {
   public async register(user: FormRegister) {
     return await new UserClient().register(user)
   }
-
-  public logout() {
-    // remove user from local storage, publish null to user subscribers and redirect to login page
-    const cookies = new Cookie()
-    cookies.remove('token')
-    Router.push('/auth/login')
-  }
 }
 
 export default new UserService()

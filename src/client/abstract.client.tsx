@@ -1,9 +1,10 @@
 import Cookie from 'universal-cookie'
-import UserService from '@/services/user.service'
+// import UserService from '@/services/user.service'
 import axios, { AxiosInstance } from 'axios'
 import { ApiLink } from '@/types/api-link.types'
 import { CollectionResource } from '@/types/collection-resource.types'
 import { AbstractEntity } from '@/types/abstract-entity.types'
+import Router from 'next/router';
 
 export abstract class AbstractClient<
   T extends AbstractEntity, // Tipo singular do recurso (e.g. User, Event, Lecture)
@@ -67,9 +68,21 @@ export abstract class AbstractClient<
     return this.fetchFromURL(url, data, this.authHeader(), 'PUT')
   }
 
+  public getAuthenticatedToken() {
+    const cookies = new Cookie()
+    return cookies.get('token')
+  }
+
+  public logout() {
+    // remove user from local storage, publish null to user subscribers and redirect to login page
+    const cookies = new Cookie()
+    cookies.remove('token')
+    Router.push('/auth/login')
+  }
+
   private authHeader() {
     // return auth header with jwt if user is logged in and request is to the api url
-    const token: string = UserService.getAuthenticatedToken()
+    const token: string = this.getAuthenticatedToken()
     if (token) {
       return { Authorization: `Bearer ${token}` }
     } else {
@@ -108,8 +121,8 @@ export abstract class AbstractClient<
     const data = response.data
 
     if (!response.ok) {
-      if ([401, 403].includes(response.status) && UserService.getAuthenticatedToken()) {
-        UserService.logout()
+      if ([401, 403].includes(response.status) && this.getAuthenticatedToken()) {
+        this.logout()
       }
       const error = (data && data.message) || response.statusText
       return Promise.reject(error)
