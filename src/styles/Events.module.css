@@ -10,6 +10,8 @@
 
 .events_table_tr {
   border-bottom: 1px solid #ddd;
+  display: flex;
+  align-items: center;
 }
 
 .events_table_th {

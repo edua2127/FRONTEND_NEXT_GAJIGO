@@ -9,8 +9,7 @@ import AppLayout from '@/layout/AppLayout'
 import { useSelector } from 'react-redux'
 import { RootState } from '@/store'
 const CadastrarSala: NextPage = () => {
-  
-  const idEvent =  useSelector((state: RootState) => state).reduxId.idEvent
+  const idEvent = useSelector((state: RootState) => state).reduxId.idEvent
   // @ts-ignore
   const [room, setRoom] = useState<Room>({
     name: '',

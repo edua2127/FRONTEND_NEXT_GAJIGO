@@ -1,5 +1,5 @@
 import type { NextPage } from 'next'
-import Router, { useRouter } from 'next/router'
+import Router from 'next/router'
 import { ApiLink, ApiLinkClass } from '@/types/api-link.types'
 import { useEffect, useState } from 'react'
 import { Lecture } from '@/types/lecture.types'
@@ -9,7 +9,7 @@ import { useSelector } from 'react-redux'
 import { RootState } from '@/store'
 import AppLayout from '@/layout/AppLayout'
 const Palestra: NextPage = () => {
-  const idEvent =  useSelector((state: RootState) => state).reduxId.idEvent
+  const idEvent = useSelector((state: RootState) => state).reduxId.idEvent
   const [lectures, setLectures] = useState<Lecture[]>([])
 
   function getPalestrasDoEvento() {

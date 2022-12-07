@@ -9,7 +9,6 @@ import { useCreateLectureMutation } from '@/store/lectures/api'
 import { useListUsersQuery } from '@/store/users/api'
 import { useListTagsQuery } from '@/store/tags/api'
 import { useListLanguagesQuery } from '@/store/languages/api'
-
 import RoomService from '@/services/room.service'
 
 import { Room } from '@/types/room.types'
@@ -17,8 +16,7 @@ import { useSelector } from 'react-redux'
 import { RootState } from '@/store'
 import { ApiLink, ApiLinkClass } from '@/types/api-link.types'
 const CadastroPalestra: NextPage = () => {
-  
-  const idEvent =  useSelector((state: RootState) => state).reduxId.idEvent
+  const idEvent = useSelector((state: RootState) => state).reduxId.idEvent
 
   const [lecture, setLecture] = useState<Partial<Lecture>>({
     name: '',
@@ -36,13 +34,11 @@ const CadastroPalestra: NextPage = () => {
 
   const [saveLecture, { isSuccess }] = useCreateLectureMutation()
 
-
-
   const { data: lecturers } = useListUsersQuery(null)
   const { data: languages } = useListLanguagesQuery(null)
   const { data: tags } = useListTagsQuery(null)
   const [rooms, setRooms] = useState<Room[]>([])
-  
+
   function getSalas() {
     console.clear()
     const url: ApiLink = new ApiLinkClass()
@@ -59,7 +55,6 @@ const CadastroPalestra: NextPage = () => {
   useEffect(() => {
     getSalas()
   }, [idEvent])
-
 
   useEffect(() => {
     if (isSuccess) {

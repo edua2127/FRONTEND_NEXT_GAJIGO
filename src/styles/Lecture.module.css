@@ -81,6 +81,8 @@
 
 .lecture_table_tr {
   border-bottom: 1px solid #ddd;
+  display: flex;
+  align-items: center;
 }
 
 .lecture_table_th {

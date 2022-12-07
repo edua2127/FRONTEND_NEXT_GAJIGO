@@ -7,7 +7,6 @@ import EventService from '@/services/event.service'
 import { ApiLink, ApiLinkClass } from '@/types/api-link.types'
 import AppLayout from '@/layout/AppLayout'
 import { Event } from '@/types/event.types'
-import { useListEventsQuery } from '@/store/events/api'
 import { useDispatch } from 'react-redux'
 import { editaIdEvent } from '../store/reduxId/slice'
 const EventPage: NextPage = () => {
@@ -59,11 +58,14 @@ const EventPage: NextPage = () => {
     }
   }, [idCorrentUser])
 
-  function selecionarEvento(id: string) {
+  function salasDoEvento(id: string) {
     dispatch(editaIdEvent(id))
-    Router.push(`/salas/${id}`)
+    Router.push(`/salas`)
   }
-
+  function palestrasDoEvento(id: string) {
+    dispatch(editaIdEvent(id))
+    Router.push(`/palestras`)
+  }
   return (
     <AppLayout title='Eventos'>
       <main>
@@ -112,9 +114,15 @@ const EventPage: NextPage = () => {
                         <td className={style.events_table_td_actions}>
                           <button
                             className={style.events_button_selecionar}
-                            onClick={() => selecionarEvento(id.toString())}
+                            onClick={() => salasDoEvento(id.toString())}
                           >
-                            selecionar
+                            salas
+                          </button>
+                          <button
+                            className={style.events_button_selecionar}
+                            onClick={() => palestrasDoEvento(id.toString())}
+                          >
+                            palestras
                           </button>
                           <button
                             className={style.events_button_editar}
