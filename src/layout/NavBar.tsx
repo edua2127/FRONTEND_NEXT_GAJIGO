@@ -61,33 +61,37 @@ export const NavBar = ({ drawerWidth }: Props) => {
       </Toolbar>
 
       <Divider />
-      <Box sx={{ overflow: 'auto' }}>
+      <Box sx={{ overflow: 'auto', ml: 2 }}>
         <NavBarItem
           name='EVENTOS'
           links={[
-            { id: 1, name: 'cadastrar', url: 'cadastroEvents' },
-            { id: 2, name: 'ver', url: 'events' },
+            { id: 1, name: 'Cadastrar', url: 'cadastroEvents' },
+            { id: 2, name: 'Ver', url: 'events' },
+            { id: 3, name: 'Cronograma', url: '' },
+            { id: 4, name: 'Gerenciar Cargos', url: '' },
+            { id: 5, name: 'Listar Totens', url: '' },
           ]}
         />
         <NavBarItem
-          name='LINGUAGENS'
+          name='PALESTRAS'
           links={[
-            { id: 1, name: 'cadastrar', url: 'cadastroLinguagens' },
-            { id: 2, name: 'ver', url: 'linguagens' },
+            { id: 1, name: 'Cadastrar', url: 'cadastroPalestra' },
+            { id: 2, name: 'Ver', url: 'palestras' },
           ]}
         />
         <NavBarItem
-          name='TAGS'
+          name='SALAS'
           links={[
-            { id: 1, name: 'cadastrar', url: 'cadastrarTags' },
-            { id: 2, name: 'ver', url: 'tags' },
+            { id: 1, name: 'Cadastrar', url: 'cadastrarTags' },
+            { id: 2, name: 'Ver', url: 'tags' },
+            { id: 3, name: 'Cronograma', url: '' },
+            { id: 4, name: 'Totens da Sala', url: '' },
           ]}
         />
         <NavBarItem
-          name='PALESTRANTES'
+          name='USUARIOS'
           links={[
-            { id: 1, name: 'cadastrar', url: 'cadastroPalestrante' },
-            { id: 2, name: 'ver', url: 'palestrantes' },
+            { id: 1, name: 'Cadastrar', url: 'cadastroPalestrante' },
           ]}
         />
       </Box>
