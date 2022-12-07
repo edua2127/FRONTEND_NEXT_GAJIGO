@@ -8,8 +8,10 @@ import { ApiLink, ApiLinkClass } from '@/types/api-link.types'
 import AppLayout from '@/layout/AppLayout'
 import { Event } from '@/types/event.types'
 import { useListEventsQuery } from '@/store/events/api'
-
+import { useDispatch } from 'react-redux'
+import {editaIdEvent} from '../store/reduxId/slice'
 const EventPage: NextPage = () => {
+  const dispatch = useDispatch()
   const [idCorrentUser, setUrlCorrentUser] = useState<number>(0)
 
   const [events, setEvents] = useState<Event[]>([])
@@ -56,6 +58,11 @@ const EventPage: NextPage = () => {
       getEvents()
     }
   }, [idCorrentUser])
+
+  function selecionarEvento(id:string) {
+    dispatch(editaIdEvent(id))
+    Router.push(`/salas/${id}`)
+  }
 
   return (
     <AppLayout title='Eventos'>
@@ -105,7 +112,7 @@ const EventPage: NextPage = () => {
                         <td className={style.events_table_td_actions}>
                           <button
                             className={style.events_button_selecionar}
-                            onClick={() => Router.push(`/salas/${id}`)}
+                            onClick={() => selecionarEvento(id.toString())}
                           >
                             selecionar
                           </button>
