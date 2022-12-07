@@ -9,7 +9,7 @@ import { useSelector } from 'react-redux'
 import { RootState } from '@/store'
 import AppLayout from '@/layout/AppLayout'
 const Palestra: NextPage = () => {
-  const idEvent =  useSelector((state: RootState) => state).reduxId.idEvent
+  const idEvent = useSelector((state: RootState) => state).reduxId.idEvent
   const [lectures, setLectures] = useState<Lecture[]>([])
 
   function getPalestrasDoEvento() {
