@@ -12,7 +12,7 @@ const initialState: ReduxIdState = {
   idLecture: '',
   idRoom: '',
 }
-
+//teste
 export const reduxIdSlice = createSlice({
   name: 'reduxId',
   initialState,
@@ -25,7 +25,7 @@ export const reduxIdSlice = createSlice({
     },
     editaIdRoom: (state, action: PayloadAction<string>) => {
       state.idRoom = action.payload
-    },
+    }, 
   },
 })
 export const selectIdEvent = (state: RootState) => state.reduxId.idEvent

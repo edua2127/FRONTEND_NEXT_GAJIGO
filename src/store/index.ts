@@ -10,7 +10,7 @@ const combinedReducers = combineReducers({
   auth: authReducer,
   reduxId: reduxIdSlice.reducer,
 })
-
+// teste
 const store = configureStore({
   reducer: combinedReducers,
   middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(baseApi.middleware),
