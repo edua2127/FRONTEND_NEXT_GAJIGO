@@ -9,7 +9,7 @@ import AppLayout from '@/layout/AppLayout'
 import { Event } from '@/types/event.types'
 import { useListEventsQuery } from '@/store/events/api'
 import { useDispatch } from 'react-redux'
-import {editaIdEvent} from '../store/reduxId/slice'
+import { editaIdEvent } from '../store/reduxId/slice'
 const EventPage: NextPage = () => {
   const dispatch = useDispatch()
   const [idCorrentUser, setUrlCorrentUser] = useState<number>(0)
@@ -59,7 +59,7 @@ const EventPage: NextPage = () => {
     }
   }, [idCorrentUser])
 
-  function selecionarEvento(id:string) {
+  function selecionarEvento(id: string) {
     dispatch(editaIdEvent(id))
     Router.push(`/salas/${id}`)
   }

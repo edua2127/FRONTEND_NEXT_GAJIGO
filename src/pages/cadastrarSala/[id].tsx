@@ -5,9 +5,12 @@ import { useEffect, useState } from 'react'
 import style from '@/styles/CadastroSala.module.css'
 import RoomService from '@/services/room.service'
 import AppLayout from '@/layout/AppLayout'
+
+import { useSelector } from 'react-redux'
+import { RootState } from '@/store'
 const CadastrarSala: NextPage = () => {
-  const router = useRouter()
-  const { id } = router.query
+  
+  const idEvent =  useSelector((state: RootState) => state).reduxId.idEvent
   // @ts-ignore
   const [room, setRoom] = useState<Room>({
     name: '',
@@ -28,13 +31,13 @@ const CadastrarSala: NextPage = () => {
   }
 
   function getEvent() {
-    const event = `http://localhost:8080/api/events/${id}`
+    const event = `http://localhost:8080/api/events/${idEvent}`
     setRoom({ ...room, event: event })
   }
 
   useEffect(() => {
     getEvent()
-  }, [id])
+  }, [idEvent])
 
   return (
     <AppLayout title='Cadastrar da Sala'>

@@ -6,15 +6,22 @@ import style from '@/styles/Room.module.css'
 import RoomService from '@/services/room.service'
 import { ApiLink, ApiLinkClass } from '@/types/api-link.types'
 import AppLayout from '@/layout/AppLayout'
+import { useSelector } from 'react-redux'
+import { RootState } from '@/store'
 const Salas: NextPage = () => {
-  const router = useRouter()
-  const idEvento = router.query.id
+  const idEvent = useSelector((state: RootState) => state).reduxId.idEvent
   const [salas, setSalas] = useState<Room[]>([])
+
+  useEffect(() => {
+    if (idEvent === '') {
+      Router.push('/events')
+    }
+  }, [idEvent])
 
   function getSalas() {
     console.clear()
     const url: ApiLink = new ApiLinkClass()
-    url.href = `${process.env.NEXT_PUBLIC_API_URL}/events/${idEvento}/rooms`
+    url.href = `${process.env.NEXT_PUBLIC_API_URL}/events/${idEvent}/rooms`
     RoomService.getAll(url)
       .then((response) => {
         setSalas(response._embedded.rooms)
@@ -26,7 +33,7 @@ const Salas: NextPage = () => {
 
   useEffect(() => {
     getSalas()
-  }, [idEvento])
+  }, [idEvent])
 
   function excluirSala(id) {
     const url: ApiLink = new ApiLinkClass()
@@ -48,7 +55,7 @@ const Salas: NextPage = () => {
           <article className={style.room_article_cadastro_and_listar}>
             <button
               className={style.room_button_cadastrar}
-              onClick={() => Router.push(`/cadastrarSala/${idEvento}`)}
+              onClick={() => Router.push(`/cadastrarSala/${idEvent}`)}
             >
               Cadastrar Sala
             </button>

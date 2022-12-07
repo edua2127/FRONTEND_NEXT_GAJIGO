@@ -5,16 +5,16 @@ import { useEffect, useState } from 'react'
 import { Lecture } from '@/types/lecture.types'
 import style from '@/styles/Lecture.module.css'
 import LectureService from '@/services/lecture.service'
-
+import { useSelector } from 'react-redux'
+import { RootState } from '@/store'
 import AppLayout from '@/layout/AppLayout'
 const Palestra: NextPage = () => {
-  const router = useRouter()
-  const idSala = router.query.id
+  const idEvent =  useSelector((state: RootState) => state).reduxId.idEvent
   const [lectures, setLectures] = useState<Lecture[]>([])
 
-  function getPalestrasDaSala() {
+  function getPalestrasDoEvento() {
     const url: ApiLink = new ApiLinkClass()
-    url.href = `${process.env.NEXT_PUBLIC_API_URL}/rooms/${idSala}/lectures`
+    url.href = `${process.env.NEXT_PUBLIC_API_URL}/events/${idEvent}/lectures`
     LectureService.getAll(url)
       .then((response) => {
         setLectures(response._embedded.lectures)
@@ -29,7 +29,7 @@ const Palestra: NextPage = () => {
     url.href = `${process.env.NEXT_PUBLIC_API_URL}/lectures/${id}`
     LectureService.delete(url)
       .then(() => {
-        getPalestrasDaSala()
+        getPalestrasDoEvento()
       })
       .catch((error) => {
         console.log(error)
@@ -37,17 +37,17 @@ const Palestra: NextPage = () => {
       })
   }
   useEffect(() => {
-    getPalestrasDaSala()
-  }, [idSala])
+    getPalestrasDoEvento()
+  }, [idEvent])
 
   return (
-    <AppLayout title='Palestras da Sala'>
+    <AppLayout title='Palestras do Evento'>
       <main>
         <section className={style.lecture_section}>
           <article className={style.lecture_article_cadastro_and_voltar}>
             <button
               className={style.lecture_button_cadastrar}
-              onClick={() => Router.push(`/cadastrarPalestra/${idSala}`)}
+              onClick={() => Router.push(`/cadastrarPalestra/${idEvent}`)}
             >
               Cadastrar Palestra
             </button>

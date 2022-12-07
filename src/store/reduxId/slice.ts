@@ -25,7 +25,7 @@ export const reduxIdSlice = createSlice({
     },
     editaIdRoom: (state, action: PayloadAction<string>) => {
       state.idRoom = action.payload
-    }, 
+    },
   },
 })
 export const selectIdEvent = (state: RootState) => state.reduxId.idEvent

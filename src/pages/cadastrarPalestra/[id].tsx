@@ -9,18 +9,21 @@ import { useCreateLectureMutation } from '@/store/lectures/api'
 import { useListUsersQuery } from '@/store/users/api'
 import { useListTagsQuery } from '@/store/tags/api'
 import { useListLanguagesQuery } from '@/store/languages/api'
-import { convertQueryToNumberOrSkip } from '@/utils'
-import { useGetRoomByIdQuery } from '@/store/rooms/api'
-import roomService from '@/services/room.service'
 
+import RoomService from '@/services/room.service'
+
+import { Room } from '@/types/room.types'
+import { useSelector } from 'react-redux'
+import { RootState } from '@/store'
 import { ApiLink, ApiLinkClass } from '@/types/api-link.types'
 const CadastroPalestra: NextPage = () => {
-  const router = useRouter()
-  const idRoom = router.query.id
+  
+  const idEvent =  useSelector((state: RootState) => state).reduxId.idEvent
+
   const [lecture, setLecture] = useState<Partial<Lecture>>({
     name: '',
     description: '',
-    room: `${process.env.NEXT_PUBLIC_API_URL}/rooms/${idRoom}`,
+    room: '',
     event: '',
     language: '',
     tags: [],
@@ -32,12 +35,31 @@ const CadastroPalestra: NextPage = () => {
   })
 
   const [saveLecture, { isSuccess }] = useCreateLectureMutation()
-  const { data: room, isSuccess: foundRoom } = useGetRoomByIdQuery(
-    convertQueryToNumberOrSkip(router, idRoom),
-  )
+
+
+
   const { data: lecturers } = useListUsersQuery(null)
   const { data: languages } = useListLanguagesQuery(null)
   const { data: tags } = useListTagsQuery(null)
+  const [rooms, setRooms] = useState<Room[]>([])
+  
+  function getSalas() {
+    console.clear()
+    const url: ApiLink = new ApiLinkClass()
+    url.href = `${process.env.NEXT_PUBLIC_API_URL}/events/${idEvent}/rooms`
+    RoomService.getAll(url)
+      .then((response) => {
+        setRooms(response._embedded.rooms)
+      })
+      .catch((error) => {
+        console.log(error)
+      })
+  }
+
+  useEffect(() => {
+    getSalas()
+  }, [idEvent])
+
 
   useEffect(() => {
     if (isSuccess) {
@@ -49,17 +71,9 @@ const CadastroPalestra: NextPage = () => {
 
   useEffect(() => {
     const url: ApiLink = new ApiLinkClass()
-    url.href = `${process.env.NEXT_PUBLIC_API_URL}/rooms/${idRoom}/event`
-    roomService
-      .get(url)
-      .then((response) => {
-        // @ts-ignore
-        setLecture({ ...lecture, event: response._links.self.href })
-      })
-      .catch((error) => {
-        console.log(error)
-      })
-  }, [])
+    url.href = `${process.env.NEXT_PUBLIC_API_URL}/events/${idEvent}`
+    setLecture({ ...lecture, event: url.href })
+  }, [idEvent])
 
   const handleChangeDatadeInicio = (event: any) => {
     const startDate = event.target.value
@@ -142,6 +156,26 @@ const CadastroPalestra: NextPage = () => {
                     return (
                       <option key={index} value={language._links.self.href}>
                         {language.name}
+                      </option>
+                    )
+                  })}
+              </select>
+            </label>
+          </article>
+          <article className={style.cadastro_palestra_article}>
+            <label className={style.cadastro_palestra_label}>
+              <span>Salas</span>
+              <select
+                className={style.cadastro_palestra_input}
+                value={lecture.room}
+                onChange={(e) => setLecture({ ...lecture, room: e.target.value })}
+              >
+                <option value=''>Selecione</option>
+                {rooms.length > 0 &&
+                  rooms.map((room, index) => {
+                    return (
+                      <option key={index} value={room._links.self.href}>
+                        {room.name}
                       </option>
                     )
                   })}
