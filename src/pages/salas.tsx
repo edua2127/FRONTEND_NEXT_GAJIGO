@@ -1,5 +1,5 @@
 import type { NextPage } from 'next'
-import Router, { useRouter } from 'next/router'
+import Router from 'next/router'
 import { useEffect, useState } from 'react'
 import { Room } from '@/types/room.types'
 import style from '@/styles/Room.module.css'
@@ -39,7 +39,7 @@ const Salas: NextPage = () => {
     const url: ApiLink = new ApiLinkClass()
     url.href = `${process.env.NEXT_PUBLIC_API_URL}/rooms/${id}`
     RoomService.delete(url)
-      .then((response) => {
+      .then(() => {
         getSalas()
       })
       .catch((error) => {
@@ -74,7 +74,7 @@ const Salas: NextPage = () => {
               </thead>
               <tbody>
                 {salas.length > 0 &&
-                  salas.map((sala, index) => {
+                  salas.map((sala) => {
                     const idRoom = sala._links.self.href.split('/').pop()
                     return (
                       <tr className={style.room_table_tr} key={idRoom}>
