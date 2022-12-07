@@ -4,10 +4,11 @@ import { combineReducers } from 'redux'
 
 import { baseApi } from './api'
 import authReducer from './auth/slice'
-
+import { reduxIdSlice } from './reduxId/slice'
 const combinedReducers = combineReducers({
   [baseApi.reducerPath]: baseApi.reducer,
   auth: authReducer,
+  reduxId: reduxIdSlice.reducer,
 })
 
 const store = configureStore({

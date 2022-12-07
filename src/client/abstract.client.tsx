@@ -4,7 +4,7 @@ import axios, { AxiosInstance } from 'axios'
 import { ApiLink } from '@/types/api-link.types'
 import { CollectionResource } from '@/types/collection-resource.types'
 import { AbstractEntity } from '@/types/abstract-entity.types'
-import Router from 'next/router';
+import Router from 'next/router'
 
 export abstract class AbstractClient<
   T extends AbstractEntity, // Tipo singular do recurso (e.g. User, Event, Lecture)
