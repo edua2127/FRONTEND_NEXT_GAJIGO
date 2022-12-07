@@ -30,8 +30,8 @@ a {
     color-scheme: dark;
   }
   body {
-    color: white;
-    background: black;
+    color: black;
+    background: #eee;
     max-width: 100%;
   }
 }
