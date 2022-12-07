@@ -29,7 +29,7 @@ const NavBarItem = ({ name, links }: NavBarItemProps) => {
         <ListItemText primary={name} />
         {links.map((link) => (
           <ListItem key={link.id} disablePadding>
-            <Link href={'/auth/' + link.url}>
+            <Link href={link.url}>
               <ListItemButton>
                 <ListItemText primary={`• ${link.name}`} />
               </ListItemButton>
@@ -65,8 +65,8 @@ export const NavBar = ({ drawerWidth }: Props) => {
         <NavBarItem
           name='EVENTOS'
           links={[
-            { id: 1, name: 'Cadastrar', url: 'cadastroEvents' },
-            { id: 2, name: 'Ver', url: 'events' },
+            { id: 1, name: 'Cadastrar', url: '/events/new' },
+            { id: 2, name: 'Ver', url: '/events' },
             { id: 3, name: 'Cronograma', url: '' },
             { id: 4, name: 'Gerenciar Cargos', url: '' },
             { id: 5, name: 'Listar Totens', url: '' },
@@ -90,7 +90,7 @@ export const NavBar = ({ drawerWidth }: Props) => {
         />
         <NavBarItem
           name='USUARIOS'
-          links={[{ id: 1, name: 'Cadastrar', url: 'cadastroPalestrante' }]}
+          links={[{ id: 1, name: 'Cadastrar', url: '/users' }]}
         />
       </Box>
     </Drawer>
