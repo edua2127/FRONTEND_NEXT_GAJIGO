@@ -12,7 +12,7 @@ const initialState: ReduxIdState = {
   idLecture: '',
   idRoom: '',
 }
-//teste
+// teste
 export const reduxIdSlice = createSlice({
   name: 'reduxId',
   initialState,
