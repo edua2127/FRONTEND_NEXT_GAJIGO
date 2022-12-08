@@ -46,7 +46,7 @@ const Totem: NextPage = () => {
 
   return (
     <div className={style.login_body}>
-      {isLoggedIn ? <h1>CHECK-IN CONCLUIDO!</h1> : <CircularProgress />}
+      {isLoggedIn ? <h1>CHECK-IN CONCLUIDO!</h1> : <CircularProgress size={256} />}
     </div>
   )
 }
