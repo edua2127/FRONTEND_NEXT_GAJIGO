@@ -7,7 +7,7 @@ import Link from 'next/link'
 import Tabs from '@mui/material/Tabs'
 import { LinkTab } from '@/utils/LinkTab'
 import { convertQueryToNumberOrSkip } from '@/utils'
-import { DisplayTotemTab } from './DisplayTotemTab'
+import { DisplayTotemTab } from '../../components/DisplayTotemTab'
 import { LectureClient } from '@/client/lecture.client'
 
 const Totem: NextPage = () => {
@@ -22,7 +22,11 @@ const Totem: NextPage = () => {
       <DisplayTotemTab lectureId={lectureId} defaultTab={0} />
 
       {router.isReady && (
-        <QRCode value={process.env.NEXT_PUBLIC_FRONTEND_URL + 'totem/' + lectureId} size={350} style={{ marginTop: 'auto', marginBottom: 'auto' }} />
+        <QRCode
+          value={process.env.NEXT_PUBLIC_FRONTEND_URL + 'totem/' + lectureId}
+          size={350}
+          style={{ marginTop: 'auto', marginBottom: 'auto' }}
+        />
       )}
     </div>
   )
