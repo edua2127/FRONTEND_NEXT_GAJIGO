@@ -75,15 +75,15 @@ export const NavBar = ({ drawerWidth }: Props) => {
         <NavBarItem
           name='PALESTRAS'
           links={[
-            { id: 1, name: 'Cadastrar', url: 'cadastroPalestra' },
-            { id: 2, name: 'Ver', url: 'palestras' },
+            { id: 1, name: 'Cadastrar', url: '/palestras/new' },
+            { id: 2, name: 'Ver', url: '/palestras' },
           ]}
         />
         <NavBarItem
           name='SALAS'
           links={[
-            { id: 1, name: 'Cadastrar', url: 'cadastrarTags' },
-            { id: 2, name: 'Ver', url: 'tags' },
+            { id: 1, name: 'Cadastrar', url: '/salas/new' },
+            { id: 2, name: 'Ver', url: '/salas' },
             { id: 3, name: 'Cronograma', url: '' },
             { id: 4, name: 'Totens da Sala', url: '' },
           ]}
