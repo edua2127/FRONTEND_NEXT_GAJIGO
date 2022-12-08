@@ -1,25 +1,24 @@
 import type { NextPage } from 'next'
 import Router, { useRouter } from 'next/router'
-import { ApiLink, ApiLinkClass } from '@/types/api-link.types'
-import React, { useEffect, useState } from 'react'
-import style from '@/styles/EditarLinguagem.module.css'
 import { Lecture } from '@/types/lecture.types'
-import LectureService from '@/services/lecture.service'
-import { Language } from '@/types/language.types'
-import { Tag } from '@/types/tag.types'
-import { User } from '@/types/user.types'
-import UserService from '@/services/user.service'
-import LanguageService from '@/services/languages.service'
+import React, { useEffect, useState } from 'react'
+import style from '@/styles/CadastroPalestra.module.css'
+
 import AppLayout from '@/layout/AppLayout'
-import TagService from '@/services/tag.service'
-const EditarPalestra: NextPage = () => {
-  const router = useRouter()
-  const idLecture = router.query.id
-  // @ts-ignore
-  const [lecture, setLecture] = useState<Lecture>({
-    created: new Date(),
-    updated: new Date(),
-    removed: new Date(),
+import { useCreateLectureMutation } from '@/store/lectures/api'
+import { useListUsersQuery } from '@/store/users/api'
+import { useListTagsQuery } from '@/store/tags/api'
+import { useListLanguagesQuery } from '@/store/languages/api'
+import RoomService from '@/services/room.service'
+
+import { Room } from '@/types/room.types'
+import { useSelector } from 'react-redux'
+import { RootState } from '@/store'
+import { ApiLink, ApiLinkClass } from '@/types/api-link.types'
+const CadastroPalestra: NextPage = () => {
+  const idEvent = useSelector((state: RootState) => state).reduxId.idEvent
+
+  const [lecture, setLecture] = useState<Partial<Lecture>>({
     name: '',
     description: '',
     room: '',
@@ -31,75 +30,22 @@ const EditarPalestra: NextPage = () => {
       endDate: '',
     },
     attendanceMode: '',
-    speakers: [],
-    participants: [],
   })
 
-  const [languages, setLanguages] = useState<Language[]>([])
-  const [palestrantes, setPalestrantes] = useState<User[]>([])
-  const [participantes, setParticipantes] = useState<User[]>([])
-  const [tag, setTag] = useState<Tag[]>([])
-  const [loading, setLoading] = useState<boolean>(false)
+  const [saveLecture, { isSuccess }] = useCreateLectureMutation()
 
-  function getLecture() {
+  const { data: lecturers } = useListUsersQuery(null)
+  const { data: languages } = useListLanguagesQuery(null)
+  const { data: tags } = useListTagsQuery(null)
+  const [rooms, setRooms] = useState<Room[]>([])
+
+  function getSalas() {
+    console.clear()
     const url: ApiLink = new ApiLinkClass()
-    url.href = `${process.env.NEXT_PUBLIC_API_URL}/lectures/${idLecture}`
-    console.log(url.href)
-    LectureService.get(url)
+    url.href = `${process.env.NEXT_PUBLIC_API_URL}/events/${idEvent}/rooms`
+    RoomService.getAll(url)
       .then((response) => {
-        setLecture({ ...lecture, ...response })
-      })
-      .catch((error) => {
-        console.log(error)
-      })
-  }
-
-  function getLanguages() {
-    const url: ApiLink = new ApiLinkClass()
-    url.href = `${process.env.NEXT_PUBLIC_API_URL}/languages`
-    setLoading(true)
-    LanguageService.getAll(url)
-      .then((response) => {
-        setLanguages(response._embedded.languages)
-      })
-      .catch((error) => {
-        console.log(error)
-      })
-  }
-
-  function getPalestrantesAndParticipantes() {
-    const url: ApiLink = new ApiLinkClass()
-    url.href = `${process.env.NEXT_PUBLIC_API_URL}/users`
-    UserService.getAll(url)
-      .then((response) => {
-        setPalestrantes(response._embedded.users.filter((user) => !user.admin))
-        setParticipantes(response._embedded.users.filter((user) => !user.admin))
-      })
-      .catch((error) => {
-        console.log(error)
-      })
-  }
-
-  function getTags() {
-    const url: ApiLink = new ApiLinkClass()
-    url.href = `${process.env.NEXT_PUBLIC_API_URL}/tags`
-    TagService.getAll(url)
-      .then((response) => {
-        setTag(response._embedded.tags)
-      })
-      .catch((error) => {
-        console.log(error)
-      })
-  }
-
-  function editar() {
-    const url: ApiLink = new ApiLinkClass()
-    url.href = `${process.env.NEXT_PUBLIC_API_URL}/lectures/${idLecture}`
-
-    LectureService.update(url, lecture)
-      .then((response) => {
-        console.log(response)
-        Router.back()
+        setRooms(response._embedded.rooms)
       })
       .catch((error) => {
         console.log(error)
@@ -107,30 +53,55 @@ const EditarPalestra: NextPage = () => {
   }
 
   useEffect(() => {
-    setLoading(true)
-    getLecture()
-    getLanguages()
-    getPalestrantesAndParticipantes()
-    getTags()
-    setLoading(false)
-  }, [idLecture])
+    getSalas()
+  }, [idEvent])
+
+  useEffect(() => {
+    if (isSuccess) {
+      Router.back()
+    } else {
+      console.log(lecture)
+    }
+  }, [isSuccess])
+
+  useEffect(() => {
+    const url: ApiLink = new ApiLinkClass()
+    url.href = `${process.env.NEXT_PUBLIC_API_URL}/events/${idEvent}`
+    setLecture({ ...lecture, event: url.href })
+  }, [idEvent])
 
   const handleChangeDatadeInicio = (event: any) => {
-    setLecture({ ...lecture, interval: { ...lecture.interval, startDate: event.target.value } })
+    const startDate = event.target.value
+
+    // Typescript complains about this code, claiming the other side of
+    // interval could be undefined. This seems to me to be a typescript
+    // bug as even if the typing was wrong it should complain about the
+    // current side as well.
+    setLecture({
+      ...lecture,
+      // @ts-ignore
+      interval: { ...lecture.interval, startDate: startDate === undefined ? '' : startDate },
+    })
   }
 
   const handleChangeDatadeFim = (event: any) => {
-    setLecture({ ...lecture, interval: { ...lecture.interval, endDate: event.target.value } })
+    const endDate = event.target.value
+
+    setLecture({
+      ...lecture,
+      // @ts-ignore
+      interval: { ...lecture.interval, endDate: endDate === undefined ? '' : endDate },
+    })
+  }
+
+  const cadastrarPalestra = () => {
+    saveLecture(lecture)
+    console.log(lecture)
   }
 
   return (
-    <AppLayout title='Edição da Palestra'>
-      {loading ||
-      lecture.speakers === undefined ||
-      lecture.participants === undefined ||
-      lecture.tags === undefined ? (
-        <p>Carregando...</p>
-      ) : (
+    <AppLayout title='Cadastro da Palestra'>
+      <main>
         <section className={style.cadastro_palestra_section}>
           <article className={style.cadastro_palestra_article}>
             <label className={style.cadastro_palestra_label}>
@@ -174,7 +145,8 @@ const EditarPalestra: NextPage = () => {
                 onChange={(e) => setLecture({ ...lecture, language: e.target.value })}
               >
                 <option value=''>Selecione</option>
-                {languages.length > 0 &&
+                {languages &&
+                  languages.length > 0 &&
                   languages.map((language, index) => {
                     return (
                       <option key={index} value={language._links.self.href}>
@@ -187,15 +159,36 @@ const EditarPalestra: NextPage = () => {
           </article>
           <article className={style.cadastro_palestra_article}>
             <label className={style.cadastro_palestra_label}>
+              <span>Salas</span>
+              <select
+                className={style.cadastro_palestra_input}
+                value={lecture.room}
+                onChange={(e) => setLecture({ ...lecture, room: e.target.value })}
+              >
+                <option value=''>Selecione</option>
+                {rooms.length > 0 &&
+                  rooms.map((room, index) => {
+                    return (
+                      <option key={index} value={room._links.self.href}>
+                        {room.name}
+                      </option>
+                    )
+                  })}
+              </select>
+            </label>
+          </article>
+          <article className={style.cadastro_palestra_article}>
+            <label className={style.cadastro_palestra_label}>
               <span>Palestrante Inicial da Palestra</span>
               <select
                 className={style.cadastro_palestra_input}
-                value={lecture.speakers[0]}
+                value={lecture && lecture.speakers ? lecture.speakers[0] : ''}
                 onChange={(e) => setLecture({ ...lecture, speakers: [e.target.value] })}
               >
                 <option value=''>Selecione</option>
-                {palestrantes.length > 0 &&
-                  palestrantes.map((palestrante, index) => {
+                {lecturers &&
+                  lecturers.length > 0 &&
+                  lecturers.map((palestrante, index) => {
                     return (
                       <option key={index} value={palestrante._links.self.href}>
                         {palestrante.name}
@@ -208,12 +201,13 @@ const EditarPalestra: NextPage = () => {
               <span>Tag inical</span>
               <select
                 className={style.cadastro_palestra_input}
-                value={lecture.tags[0]}
+                value={lecture && lecture.tags ? lecture.tags[0] : ''}
                 onChange={(e) => setLecture({ ...lecture, tags: [e.target.value] })}
               >
                 <option value=''>Selecione</option>
-                {tag.length > 0 &&
-                  tag.map((tag, index) => {
+                {tags &&
+                  tags.length > 0 &&
+                  tags.map((tag, index) => {
                     return (
                       <option key={index} value={tag._links.self.href}>
                         {tag.name}
@@ -229,7 +223,7 @@ const EditarPalestra: NextPage = () => {
               <input
                 className={style.cadastro_palestra_input}
                 type='datetime-local'
-                value={lecture.interval.startDate}
+                value={lecture.interval?.startDate}
                 onChange={(e) => handleChangeDatadeInicio(e)}
               />
             </label>
@@ -238,46 +232,26 @@ const EditarPalestra: NextPage = () => {
               <input
                 className={style.cadastro_palestra_input}
                 type='datetime-local'
-                value={lecture.interval.endDate}
+                value={lecture.interval?.endDate}
                 onChange={(e) => handleChangeDatadeFim(e)}
               />
             </label>
           </article>
-          <article className={style.cadastro_palestra_article}>
-            <label className={style.cadastro_palestra_label}>
-              <span>Participante inicial</span>
-              <select
-                className={style.cadastro_palestra_input_grande}
-                value={lecture.participants[0]}
-                onChange={(e) => setLecture({ ...lecture, participants: [e.target.value] })}
-              >
-                <option value=''>Selecione</option>
-                {participantes.length > 0 &&
-                  participantes.map((participante, index) => {
-                    return (
-                      <option key={index} value={participante._links.self.href}>
-                        {participante.name}
-                      </option>
-                    )
-                  })}
-              </select>
-            </label>
-          </article>
           <article className={style.cadastro_palestra_article_button}>
             <button
-              onClick={() => Router.back()}
+              onClick={() => Router.push('/palestras')}
               className={style.cadastro_palestra_button_cancelar}
             >
               Cancelar
             </button>
-            <button onClick={editar} className={style.cadastro_palestra_button}>
-              Editar
+            <button onClick={cadastrarPalestra} className={style.cadastro_palestra_button}>
+              Cadastrar
             </button>
           </article>
         </section>
-      )}
+      </main>
     </AppLayout>
   )
 }
 
-export default EditarPalestra
+export default CadastroPalestra

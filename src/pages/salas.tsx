@@ -8,6 +8,7 @@ import { ApiLink, ApiLinkClass } from '@/types/api-link.types'
 import AppLayout from '@/layout/AppLayout'
 import { useSelector } from 'react-redux'
 import { RootState } from '@/store'
+import Button from '@mui/material/Button'
 const Salas: NextPage = () => {
   const idEvent = useSelector((state: RootState) => state).reduxId.idEvent
   const [salas, setSalas] = useState<Room[]>([])
@@ -53,15 +54,8 @@ const Salas: NextPage = () => {
       <main>
         <section className={style.room_section}>
           <article className={style.room_article_cadastro_and_listar}>
-            <button
-              className={style.room_button_cadastrar}
-              onClick={() => Router.push(`/cadastrarSala/${idEvent}`)}
-            >
-              Cadastrar Sala
-            </button>
-            <button className={style.room_button_voltar} onClick={() => Router.back()}>
-              Voltar
-            </button>
+            <Button style={{marginRight: '2%', backgroundColor: '#1DBF17'}} variant="contained" onClick={()=> Router.push(`/salas/new`)}>Cadastrar</Button>
+            <Button style={{ backgroundColor: '#B40707'}} variant="contained" onClick={()=> Router.push('/events')}>Voltar</Button>
           </article>
           <article className={style.room_article_table}>
             <table className={style.room_table}>
@@ -82,14 +76,8 @@ const Salas: NextPage = () => {
                         <td className={style.room_table_td}>{sala.description}</td>
                         <td className={style.room_table_td_actions}>
                           <button
-                            className={style.room_button_selecionar}
-                            onClick={() => Router.push(`/palestra/${idRoom}`)}
-                          >
-                            Selecionar
-                          </button>
-                          <button
                             className={style.room_button_editar}
-                            onClick={() => Router.push(`/editarSala/${idRoom}`)}
+                            onClick={() => Router.push(`/salas/${idRoom}`)}
                           >
                             Editar
                           </button>
