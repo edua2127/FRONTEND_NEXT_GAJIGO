@@ -13,7 +13,6 @@ const Totem: NextPage = () => {
     data: currentUser,
     isError: isUnauthenticated,
     isSuccess: isLoggedIn,
-    isLoading,
   } = useGetCurrentUserQuery()
 
   const router = useRouter()
@@ -47,7 +46,7 @@ const Totem: NextPage = () => {
 
   return (
     <div className={style.login_body}>
-      {isLoading ? <CircularProgress /> : <h1>CHECK-IN CONCLUIDO!</h1>}
+      {isLoggedIn ? <h1>CHECK-IN CONCLUIDO!</h1> : <CircularProgress />}
     </div>
   )
 }
