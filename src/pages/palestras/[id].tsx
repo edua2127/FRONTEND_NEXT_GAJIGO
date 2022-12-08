@@ -265,10 +265,16 @@ const EditarPalestra: NextPage = () => {
             </label>
           </article>
           <article className={style.cadastro_palestra_article_button}>
-            
-            <Button style={{marginRight: '2%', backgroundColor: '#B40707'}} variant="contained" onClick={()=> Router.push('/palestras')}>cancelar</Button>
-            <Button style={{ backgroundColor: '#4784ED'}} variant="contained" onClick={editar}>editar</Button>
-          
+            <Button
+              style={{ marginRight: '2%', backgroundColor: '#B40707' }}
+              variant='contained'
+              onClick={() => Router.push('/palestras')}
+            >
+              cancelar
+            </Button>
+            <Button style={{ backgroundColor: '#4784ED' }} variant='contained' onClick={editar}>
+              editar
+            </Button>
           </article>
         </section>
       )}

@@ -72,7 +72,13 @@ const EventPage: NextPage = () => {
       <main>
         <section className={style.events_section}>
           <article className={style.events_article_cadastro_and_listar}>
-            <Button id='outlined-basic' onClick={()=> Router.push('/events/new')} variant="contained">Cadastrar</Button>
+            <Button
+              id='outlined-basic'
+              onClick={() => Router.push('/events/new')}
+              variant='contained'
+            >
+              Cadastrar
+            </Button>
           </article>
           <article className={style.events_article_table}>
             <table className={style.events_table}>

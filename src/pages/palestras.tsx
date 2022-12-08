@@ -47,8 +47,20 @@ const Palestra: NextPage = () => {
       <main>
         <section className={style.lecture_section}>
           <article className={style.lecture_article_cadastro_and_voltar}>
-            <Button style={{marginRight: '2%', backgroundColor: '#1DBF17'}} variant="contained" onClick={()=> Router.push(`/palestras/new`)}>Cadastrar</Button>
-            <Button style={{ backgroundColor: '#B40707'}} variant="contained" onClick={()=> Router.push('/events')}>Voltar</Button>
+            <Button
+              style={{ marginRight: '2%', backgroundColor: '#1DBF17' }}
+              variant='contained'
+              onClick={() => Router.push(`/palestras/new`)}
+            >
+              Cadastrar
+            </Button>
+            <Button
+              style={{ backgroundColor: '#B40707' }}
+              variant='contained'
+              onClick={() => Router.push('/events')}
+            >
+              Voltar
+            </Button>
           </article>
         </section>
         <section className={style.lecture_section}>

@@ -54,8 +54,20 @@ const Salas: NextPage = () => {
       <main>
         <section className={style.room_section}>
           <article className={style.room_article_cadastro_and_listar}>
-            <Button style={{marginRight: '2%', backgroundColor: '#1DBF17'}} variant="contained" onClick={()=> Router.push(`/salas/new`)}>Cadastrar</Button>
-            <Button style={{ backgroundColor: '#B40707'}} variant="contained" onClick={()=> Router.push('/events')}>Voltar</Button>
+            <Button
+              style={{ marginRight: '2%', backgroundColor: '#1DBF17' }}
+              variant='contained'
+              onClick={() => Router.push(`/salas/new`)}
+            >
+              Cadastrar
+            </Button>
+            <Button
+              style={{ backgroundColor: '#B40707' }}
+              variant='contained'
+              onClick={() => Router.push('/events')}
+            >
+              Voltar
+            </Button>
           </article>
           <article className={style.room_article_table}>
             <table className={style.room_table}>
