@@ -73,11 +73,7 @@ const CadastrarSala: NextPage = () => {
             >
               cancelar
             </Button>
-            <Button
-              style={{ backgroundColor: '#1DBF17' }}
-              variant='contained'
-              onClick={cadastrar}
-            >
+            <Button style={{ backgroundColor: '#1DBF17' }} variant='contained' onClick={cadastrar}>
               Cadastrar
             </Button>
           </article>

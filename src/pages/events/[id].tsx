@@ -155,7 +155,11 @@ const EditarEvento: NextPage = () => {
             >
               cancelar
             </Button>
-            <Button style={{ backgroundColor: '#4784ED' }} variant='contained' onClick={updateEvent}>
+            <Button
+              style={{ backgroundColor: '#4784ED' }}
+              variant='contained'
+              onClick={updateEvent}
+            >
               editar
             </Button>
           </article>
