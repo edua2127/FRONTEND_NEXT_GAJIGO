@@ -8,6 +8,7 @@ import { useListUsersQuery } from '@/store/users/api'
 import Tabs from '@mui/material/Tabs'
 import { LinkTab } from '@/utils/LinkTab'
 import { convertQueryToNumberOrSkip } from '@/utils'
+import { DisplayTotemTab } from '../DisplayTotemTab'
 
 const Totem: NextPage = () => {
   const router = useRouter()
@@ -35,14 +36,11 @@ const Totem: NextPage = () => {
   }
 
   return (
-    <section className={style.lecture_section}>
-      <article className={style.participants_article_tabs}>
-        <Tabs value={1} onChange={handleTab}>
-          <LinkTab label='TOTEM' href={tabUrls[0]} />
-          <LinkTab label='PARTICIPANTS' href={tabUrls[1]} />
-        </Tabs>
+    <section className={style.lecture_section} style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+      <article className={style.participants_article_tabs} style={{ paddingBottom: '3em', width: '100%' }}>
+        <DisplayTotemTab lectureId={lectureId} defaultTab={1}/>
       </article>
-      <article className={style.lecture_article_table}>
+      <article className={style.lecture_article_table} style={{ width: '90%' }}>
         <table className={style.room_table}>
           <thead className={style.room_table_thead}>
             <tr className={style.room_table_tr}>

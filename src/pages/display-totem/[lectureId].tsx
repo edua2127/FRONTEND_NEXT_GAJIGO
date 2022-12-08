@@ -7,6 +7,8 @@ import Link from 'next/link'
 import Tabs from '@mui/material/Tabs'
 import { LinkTab } from '@/utils/LinkTab'
 import { convertQueryToNumberOrSkip } from '@/utils'
+import { DisplayTotemTab } from './DisplayTotemTab'
+import { LectureClient } from '@/client/lecture.client'
 
 const Totem: NextPage = () => {
   const router = useRouter()
@@ -15,23 +17,13 @@ const Totem: NextPage = () => {
   // TODO add details to display totem page using this data
   const { data: lecture } = useGetLectureByIdQuery(convertQueryToNumberOrSkip(router, lectureId))
 
-  const tabUrls = [`/display-totem/${lectureId}`, `/display-totem/${lectureId}/participants`]
-
-  const handleTab = (_: React.SyntheticEvent, newValue: number) => {
-    router.push(tabUrls[newValue])
-  }
-
   return (
-    <div className={style.login_body}>
-      <Tabs value={0} onChange={handleTab}>
-        <LinkTab label='TOTEM' href={tabUrls[0]} />
-        <LinkTab label='PARTICIPANTS' href={tabUrls[1]} />
-      </Tabs>
+    <div className={style.login_body} style={{ justifyContent: 'flex-start' }}>
+      <DisplayTotemTab lectureId={lectureId} defaultTab={0} />
 
       {router.isReady && (
-        <QRCode value={process.env.NEXT_PUBLIC_FRONTEND_URL + 'totem/' + lectureId} />
+        <QRCode value={process.env.NEXT_PUBLIC_FRONTEND_URL + 'totem/' + lectureId} size={350} style={{ marginTop: 'auto', marginBottom: 'auto' }} />
       )}
-      <Link href={`/display-totem/${lectureId}/participants`}>PARTICIPANTES</Link>
     </div>
   )
 }
