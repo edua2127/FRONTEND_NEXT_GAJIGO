@@ -10,7 +10,7 @@ import { useListUsersQuery } from '@/store/users/api'
 import { useListTagsQuery } from '@/store/tags/api'
 import { useListLanguagesQuery } from '@/store/languages/api'
 import RoomService from '@/services/room.service'
-
+import Button from '@mui/material/Button'
 import { Room } from '@/types/room.types'
 import { useSelector } from 'react-redux'
 import { RootState } from '@/store'
@@ -238,15 +238,20 @@ const CadastroPalestra: NextPage = () => {
             </label>
           </article>
           <article className={style.cadastro_palestra_article_button}>
-            <button
+            <Button
+              style={{ marginRight: '2%', backgroundColor: '#B40707' }}
+              variant='contained'
               onClick={() => Router.push('/palestras')}
-              className={style.cadastro_palestra_button_cancelar}
             >
-              Cancelar
-            </button>
-            <button onClick={cadastrarPalestra} className={style.cadastro_palestra_button}>
+              cancelar
+            </Button>
+            <Button
+              style={{ backgroundColor: '#1DBF17' }}
+              variant='contained'
+              onClick={cadastrarPalestra}
+            >
               Cadastrar
-            </button>
+            </Button>
           </article>
         </section>
       </main>

@@ -5,7 +5,7 @@ import { Event } from '@/types/event.types'
 import { ApiLink, ApiLinkClass } from '@/types/api-link.types'
 import React, { useEffect, useState } from 'react'
 import style from '@/styles/EditarEvents.module.css'
-
+import Button from '@mui/material/Button'
 import AppLayout from '@/layout/AppLayout'
 const EditarEvento: NextPage = () => {
   const router = useRouter()
@@ -148,12 +148,16 @@ const EditarEvento: NextPage = () => {
             </label>
           </article>
           <article className={style.editar_events_article_button}>
-            <button className={style.botao_excluir} onClick={() => Router.back()}>
-              Voltar
-            </button>
-            <button className={style.botao_editar} onClick={updateEvent}>
-              Salvar
-            </button>
+            <Button
+              style={{ marginRight: '2%', backgroundColor: '#B40707' }}
+              variant='contained'
+              onClick={() => Router.push('/events')}
+            >
+              cancelar
+            </Button>
+            <Button style={{ backgroundColor: '#4784ED' }} variant='contained' onClick={updateEvent}>
+              editar
+            </Button>
           </article>
         </section>
       </main>

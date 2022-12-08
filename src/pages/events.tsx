@@ -131,7 +131,7 @@ const EventPage: NextPage = () => {
                           </button>
                           <button
                             className={style.events_button_editar}
-                            onClick={() => Router.push(`/editarEvents/${id}`)}
+                            onClick={() => Router.push(`/events/${id}`)}
                           >
                             Editar
                           </button>

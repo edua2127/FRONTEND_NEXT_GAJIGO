@@ -105,7 +105,7 @@ const SignUp: NextPage = () => {
                 router.query.returnUrl ? `?returnUrl=${router.query.returnUrl}` : ''
               }`}
             >
-              Sign Up
+              Sign In
             </Button>
             <Button className={style.login_button} variant='contained' onClick={handleSubmit}>
               Sign Up
