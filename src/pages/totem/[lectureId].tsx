@@ -5,14 +5,15 @@ import { useGetCurrentUserQuery } from '@/store/auth/api'
 import { useRouter } from 'next/router'
 import { useEffect } from 'react'
 import { useGetLectureByIdQuery } from '@/store/lectures/api'
-import { skipToken } from '@reduxjs/toolkit/dist/query'
 import { convertQueryToNumberOrSkip } from '@/utils'
+import { CircularProgress } from '@mui/material'
 
 const Totem: NextPage = () => {
   const {
     data: currentUser,
     isError: isUnauthenticated,
     isSuccess: isLoggedIn,
+    isLoading,
   } = useGetCurrentUserQuery()
 
   const router = useRouter()
@@ -46,7 +47,7 @@ const Totem: NextPage = () => {
 
   return (
     <div className={style.login_body}>
-      <h1 style={{ color: 'black' }}>CHECK-IN CONCLUIDO!</h1>
+      {isLoading ? <CircularProgress /> : <h1>CHECK-IN CONCLUIDO!</h1>}
     </div>
   )
 }
