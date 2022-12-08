@@ -7,7 +7,7 @@ type DisplayTotemTabProps = {
     defaultTab: number
 }
 
-export function DisplayTotemTab({ lectureId, defaultTab }: DisplayTotemTabProps) {
+export default function DisplayTotemTab({ lectureId, defaultTab }: DisplayTotemTabProps) {
     const router = useRouter()
     const tabUrls = [`/display-totem/${lectureId}`, `/display-totem/${lectureId}/participants`]
 
