@@ -58,7 +58,7 @@ const CadastroPalestra: NextPage = () => {
 
   useEffect(() => {
     if (isSuccess) {
-      Router.back()
+      Router.push("/palestras")
     } else {
       console.log(lecture)
     }

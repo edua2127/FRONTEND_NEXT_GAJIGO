@@ -34,7 +34,7 @@ const CadastroEvents: NextPage = () => {
 
   useEffect(() => {
     if (isSuccess) {
-      Router.push('/auth/events')
+      Router.push('/events')
     }
   }, [isSuccess])
 
