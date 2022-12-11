@@ -161,7 +161,7 @@ const CadastroPalestra: NextPage = () => {
             <label className={style.cadastro_palestra_label}>
               <span>Salas</span>
               <select
-                className={style.cadastro_palestra_input}
+                className={style.cadastro_palestra_input_grande}
                 value={lecture.room}
                 onChange={(e) => setLecture({ ...lecture, room: e.target.value })}
               >
