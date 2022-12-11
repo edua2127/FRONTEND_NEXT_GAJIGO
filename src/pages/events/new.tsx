@@ -58,7 +58,7 @@ const CadastroEvents: NextPage = () => {
             </label>
             <label className={style.cadastro_events_label}>
               <span>Descrição</span>
-              <textarea
+              <input
                 value={description}
                 onChange={(e) => setDescription(e.target.value)}
                 className={style.cadastro_events_input}
