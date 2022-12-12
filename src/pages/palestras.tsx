@@ -8,6 +8,8 @@ import LectureService from '@/services/lecture.service'
 import { useSelector } from 'react-redux'
 import { RootState } from '@/store'
 import AppLayout from '@/layout/AppLayout'
+
+import Button from '@mui/material/Button'
 const Palestra: NextPage = () => {
   const idEvent = useSelector((state: RootState) => state).reduxId.idEvent
   const [lectures, setLectures] = useState<Lecture[]>([])
@@ -45,15 +47,20 @@ const Palestra: NextPage = () => {
       <main>
         <section className={style.lecture_section}>
           <article className={style.lecture_article_cadastro_and_voltar}>
-            <button
-              className={style.lecture_button_cadastrar}
-              onClick={() => Router.push(`/cadastrarPalestra/${idEvent}`)}
+            <Button
+              style={{ marginRight: '2%', backgroundColor: '#1DBF17' }}
+              variant='contained'
+              onClick={() => Router.push(`/palestras/new`)}
             >
-              Cadastrar Palestra
-            </button>
-            <button className={style.lecture_button_voltar} onClick={() => Router.back()}>
+              Cadastrar
+            </Button>
+            <Button
+              style={{ backgroundColor: '#B40707' }}
+              variant='contained'
+              onClick={() => Router.push('/events')}
+            >
               Voltar
-            </button>
+            </Button>
           </article>
         </section>
         <section className={style.lecture_section}>
@@ -83,7 +90,7 @@ const Palestra: NextPage = () => {
                           </button>
                           <button
                             className={style.lecture_button_editar}
-                            onClick={() => Router.push(`/editarPalestra/${id}`)}
+                            onClick={() => Router.push(`/palestras/${id}`)}
                           >
                             Editar
                           </button>

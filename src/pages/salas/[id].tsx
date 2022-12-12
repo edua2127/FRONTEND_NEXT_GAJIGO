@@ -6,6 +6,7 @@ import { Room } from '@/types/room.types'
 import RoomService from '@/services/room.service'
 import style from '@/styles/EditarSala.module.css'
 import AppLayout from '@/layout/AppLayout'
+import Button from '@mui/material/Button'
 const editarSala: NextPage = () => {
   const router = useRouter()
   const idSala = router.query.id
@@ -33,8 +34,8 @@ const editarSala: NextPage = () => {
     const url: ApiLink = new ApiLinkClass()
     url.href = `${process.env.NEXT_PUBLIC_API_URL}/rooms/${idSala}`
     RoomService.update(url, sala)
-      .then((response) => {
-        Router.back()
+      .then(() => {
+        Router.push('/salas')
       })
       .catch((error) => {
         console.log(error)
@@ -83,12 +84,16 @@ const editarSala: NextPage = () => {
             </label>
           </article>
           <article className={style.editar_sala_article_button}>
-            <button onClick={() => Router.back()} className={style.botao_voltar}>
-              Voltar
-            </button>
-            <button className={style.botao_editar} onClick={editarSala}>
+            <Button
+              style={{ marginRight: '2%', backgroundColor: '#B40707' }}
+              variant='contained'
+              onClick={() => Router.push('/salas')}
+            >
+              cancelar
+            </Button>
+            <Button style={{ backgroundColor: '#4784ED' }} variant='contained' onClick={editarSala}>
               Salvar
-            </button>
+            </Button>
           </article>
         </section>
       </main>

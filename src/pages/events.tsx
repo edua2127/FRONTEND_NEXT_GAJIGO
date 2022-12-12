@@ -9,6 +9,7 @@ import AppLayout from '@/layout/AppLayout'
 import { Event } from '@/types/event.types'
 import { useDispatch } from 'react-redux'
 import { editaIdEvent } from '../store/reduxId/slice'
+import Button from '@mui/material/Button'
 const EventPage: NextPage = () => {
   const dispatch = useDispatch()
   const [idCorrentUser, setUrlCorrentUser] = useState<number>(0)
@@ -71,9 +72,13 @@ const EventPage: NextPage = () => {
       <main>
         <section className={style.events_section}>
           <article className={style.events_article_cadastro_and_listar}>
-            <button className={style.btn_grad} onClick={() => Router.push('/auth/cadastroEvents')}>
+            <Button
+              id='outlined-basic'
+              onClick={() => Router.push('/events/new')}
+              variant='contained'
+            >
               Cadastrar
-            </button>
+            </Button>
           </article>
           <article className={style.events_article_table}>
             <table className={style.events_table}>
@@ -126,7 +131,7 @@ const EventPage: NextPage = () => {
                           </button>
                           <button
                             className={style.events_button_editar}
-                            onClick={() => Router.push(`/editarEvents/${id}`)}
+                            onClick={() => Router.push(`/events/${id}`)}
                           >
                             Editar
                           </button>

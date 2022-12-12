@@ -12,6 +12,7 @@ import UserService from '@/services/user.service'
 import LanguageService from '@/services/languages.service'
 import AppLayout from '@/layout/AppLayout'
 import TagService from '@/services/tag.service'
+import Button from '@mui/material/Button'
 const EditarPalestra: NextPage = () => {
   const router = useRouter()
   const idLecture = router.query.id
@@ -99,7 +100,7 @@ const EditarPalestra: NextPage = () => {
     LectureService.update(url, lecture)
       .then((response) => {
         console.log(response)
-        Router.back()
+        Router.push('/palestras')
       })
       .catch((error) => {
         console.log(error)
@@ -264,15 +265,16 @@ const EditarPalestra: NextPage = () => {
             </label>
           </article>
           <article className={style.cadastro_palestra_article_button}>
-            <button
-              onClick={() => Router.back()}
-              className={style.cadastro_palestra_button_cancelar}
+            <Button
+              style={{ marginRight: '2%', backgroundColor: '#B40707' }}
+              variant='contained'
+              onClick={() => Router.push('/palestras')}
             >
-              Cancelar
-            </button>
-            <button onClick={editar} className={style.cadastro_palestra_button}>
-              Editar
-            </button>
+              cancelar
+            </Button>
+            <Button style={{ backgroundColor: '#4784ED' }} variant='contained' onClick={editar}>
+              editar
+            </Button>
           </article>
         </section>
       )}

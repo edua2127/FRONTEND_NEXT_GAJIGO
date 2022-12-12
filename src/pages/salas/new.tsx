@@ -5,7 +5,7 @@ import { useEffect, useState } from 'react'
 import style from '@/styles/CadastroSala.module.css'
 import RoomService from '@/services/room.service'
 import AppLayout from '@/layout/AppLayout'
-
+import Button from '@mui/material/Button'
 import { useSelector } from 'react-redux'
 import { RootState } from '@/store'
 const CadastrarSala: NextPage = () => {
@@ -66,12 +66,16 @@ const CadastrarSala: NextPage = () => {
             </label>
           </article>
           <article className={style.cadastro_events_article_button}>
-            <button className={style.cadastrar_sala_button_cancelar} onClick={() => Router.back()}>
-              Cancelar
-            </button>
-            <button className={style.cadastrar_sala_button} onClick={cadastrar}>
+            <Button
+              style={{ marginRight: '2%', backgroundColor: '#B40707' }}
+              variant='contained'
+              onClick={() => Router.push('/salas')}
+            >
+              cancelar
+            </Button>
+            <Button style={{ backgroundColor: '#1DBF17' }} variant='contained' onClick={cadastrar}>
               Cadastrar
-            </button>
+            </Button>
           </article>
         </section>
       </main>

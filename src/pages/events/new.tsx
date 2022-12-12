@@ -5,7 +5,7 @@ import AppLayout from '@/layout/AppLayout'
 import { useCreateEventMutation } from '@/store/events/api'
 import { useGetCurrentUserQuery } from '@/store/auth/api'
 import Router from 'next/router'
-
+import Button from '@mui/material/Button'
 const CadastroEvents: NextPage = () => {
   const [name, setName] = React.useState('')
   const [description, setDescription] = React.useState('')
@@ -34,7 +34,7 @@ const CadastroEvents: NextPage = () => {
 
   useEffect(() => {
     if (isSuccess) {
-      Router.push('/auth/events')
+      Router.push('/events')
     }
   }, [isSuccess])
 
@@ -58,7 +58,7 @@ const CadastroEvents: NextPage = () => {
             </label>
             <label className={style.cadastro_events_label}>
               <span>Descrição</span>
-              <textarea
+              <input
                 value={description}
                 onChange={(e) => setDescription(e.target.value)}
                 className={style.cadastro_events_input}
@@ -139,9 +139,20 @@ const CadastroEvents: NextPage = () => {
             )}
           </article>
           <article className={style.cadastro_events_article_button}>
-            <button onClick={() => saveEvent(criaEvento())} className={style.btn_grad}>
+            <Button
+              style={{ marginRight: '2%', backgroundColor: '#B40707' }}
+              variant='contained'
+              onClick={() => Router.push('/events')}
+            >
+              cancelar
+            </Button>
+            <Button
+              style={{ backgroundColor: '#1DBF17' }}
+              variant='contained'
+              onClick={() => saveEvent(criaEvento())}
+            >
               Cadastrar
-            </button>
+            </Button>
           </article>
         </section>
       </main>
