@@ -34,7 +34,7 @@ const EditarEvento: NextPage = () => {
     url.href = `${process.env.NEXT_PUBLIC_API_URL}/events/${id}`
     console.log(url.href)
     EventService.update(url, event)
-      .then((response) => {
+      .then(() => {
         console.log('cadastrado com sucesso')
         Router.back()
       })
