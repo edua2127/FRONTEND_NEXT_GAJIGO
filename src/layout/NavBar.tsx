@@ -88,7 +88,6 @@ export const NavBar = ({ drawerWidth }: Props) => {
             { id: 4, name: 'Totens da Sala', url: '' },
           ]}
         />
-        <NavBarItem name='USUARIOS' links={[{ id: 1, name: 'Cadastrar', url: '/users' }]} />
       </Box>
     </Drawer>
   )
