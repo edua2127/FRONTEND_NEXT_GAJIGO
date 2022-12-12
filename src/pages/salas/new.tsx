@@ -30,7 +30,7 @@ const CadastrarSala: NextPage = () => {
   }
 
   function getEvent() {
-    const event = `http://localhost:8080/api/events/${idEvent}`
+    const event = `/${idEvent}`
     setRoom({ ...room, event: event })
   }
 
