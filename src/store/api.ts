@@ -12,7 +12,7 @@ export const baseApi = createApi({
       const token = cookies.get('token')
 
       if (token) {
-        headers.set('Authorization', `Bearer ${token.access_token}`)
+        headers.set('Authorization', `Bearer ${token}`)
       }
 
       console.log(token)
