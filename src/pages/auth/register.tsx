@@ -36,9 +36,13 @@ const SignUp: NextPage = () => {
     setSignUpData({ ...signUpData, [name]: value })
   }
 
+  const getPushUrlWithReturn = () => {
+    return `/auth/login${router.query.returnUrl ? `?returnUrl=${router.query.returnUrl}` : ''}`
+  }
+
   useEffect(() => {
     if (isSuccess) {
-      router.push('/auth/login')
+      router.push(getPushUrlWithReturn())
     }
   }, [isSuccess])
 
@@ -100,13 +104,7 @@ const SignUp: NextPage = () => {
             </label>
           </article>
           <article className={style.login_article_button}>
-            <Button
-              href={`/auth/login${
-                router.query.returnUrl ? `?returnUrl=${router.query.returnUrl}` : ''
-              }`}
-            >
-              Sign In
-            </Button>
+            <Button href={getPushUrlWithReturn()}>Sign In</Button>
             <Button className={style.login_button} variant='contained' onClick={handleSubmit}>
               Sign Up
             </Button>
