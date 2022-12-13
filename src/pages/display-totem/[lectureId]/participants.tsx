@@ -60,7 +60,7 @@ const Totem: NextPage = () => {
               participants.length > 0 &&
               participants.map((participant) => {
                 return (
-                  <tr key={participant.id} className={style.room_table_tr}>
+                  <tr key={participant.created.toString()} className={style.room_table_tr}>
                     <td className={style.room_table_td}>{participant.name}</td>
                     <td className={style.room_table_td}>{participant.username}</td>
                     <td className={style.room_table_td}>{participant.email}</td>
