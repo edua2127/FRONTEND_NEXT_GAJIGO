@@ -5,8 +5,6 @@ import { useRouter } from 'next/router'
 import { useEffect } from 'react'
 import { skipToken } from '@reduxjs/toolkit/dist/query'
 import { useListUsersQuery } from '@/store/users/api'
-import Tabs from '@mui/material/Tabs'
-import { LinkTab } from '@/utils/LinkTab'
 import { convertQueryToNumberOrSkip } from '@/utils'
 import { DisplayTotemTab } from '../../../components/DisplayTotemTab'
 import { User } from '@/types/user.types'
@@ -30,14 +28,8 @@ const Totem: NextPage = () => {
     console.log(participants)
   }, [participants])
 
-  const tabUrls = [`/display-totem/${lectureId}`, `/display-totem/${lectureId}/participants`]
-
-  const handleTab = (_: React.SyntheticEvent, newValue: number) => {
-    router.push(tabUrls[newValue])
-  }
-
   const dateComparison = (a: User, b: User) => {
-    return a.created.getTime() - b.created.getTime()
+    return new Date(a.created).getTime() - new Date(b.created).getTime()
   }
 
   return (
