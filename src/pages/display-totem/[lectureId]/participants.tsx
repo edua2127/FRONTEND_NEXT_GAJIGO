@@ -55,15 +55,18 @@ const Totem: NextPage = () => {
           <tbody>
             {participants &&
               participants.length > 0 &&
-              participants.sort(dateComparison).map((participant) => {
-                return (
-                  <tr key={participant.created.toString()} className={style.room_table_tr}>
-                    <td className={style.room_table_td}>{participant.name}</td>
-                    <td className={style.room_table_td}>{participant.username}</td>
-                    <td className={style.room_table_td}>{participant.email}</td>
-                  </tr>
-                )
-              })}
+              participants
+                .slice()
+                .sort(dateComparison)
+                .map((participant) => {
+                  return (
+                    <tr key={participant.created.toString()} className={style.room_table_tr}>
+                      <td className={style.room_table_td}>{participant.name}</td>
+                      <td className={style.room_table_td}>{participant.username}</td>
+                      <td className={style.room_table_td}>{participant.email}</td>
+                    </tr>
+                  )
+                })}
           </tbody>
         </table>
       </article>
