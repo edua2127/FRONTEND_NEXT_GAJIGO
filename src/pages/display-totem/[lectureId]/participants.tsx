@@ -35,6 +35,10 @@ const Totem: NextPage = () => {
     router.push(tabUrls[newValue])
   }
 
+  const dateComparison = (a: Date, b: Date) => {
+    return a.getTime() - b.getTime()
+  }
+
   return (
     <section
       className={style.lecture_section}
@@ -58,7 +62,7 @@ const Totem: NextPage = () => {
           <tbody>
             {participants &&
               participants.length > 0 &&
-              participants.map((participant) => {
+              participants.sort(dateComparison).map((participant) => {
                 return (
                   <tr key={participant.created.toString()} className={style.room_table_tr}>
                     <td className={style.room_table_td}>{participant.name}</td>
