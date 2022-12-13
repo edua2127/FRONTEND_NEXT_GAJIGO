@@ -29,7 +29,7 @@ const commonMethods = baseApi.injectEndpoints({
       query: ({ url, entityLink }) => ({
         url,
         body: entityLink,
-        method: 'PUT',
+        method: 'PATCH',
         headers: {
           'Content-Type': 'text/uri-list',
         },
