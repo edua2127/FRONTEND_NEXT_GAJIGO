@@ -9,6 +9,7 @@ import Tabs from '@mui/material/Tabs'
 import { LinkTab } from '@/utils/LinkTab'
 import { convertQueryToNumberOrSkip } from '@/utils'
 import { DisplayTotemTab } from '../../../components/DisplayTotemTab'
+import { User } from '@/types/user.types'
 
 const Totem: NextPage = () => {
   const router = useRouter()
@@ -35,6 +36,10 @@ const Totem: NextPage = () => {
     router.push(tabUrls[newValue])
   }
 
+  const dateComparison = (a: User, b: User) => {
+    return a.created.getTime() - b.created.getTime()
+  }
+
   return (
     <section
       className={style.lecture_section}
@@ -58,7 +63,7 @@ const Totem: NextPage = () => {
           <tbody>
             {participants &&
               participants.length > 0 &&
-              participants.map((participant) => {
+              participants.sort(dateComparison).map((participant) => {
                 return (
                   <tr key={participant.created.toString()} className={style.room_table_tr}>
                     <td className={style.room_table_td}>{participant.name}</td>
