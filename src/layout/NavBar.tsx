@@ -65,7 +65,7 @@ export const NavBar = ({ drawerWidth }: Props) => {
       <NavBarItem
           name=''
           links={[
-            { id: 1, name: 'DashBoards', url: '/events/new' },
+            { id: 1, name: 'DashBoards', url: '/' },
           ]}
         />
         <NavBarItem
