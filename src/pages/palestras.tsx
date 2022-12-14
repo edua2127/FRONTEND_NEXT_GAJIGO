@@ -26,6 +26,12 @@ const Palestra: NextPage = () => {
       })
   }
 
+  useEffect(() => {
+    if (idEvent === '') {
+      Router.push('/events')
+    }
+  }, [idEvent])
+
   function excluirPalestra(id: number) {
     const url: ApiLink = new ApiLinkClass()
     url.href = `${process.env.NEXT_PUBLIC_API_URL}/lectures/${id}`
