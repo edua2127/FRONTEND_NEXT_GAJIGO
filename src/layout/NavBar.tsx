@@ -62,14 +62,17 @@ export const NavBar = ({ drawerWidth }: Props) => {
 
       <Divider />
       <Box sx={{ overflow: 'auto', ml: 2 }}>
+      <NavBarItem
+          name=''
+          links={[
+            { id: 1, name: 'DashBoards', url: '/events/new' },
+          ]}
+        />
         <NavBarItem
           name='EVENTOS'
           links={[
             { id: 1, name: 'Cadastrar', url: '/events/new' },
             { id: 2, name: 'Ver', url: '/events' },
-            { id: 3, name: 'Cronograma', url: '' },
-            { id: 4, name: 'Gerenciar Cargos', url: '' },
-            { id: 5, name: 'Listar Totens', url: '' },
           ]}
         />
         <NavBarItem
@@ -84,8 +87,6 @@ export const NavBar = ({ drawerWidth }: Props) => {
           links={[
             { id: 1, name: 'Cadastrar', url: '/salas/new' },
             { id: 2, name: 'Ver', url: '/salas' },
-            { id: 3, name: 'Cronograma', url: '' },
-            { id: 4, name: 'Totens da Sala', url: '' },
           ]}
         />
       </Box>
