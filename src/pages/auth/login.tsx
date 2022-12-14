@@ -30,7 +30,7 @@ const Login: NextPage = () => {
 
   useEffect(() => {
     if (isSuccess) {
-      const returnUrl = router.query.returnUrl?.toString() || '/events'
+      const returnUrl = router.query.returnUrl?.toString() || '/'
       router.push(returnUrl)
     }
   }, [isSuccess])
