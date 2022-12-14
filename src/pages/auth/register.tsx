@@ -10,7 +10,7 @@ import { useEffect, useState } from 'react'
 const SignUp: NextPage = () => {
   const [signUp, { isSuccess }] = useSignUpMutation()
   const router = useRouter()
-
+  //
   const [signUpData, setSignUpData] = useState({
     name: '',
     email: '',
